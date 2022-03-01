@@ -71,7 +71,7 @@ public class RealityStone : MonoBehaviour
             fakeObj.GetComponent<SpriteRenderer>().color = temp;
         }
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(20);
 
         soundReality.Stop();
 
@@ -114,7 +114,7 @@ public class RealityStone : MonoBehaviour
             playerVisual.color = temp;
         }
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(25);
 
         soundReality.Stop();
 

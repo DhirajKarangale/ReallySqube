@@ -42,13 +42,13 @@ public class PlayerHealth : MonoBehaviour
         if (damage < 0)
         {
             psMain.startColor = Color.green;
-            PlaySound(soundHealth, 0);
+            PlaySound(soundHealth);
             PS(15);
         }
         else
         {
             psMain.startColor = originalPsColor;
-            PlaySound(soundDamage, 0);
+            PlaySound(soundDamage);
             PS(5);
         }
 
@@ -59,11 +59,10 @@ public class PlayerHealth : MonoBehaviour
     {
         psMain.startColor = originalPsColor;
         PS(60);
-        PlaySound(soundDie, 0);
+        PlaySound(soundDie);
         visual.SetActive(false);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         controlPanel.SetActive(false);
-        PlaySound(soundGameOver, 1);
         Invoke("SetGameOverActive", 2);
         Destroy(gameObject, 5);
     }
@@ -84,12 +83,12 @@ public class PlayerHealth : MonoBehaviour
     private void SetGameOverActive()
     {
         gameOverPanel.SetActive(true);
-        // PlaySound(soundGameOver); 
+        PlaySound(soundGameOver); 
     }
 
-    private void PlaySound(AudioSource sound, ulong delay)
+    private void PlaySound(AudioSource sound)
     {
         if (sound.isPlaying) sound.Stop();
-        sound.Play(delay * 44100);
+        sound.Play();
     }
 }
