@@ -5,11 +5,12 @@ public class Cannon : MonoBehaviour
     [SerializeField] float rate;
     [SerializeField] float bulletForce;
     [SerializeField] GameObject bullet;
-    [SerializeField] Transform attackPoint;
     [SerializeField] Animator animator;
+    private Vector2 attackPoint;
 
     private void Start()
     {
+        attackPoint = (Vector2)transform.position - new Vector2(0, 0.21f);
         InvokeRepeating("Shoot", 0, rate);
     }
 
@@ -20,7 +21,7 @@ public class Cannon : MonoBehaviour
 
     public void ThroughBullet()
     {
-        GameObject currBullet = Instantiate(bullet, attackPoint.position, attackPoint.rotation);
+        GameObject currBullet = Instantiate(bullet, attackPoint, Quaternion.identity);
         currBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
         Invoke("PlayIdel", 0.5f);
     }

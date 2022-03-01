@@ -24,12 +24,11 @@ public class ChangeLevel : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !isPlayerCollided)
         {
             isPlayerCollided = true;
             if (soundChangeLevel.isPlaying) soundChangeLevel.Stop();
             soundChangeLevel.Play();
-            GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
