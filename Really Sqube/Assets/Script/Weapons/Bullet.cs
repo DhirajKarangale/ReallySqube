@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(Instantiate(impactEffect, transform.position, Quaternion.identity), 2);
-
+       
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D nearByObj in colliders)
         {

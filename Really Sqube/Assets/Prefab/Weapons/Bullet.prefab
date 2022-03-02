@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 542799982032087987, guid: 9687bfa7b0690704884267157225502c, type: 3}
-  explosionForce: 500
-  damage: 20
   radius: 5
+  damage: 30
+  explosionForce: 500
 --- !u!1001 &58758838
 PrefabInstance:
   m_ObjectHideFlags: 0
