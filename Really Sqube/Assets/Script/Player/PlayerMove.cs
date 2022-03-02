@@ -32,54 +32,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioSource soundFall;
     [SerializeField] AudioSource soundMove;
 
-    public bool isKeyboard;
+    // public bool isKeyboard;
 
     private void Update()
     {
-        // Remove This If Else for Final bilding ↓↓
-        if (isKeyboard)
-        {
-            ground -= Time.deltaTime;
-            if (IsGrounded()) ground = groundTime;
-
-            jumpPress -= Time.deltaTime;
-            if (Input.GetButtonDown("Jump")) jumpPress = jumpPressTime;
-
-            if (Input.GetButtonUp("Jump") && rigidBody.velocity.y > 0)
-            {
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * jumpFallVel);
-            }
-
-            if ((jumpPress > 0) && (ground > 0))
-            {
-                jumpPress = 0;
-                ground = 0;
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVel);
-                PlaySound(soundJump);
-                psJump.Play();
-            }
-
-            float fHorizontalVelocity = rigidBody.velocity.x;
-            fHorizontalVelocity += Input.GetAxisRaw("Horizontal");
-
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01f)
-                fHorizontalVelocity *= Mathf.Pow(1f - stopDamping, Time.deltaTime * 10f);
-            else if (Mathf.Sign(Input.GetAxisRaw("Horizontal")) != Mathf.Sign(fHorizontalVelocity))
-                fHorizontalVelocity *= Mathf.Pow(1f - turnDamping, Time.deltaTime * 10f);
-            else
-                fHorizontalVelocity *= Mathf.Pow(1f - moveDamping, Time.deltaTime * 10f);
-
-            rigidBody.velocity = new Vector2(fHorizontalVelocity, rigidBody.velocity.y);
-        }
-        else
-        {
-            Jump();
-            Move();
-        }
-        // Remove This If Else for Final Building ↑↑
-
-        // Jump();
-        // Move();
+        Jump();
+        Move();
         Flip();
         Landed();
         CheckMoving();
@@ -89,6 +47,51 @@ public class PlayerMove : MonoBehaviour
             PlayerHealth.instance.Die();
         }
     }
+
+    // private void KeyBoardFunction()
+    // {
+    //     // Remove This If Else for Final bilding ↓↓
+    //     if (isKeyboard)
+    //     {
+    //         ground -= Time.deltaTime;
+    //         if (IsGrounded()) ground = groundTime;
+
+    //         jumpPress -= Time.deltaTime;
+    //         if (Input.GetButtonDown("Jump")) jumpPress = jumpPressTime;
+
+    //         if (Input.GetButtonUp("Jump") && rigidBody.velocity.y > 0)
+    //         {
+    //             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * jumpFallVel);
+    //         }
+
+    //         if ((jumpPress > 0) && (ground > 0))
+    //         {
+    //             jumpPress = 0;
+    //             ground = 0;
+    //             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVel);
+    //             PlaySound(soundJump);
+    //             psJump.Play();
+    //         }
+
+    //         float fHorizontalVelocity = rigidBody.velocity.x;
+    //         fHorizontalVelocity += Input.GetAxisRaw("Horizontal");
+
+    //         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01f)
+    //             fHorizontalVelocity *= Mathf.Pow(1f - stopDamping, Time.deltaTime * 10f);
+    //         else if (Mathf.Sign(Input.GetAxisRaw("Horizontal")) != Mathf.Sign(fHorizontalVelocity))
+    //             fHorizontalVelocity *= Mathf.Pow(1f - turnDamping, Time.deltaTime * 10f);
+    //         else
+    //             fHorizontalVelocity *= Mathf.Pow(1f - moveDamping, Time.deltaTime * 10f);
+
+    //         rigidBody.velocity = new Vector2(fHorizontalVelocity, rigidBody.velocity.y);
+    //     }
+    //     else
+    //     {
+    //         Jump();
+    //         Move();
+    //     }
+    //     // Remove This If Else for Final Building ↑↑
+    // }
 
     private void Jump()
     {

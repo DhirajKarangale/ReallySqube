@@ -8,7 +8,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        soundSpwan.Play();
+        if (soundSpwan) soundSpwan.Play();
+    }
+
+    public void MenuButton()
+    {
+        soundButton.Play();
+        SceneManager.LoadScene(0);
     }
 
     public void RestartButton()

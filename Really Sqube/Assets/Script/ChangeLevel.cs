@@ -18,6 +18,7 @@ public class ChangeLevel : MonoBehaviour
 
     private void Level()
     {
+        PlayerPrefs.SetInt("Level", UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         isPlayerCollided = false;
     }
