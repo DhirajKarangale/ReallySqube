@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        // Move();
+        Move();
         KeyBoardFunction();
     }
 
@@ -157,16 +157,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
-
-        if (moveInputVal != 0)
-        {
-            Move();
-            return;
-        }
-        else
-        {
-            return;
-        }
     }
 
     private void PlaySound(AudioClip audioClip)
@@ -185,19 +175,15 @@ public class PlayerMove : MonoBehaviour
     public void MoveButton(int value)
     {
         moveInputVal += value;
-        // Move();
         if (moveInputVal == 0)
         {
             animator.Play("Idel");
-            // Move();
         }
         else
         {
             animator.Play("Move");
             transform.localScale = new Vector2(value, 1);
-            Move();
         }
-        // Move();
     }
 
     public void JumpButton(bool isJump)
