@@ -7,8 +7,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] UnityEngine.UI.Text dialogueText;
     [SerializeField] GameObject controlPanel;
-    [SerializeField] AudioSource writeSound;
-    [SerializeField] AudioSource soundButton;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip writeSound;
+    [SerializeField] AudioClip soundButton;
     private Queue<string> sentencesQue;
     private string sentence;
 
@@ -21,7 +22,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (isPlayerStop) controlPanel.SetActive(false);
 
-        soundButton.Play();
+        audioSource.PlayOneShot(soundButton);
+        // soundButton.Play();
         animator.Play("DialogueOpen");
         sentencesQue.Clear();
         foreach (string sentence in sentences)
@@ -51,7 +53,7 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char letter in sentence.ToCharArray())
         {
-            if (!writeSound.isPlaying) writeSound.Play();
+            if (!audioSource.isPlaying) audioSource.PlayOneShot(writeSound);
             dialogueText.text += letter;
             yield return null;
         }

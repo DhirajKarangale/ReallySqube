@@ -18,10 +18,11 @@ public class PlayerHealth : MonoBehaviour
     private ParticleSystem.MinMaxGradient originalPsColor;
 
     [Header("Sound")]
-    [SerializeField] AudioSource soundDamage;
-    [SerializeField] AudioSource soundHealth;
-    [SerializeField] AudioSource soundDie;
-    [SerializeField] AudioSource soundGameOver;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip soundDamage;
+    [SerializeField] AudioClip soundHealth;
+    [SerializeField] AudioClip soundDie;
+    [SerializeField] AudioClip soundGameOver;
 
     private void Awake()
     {
@@ -42,13 +43,13 @@ public class PlayerHealth : MonoBehaviour
         if (damage < 0)
         {
             psMain.startColor = Color.green;
-            PlaySound(soundHealth);
+            audioSource.PlayOneShot(soundHealth);
             PS(15);
         }
         else
         {
             psMain.startColor = originalPsColor;
-            PlaySound(soundDamage);
+            audioSource.PlayOneShot(soundDamage);
             PS(5);
         }
 
@@ -59,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
     {
         psMain.startColor = originalPsColor;
         PS(60);
-        PlaySound(soundDie);
+        audioSource.PlayOneShot(soundDie);
         visual.SetActive(false);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         controlPanel.SetActive(false);
@@ -83,12 +84,12 @@ public class PlayerHealth : MonoBehaviour
     private void SetGameOverActive()
     {
         gameOverPanel.SetActive(true);
-        PlaySound(soundGameOver); 
+       audioSource.PlayOneShot(soundGameOver); 
     }
 
-    private void PlaySound(AudioSource sound)
-    {
-        if (sound.isPlaying) sound.Stop();
-        sound.Play();
-    }
+    // private void PlaySound(AudioSource sound)
+    // {
+    //     if (sound.isPlaying) sound.Stop();
+    //     sound.Play();
+    // }
 }
