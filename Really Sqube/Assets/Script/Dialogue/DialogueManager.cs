@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager instance;
+
     [SerializeField] Animator animator;
     [SerializeField] UnityEngine.UI.Text dialogueText;
     [SerializeField] GameObject controlPanel;
@@ -13,8 +15,10 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentencesQue;
     private string sentence;
 
-    private void Start()
+    private void Awake()
     {
+        instance = this;
+
         sentencesQue = new Queue<string>();
     }
 

@@ -9,12 +9,11 @@ public class EneWeapon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(damage);
-           
+            PlayerHealth.instance.ChangeHealth(damage);
             // Vector2 forceDir = new Vector2(collision.transform.position.x - transform.position.x, 0.7f);
             Vector2 forceDir = collision.transform.position - transform.position;
             forceDir = forceDir.normalized;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDir * impactForce, ForceMode2D.Force);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDir * impactForce);
         }
     }
 }

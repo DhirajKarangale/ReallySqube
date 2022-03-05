@@ -4,20 +4,14 @@ public class Cannon : MonoBehaviour
 {
     [SerializeField] float rate;
     [SerializeField] float bulletForce;
-    [SerializeField] Transform player;
     [SerializeField] GameObject bullet;
     [SerializeField] Animator animator;
     private Vector2 attackPoint;
     private bool isShootingAllow;
 
-    // private void Start()
-    // {
-    //     attackPoint = (Vector2)transform.position - new Vector2(0, 0.21f);
-    // }
-
-    private void FixedUpdate()
+    private void Update()
     {
-        if (player && Mathf.Abs(transform.position.x - player.position.x) < 30)
+        if (PlayerHealth.instance && Mathf.Abs(transform.position.x - PlayerHealth.instance.transform.position.x) < 30)
         {
             if (!isShootingAllow)
             {
@@ -39,7 +33,7 @@ public class Cannon : MonoBehaviour
 
     public void ThroughBullet()
     {
-        attackPoint = (Vector2)transform.position - new Vector2(0, 0.5f);
+        attackPoint = (Vector2)transform.position - new Vector2(0, 1.5f);
         GameObject currBullet = Instantiate(bullet, attackPoint, Quaternion.identity);
         currBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
         Invoke("PlayIdel", 0.5f);

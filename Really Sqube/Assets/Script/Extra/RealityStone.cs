@@ -7,9 +7,8 @@ public class RealityStone : MonoBehaviour
     public static RealityStone instance;
 
     [SerializeField] Text stoneTxt;
-    [SerializeField] SpriteRenderer bg;
     [SerializeField] Text realityTxt;
-    [SerializeField] GameObject player;
+    [SerializeField] SpriteRenderer bg;
     [SerializeField] GameObject playerCap;
     [SerializeField] GameObject downButton;
     [SerializeField] Button checkButton;
@@ -39,14 +38,24 @@ public class RealityStone : MonoBehaviour
 
         stoneTxt.text = stones.ToString();
 
-        if (stones >= 1) checkButton.gameObject.SetActive(true);
-        else checkButton.gameObject.SetActive(false);
-
-        if (stones >= 2) changeButton.gameObject.SetActive(true);
-        else changeButton.gameObject.SetActive(false);
-
-        if (stones > 0) stoneTxt.gameObject.SetActive(true);
-        else stoneTxt.gameObject.SetActive(false);
+        if (stones >= 2)
+        {
+            changeButton.gameObject.SetActive(true);
+            checkButton.gameObject.SetActive(true);
+            stoneTxt.gameObject.SetActive(true);
+        }
+        else if (stones == 1)
+        {
+            changeButton.gameObject.SetActive(false);
+            checkButton.gameObject.SetActive(true);
+            stoneTxt.gameObject.SetActive(true);
+        }
+        else
+        {
+            changeButton.gameObject.SetActive(false);
+            checkButton.gameObject.SetActive(false);
+            stoneTxt.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator IECheckReality()
@@ -71,6 +80,7 @@ public class RealityStone : MonoBehaviour
             fakeObj.GetComponent<SpriteRenderer>().color = temp;
         }
 
+
         yield return new WaitForSeconds(20);
 
         soundReality.Stop();
@@ -83,7 +93,7 @@ public class RealityStone : MonoBehaviour
         foreach (GameObject fakeObj in fakeObjs)
         {
             Color temp = fakeObj.GetComponent<SpriteRenderer>().color;
-            temp.a = 1;
+            temp.a = 0.8f;
             fakeObj.GetComponent<SpriteRenderer>().color = temp;
         }
     }
@@ -103,16 +113,12 @@ public class RealityStone : MonoBehaviour
         playerCap.SetActive(true);
 
         downButton.SetActive(true);
-        player.GetComponent<BoxCollider2D>().isTrigger = true;
-        player.GetComponent<Rigidbody2D>().gravityScale = 0;
-
-        SpriteRenderer[] playerVisuals = player.GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer playerVisual in playerVisuals)
-        {
-            Color temp = playerVisual.color;
-            temp.a = 0.2f;
-            playerVisual.color = temp;
-        }
+        PlayerHealth.instance.GetComponent<BoxCollider2D>().isTrigger = true;
+        PlayerHealth.instance.GetComponent<Rigidbody2D>().gravityScale = 0;
+        
+        Color temp = PlayerHealth.instance.GetComponent<SpriteRenderer>().color;
+        temp.a = 0.2f;
+        PlayerHealth.instance.GetComponent<SpriteRenderer>().color = temp;
 
         yield return new WaitForSeconds(25);
 
@@ -125,16 +131,14 @@ public class RealityStone : MonoBehaviour
         playerCap.SetActive(false);
 
         downButton.SetActive(false);
-        player.GetComponent<BoxCollider2D>().isTrigger = false;
-        player.GetComponent<Rigidbody2D>().gravityScale = 8;
+        PlayerHealth.instance.GetComponent<BoxCollider2D>().isTrigger = false;
+        PlayerHealth.instance.GetComponent<Rigidbody2D>().gravityScale = 8;
 
-        foreach (SpriteRenderer playerVisual in playerVisuals)
-        {
-            Color temp = playerVisual.color;
-            temp.a = 1;
-            playerVisual.color = temp;
-        }
+        temp.a = 1;
+        PlayerHealth.instance.GetComponent<SpriteRenderer>().color = temp;
     }
+
+
 
     public void CheckRealityButton()
     {

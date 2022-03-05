@@ -4,7 +4,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Refrence")]
     [SerializeField] Rigidbody2D rigidBody;
-    // [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] Animator animator;
 
     [Header("Jump")]
@@ -14,7 +14,6 @@ public class PlayerMove : MonoBehaviour
     [Range(0, 1)][SerializeField] float jumpFallVel = 0.5f;
     private float ground = 0;
     private float jumpPress = 0;
-    private bool isGrounded;
 
     [Header("Move")]
     [Range(0, 1)][SerializeField] float moveDamping = 0.5f;
@@ -36,44 +35,20 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         KeyBoardFunction();
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isGrounded = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isGrounded = false;
+        if (transform.position.y <= -100) GameManager.instance.GameOver();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Finish"))
-        {
-            PlayerHealth.instance.Die();
-            this.enabled = false;
-        }
-
-        // Land
-        if (!isGrounded)
-        {
-            psLand.Play();
-            PlaySound(fallClip);
-        }
-        isGrounded = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        isGrounded = false;
+        PlaySound(fallClip);
+        psLand.Play();
     }
 
     private void KeyBoardFunction()
     {
         ground -= Time.deltaTime;
-        if (isGrounded) ground = groundTime;
+        if (IsGrounded()) ground = groundTime;
 
         jumpPress -= Time.deltaTime;
         if (Input.GetButtonDown("Jump")) jumpPress = jumpPressTime;
@@ -118,7 +93,7 @@ public class PlayerMove : MonoBehaviour
     private void Jump(bool isJumpButton)
     {
         ground -= Time.deltaTime;
-        if (isGrounded) ground = groundTime;
+        if (IsGrounded()) ground = groundTime;
 
         jumpPress -= Time.deltaTime;
         if (isJumpButton) jumpPress = jumpPressTime;
@@ -161,15 +136,20 @@ public class PlayerMove : MonoBehaviour
 
     private void PlaySound(AudioClip audioClip)
     {
+        if (GameManager.instance.isGameOver) return;
+
         if (audioSource.isPlaying) audioSource.Stop();
         audioSource.PlayOneShot(audioClip);
     }
 
-
+    private bool IsGrounded()
+    {
+        return Physics2D.IsTouchingLayers(boxCollider);
+    }
 
     public void DownButton()
     {
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, -5);
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, -2);
     }
 
     public void MoveButton(int value)
@@ -188,15 +168,13 @@ public class PlayerMove : MonoBehaviour
 
     public void JumpButton(bool isJump)
     {
-        // if (boxCollider.isTrigger)
-        // {
-        //     rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y + 200);
-        // }
-        // else
-        // {
-        //     Jump(isJump);
-        // }
-
-        Jump(isJump);
+        if (boxCollider.isTrigger)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 2);
+        }
+        else
+        {
+            Jump(isJump);
+        }
     }
 }

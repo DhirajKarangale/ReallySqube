@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] float dist;
-    [SerializeField] Transform player;
-    [SerializeField] DialogueManager dialogueManager;
     [SerializeField] bool isPlayerStop;
     [SerializeField] string[] dialogues;
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (player && dist >= Vector2.Distance(transform.position, player.position))
+        if (collision.CompareTag("Player"))
         {
-            dialogueManager.StartDialogue(dialogues, isPlayerStop);
-            this.enabled = false;
+            DialogueManager.instance.StartDialogue(dialogues, isPlayerStop);
+            Destroy(gameObject);
         }
     }
 }

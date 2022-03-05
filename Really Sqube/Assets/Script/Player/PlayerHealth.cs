@@ -6,69 +6,60 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth instance;
 
     [Header("Health")]
-    [SerializeField] float health;
+    // [SerializeField] float health;
     [SerializeField] Slider healthSlider;
+    public GameObject effects;
     private float currHealth;
 
     [Header("Effect")]
     [SerializeField] ParticleSystem psDie;
-    [SerializeField] GameObject visual;
-    [SerializeField] GameObject controlPanel, gameOverPanel;
     private ParticleSystem.MainModule psMain;
     private ParticleSystem.MinMaxGradient originalPsColor;
 
     [Header("Sound")]
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip soundDamage;
-    [SerializeField] AudioClip soundHealth;
-    [SerializeField] AudioClip soundDie;
-    [SerializeField] AudioClip soundGameOver;
+    [SerializeField] AudioClip damageClip;
+    [SerializeField] AudioClip healthClip;
 
     private void Awake()
     {
         instance = this;
-        currHealth = health;
+
+        currHealth = 100;
         UpdateHealthBar();
-        gameOverPanel.SetActive(false);
-        controlPanel.SetActive(true);
         psMain = psDie.main;
         originalPsColor = psMain.startColor;
     }
 
     public void ChangeHealth(float damage)
     {
-        currHealth = Mathf.Clamp(currHealth -= damage, -1, health + 1);
+        if(GameManager.instance.isGameOver)
+        {
+            this.enabled = false;
+            return;
+        }
+        currHealth = Mathf.Clamp(currHealth -= damage, -1, 100 + 1);
         UpdateHealthBar();
 
-        if (damage < 0)
+        if (currHealth <= 0)
+        {
+            GameManager.instance.GameOver();
+        }
+        else if (damage < 0)
         {
             psMain.startColor = Color.green;
-            audioSource.PlayOneShot(soundHealth);
+            PlaySound(healthClip);
             PS(15);
         }
         else
         {
             psMain.startColor = originalPsColor;
-            audioSource.PlayOneShot(soundDamage);
+            PlaySound(damageClip);
             PS(5);
         }
-
-        if (currHealth <= 0) Die();
     }
 
-    public void Die()
-    {
-        psMain.startColor = originalPsColor;
-        PS(60);
-        audioSource.PlayOneShot(soundDie);
-        visual.SetActive(false);
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        controlPanel.SetActive(false);
-        Invoke("SetGameOverActive", 2);
-        Destroy(gameObject, 5);
-    }
-
-    private void PS(byte burstAmount)
+    public void PS(byte burstAmount)
     {
         ParticleSystem.EmissionModule psModule = psDie.emission;
         psModule.SetBurst(0, new ParticleSystem.Burst(0, burstAmount));
@@ -77,19 +68,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthSlider.value = currHealth / health;
+        healthSlider.value = currHealth / 100;
         healthSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Color.red, Color.yellow, healthSlider.normalizedValue);
     }
 
-    private void SetGameOverActive()
+    private void PlaySound(AudioClip audioClip)
     {
-        gameOverPanel.SetActive(true);
-       audioSource.PlayOneShot(soundGameOver); 
+        if (audioSource.isPlaying) audioSource.Stop();
+        audioSource.PlayOneShot(audioClip);
     }
-
-    // private void PlaySound(AudioSource sound)
-    // {
-    //     if (sound.isPlaying) sound.Stop();
-    //     sound.Play();
-    // }
 }

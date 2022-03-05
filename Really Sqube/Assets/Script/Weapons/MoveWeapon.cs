@@ -13,9 +13,9 @@ public class MoveWeapon : MonoBehaviour
         InvokeRepeating("Move", 0, rate);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
 
     private void Move()

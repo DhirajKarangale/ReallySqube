@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] AudioSource soundPlay;
-    [SerializeField] AudioSource soundButton;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip playClip;
+    [SerializeField] AudioClip buttonClip;
     [SerializeField] Text tipText;
     [SerializeField] GameObject[] panels;
     [SerializeField] string[] tips;
@@ -37,16 +38,18 @@ public class Menu : MonoBehaviour
         StartCoroutine(GenerateTips());
     }
 
+
+
     public void PlayButton(int level)
     {
-        soundPlay.Play();
+        audioSource.PlayOneShot(playClip);
         if (level == -1) level = PlayerPrefs.GetInt("Level", 1);
         SceneManager.LoadScene(level);
     }
 
     public void ChangePanelButton(GameObject changedPanel)
     {
-        soundButton.Play();
+        audioSource.PlayOneShot(buttonClip);
         foreach (GameObject panel in panels)
         {
             panel.SetActive(false);
@@ -61,6 +64,7 @@ public class Menu : MonoBehaviour
 
     public void QuitButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         Application.Quit();
     }
 }
