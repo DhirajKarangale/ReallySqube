@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dist: 20
-  player: {fileID: 0}
   sound: {fileID: 950494743724577105}
 --- !u!82 &950494743724577105
 AudioSource:
@@ -277,8 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbf229261e06a049aece89ca9aabc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
-  impactForce: 1500
+  damage: 15
+  impactForce: 650
 --- !u!1 &7443102614316744031
 GameObject:
   m_ObjectHideFlags: 0

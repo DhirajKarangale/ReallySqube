@@ -21,9 +21,10 @@ public class GameManager : MonoBehaviour
         instance = this;
         isGameOver = false;
 
-        if(controlUI) controlUI.SetActive(true);
-        if(gameoverUI) gameoverUI.SetActive(false);
-        if(spwanClip) PlaySound(spwanClip);
+        PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
+        if (controlUI) controlUI.SetActive(true);
+        if (gameoverUI) gameoverUI.SetActive(false);
+        if (spwanClip) PlaySound(spwanClip);
     }
 
     private void PlaySound(AudioClip audioClip)

@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 0
+  m_CurrentQuality: 2
   m_QualitySettings:
   - serializedVersion: 2
     name: Very Low
@@ -115,9 +115,7 @@ QualitySettings:
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 0}
-    excludedTargetPlatforms:
-    - Android
-    - Standalone
+    excludedTargetPlatforms: []
   - serializedVersion: 2
     name: High
     pixelLightCount: 2
@@ -233,12 +231,12 @@ QualitySettings:
     - Android
     - Standalone
   m_PerPlatformDefaultQuality:
-    Android: 0
+    Android: 2
     Lumin: 5
     Nintendo Switch: 5
     PS4: 5
     Stadia: 5
-    Standalone: 0
+    Standalone: 2
     WebGL: 3
     Windows Store Apps: 5
     XboxOne: 5

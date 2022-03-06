@@ -14,7 +14,6 @@ public class ChangeLevel : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, -0.1f, 1), fadeTime * Time.deltaTime);
             if (transform.localScale.y <= 0)
             {
-                PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 this.enabled = false;
             }
