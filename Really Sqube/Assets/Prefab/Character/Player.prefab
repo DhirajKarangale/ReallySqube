@@ -168,8 +168,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3598457375146388417}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0.5, y: -0.285, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3598457374934545233}
   m_RootOrder: 1
@@ -1117,7 +1117,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 20
+        scalar: 40
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5031,7 +5031,7 @@ Transform:
   m_GameObject: {fileID: 3598457375411562445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 3598457375760683718}
   m_RootOrder: 0
@@ -19761,9 +19761,9 @@ MonoBehaviour:
   rigidBody: {fileID: 3674347047791570375}
   boxCollider: {fileID: 3674347047791570376}
   animator: {fileID: 3674347047791570377}
-  jumpVel: 30
+  jumpVel: 35
   jumpPressTime: 0.3
-  groundTime: 0.3
+  groundTime: 0.4
   jumpFallVel: 0.5
   moveDamping: 0.02
   stopDamping: 0.025
