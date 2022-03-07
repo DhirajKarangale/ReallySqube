@@ -21,10 +21,16 @@ public class GameManager : MonoBehaviour
         instance = this;
         isGameOver = false;
 
-        PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
+        int level = PlayerPrefs.GetInt("Level", 1);
+        if (level <= SceneManager.GetActiveScene().buildIndex)
+        {
+            PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
+        }
+
         if (controlUI) controlUI.SetActive(true);
         if (gameoverUI) gameoverUI.SetActive(false);
         if (spwanClip) PlaySound(spwanClip);
+        if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
     }
 
     private void PlaySound(AudioClip audioClip)
@@ -48,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
         controlUI.SetActive(false);
+        if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
         Invoke("ActiveGameOverUI", 2);
 
         PlayerHealth.instance.effects.SetActive(false);

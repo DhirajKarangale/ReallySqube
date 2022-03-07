@@ -554,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 67287318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 106.42, y: 4.71, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 0
@@ -1113,7 +1113,7 @@ Transform:
   m_GameObject: {fileID: 152321345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 297.97, y: 2.18, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 6
@@ -1500,7 +1500,7 @@ Transform:
   m_GameObject: {fileID: 193852815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 239.5, y: 1.04, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 2
@@ -3558,7 +3558,7 @@ Transform:
   m_GameObject: {fileID: 634585278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 272.36, y: 2.73, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 763059320}
   m_RootOrder: 2
@@ -3913,7 +3913,7 @@ Transform:
   m_GameObject: {fileID: 679927910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 286.68, y: 1.88, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 5
@@ -4022,7 +4022,7 @@ Transform:
   m_GameObject: {fileID: 712995815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 411.9, y: 22.5, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 763059320}
   m_RootOrder: 4
@@ -4346,7 +4346,7 @@ Transform:
   m_GameObject: {fileID: 772770334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 171.4, y: 0.8, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 8
@@ -4630,7 +4630,7 @@ Transform:
   m_GameObject: {fileID: 790844070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 309.19, y: 1.54, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 763059320}
   m_RootOrder: 3
@@ -5694,7 +5694,7 @@ Transform:
   m_GameObject: {fileID: 1011063540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 95.07, y: 3.5, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 763059320}
   m_RootOrder: 0
@@ -5961,7 +5961,7 @@ Transform:
   m_GameObject: {fileID: 1071358199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 246.96, y: 2.53, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 3
@@ -7520,7 +7520,7 @@ Transform:
   m_GameObject: {fileID: 1327227602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 182.5, y: 0.8, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 9
@@ -8786,6 +8786,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[2]
+      value: 'Friend : shhh.. Idiot the dum developer is to lazy for it.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[6]
+      value: 'Player : Wait who is "He" now....'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
 --- !u!1 &1618681874
@@ -9249,7 +9261,7 @@ Transform:
   m_GameObject: {fileID: 1683133725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 397.6, y: 24.2, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 7
@@ -9971,7 +9983,7 @@ Transform:
   m_GameObject: {fileID: 1844592605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 256.44, y: 3.9, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 763059320}
   m_RootOrder: 1
@@ -10877,7 +10889,7 @@ Transform:
   m_GameObject: {fileID: 1939609398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 261.65, y: 2.75, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 4
@@ -11169,7 +11181,7 @@ Transform:
   m_GameObject: {fileID: 1993164420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 162.72, y: 0.33, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1309508837}
   m_RootOrder: 1
@@ -12184,7 +12196,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09eb78a9c09bcea499ff6f0c04e9fc06, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12712,7 +12724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674347047791570378, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.00000064336894
       objectReference: {fileID: 0}
     - target: {fileID: 3674347047791570378, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

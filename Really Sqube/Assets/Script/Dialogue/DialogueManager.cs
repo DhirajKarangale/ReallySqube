@@ -24,10 +24,13 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string[] sentences, bool isPlayerStop)
     {
-        if (isPlayerStop) controlPanel.SetActive(false);
+        if (isPlayerStop)
+        {
+            PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            controlPanel.SetActive(false);
+        }
 
         audioSource.PlayOneShot(soundButton);
-        // soundButton.Play();
         animator.Play("DialogueOpen");
         sentencesQue.Clear();
         foreach (string sentence in sentences)
@@ -40,6 +43,10 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if(GameManager.instance.isGameOver)
+        {
+            sentencesQue.Clear();
+        }
         if (sentencesQue.Count == 0)
         {
             EndDialogue();
@@ -68,6 +75,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.Play("DialogueClose");
+        PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         controlPanel.SetActive(true);
     }
 }
