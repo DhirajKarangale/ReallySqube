@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2228535694238555320, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2228535694238555320, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -324,6 +324,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DownButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2228535694512085373, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228535695211245320, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2228535695211245331, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -355,6 +363,14 @@ PrefabInstance:
     - target: {fileID: 2228535695335659848, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: JumpButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228535695335659850, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228535695467185676, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2228535695467185687, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12117,7 +12133,7 @@ Transform:
   - {fileID: 1268023365}
   - {fileID: 1538760153}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2117138275
 AudioSource:

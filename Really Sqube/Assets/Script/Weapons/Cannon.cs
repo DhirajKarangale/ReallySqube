@@ -28,11 +28,15 @@ public class Cannon : MonoBehaviour
 
     private void Shoot()
     {
+        if (GameManager.instance.isGameOver) return;
+        
         animator.Play("Shoot");
     }
 
     public void ThroughBullet()
     {
+        if (GameManager.instance.isGameOver) return;
+
         attackPoint = (Vector2)transform.position - new Vector2(0, 1.5f);
         GameObject currBullet = Instantiate(bullet, attackPoint, Quaternion.identity);
         currBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
