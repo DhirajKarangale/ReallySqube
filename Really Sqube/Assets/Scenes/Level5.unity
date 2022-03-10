@@ -873,7 +873,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1310f044ecea12c4db101f9537f3046d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1262,6 +1262,7 @@ GameObject:
   - component: {fileID: 2047506149}
   - component: {fileID: 2047506150}
   - component: {fileID: 2047506151}
+  - component: {fileID: 2047506152}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -1402,3 +1403,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!170 &2047506152
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047506148}
+  m_Enabled: 1
+  m_DistortionLevel: 0.5

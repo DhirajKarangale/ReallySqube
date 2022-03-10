@@ -110,15 +110,18 @@ public class RealityStone : MonoBehaviour
         realityTxt.text = "Reality Changed";
         realityTxt.color = Color.red;
         realityTxt.gameObject.SetActive(true);
-        playerCap.SetActive(true);
+        if (playerCap) playerCap.SetActive(true);
 
         downButton.SetActive(true);
-        PlayerHealth.instance.GetComponent<BoxCollider2D>().isTrigger = true;
-        PlayerHealth.instance.GetComponent<Rigidbody2D>().gravityScale = 0;
-        
-        Color temp = PlayerHealth.instance.GetComponent<SpriteRenderer>().color;
-        temp.a = 0.2f;
-        PlayerHealth.instance.GetComponent<SpriteRenderer>().color = temp;
+        if (PlayerHealth.instance)
+        {
+            PlayerHealth.instance.GetComponent<BoxCollider2D>().isTrigger = true;
+            PlayerHealth.instance.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+            Color temp = PlayerHealth.instance.GetComponent<SpriteRenderer>().color;
+            temp.a = 0.2f;
+            PlayerHealth.instance.GetComponent<SpriteRenderer>().color = temp;
+        }
 
         yield return new WaitForSeconds(25);
 
@@ -128,14 +131,19 @@ public class RealityStone : MonoBehaviour
         checkButton.interactable = true;
         realityTxt.gameObject.SetActive(false);
         bg.color = Color.white;
-        playerCap.SetActive(false);
+        if (playerCap) playerCap.SetActive(false);
 
         downButton.SetActive(false);
-        PlayerHealth.instance.GetComponent<BoxCollider2D>().isTrigger = false;
-        PlayerHealth.instance.GetComponent<Rigidbody2D>().gravityScale = 8;
 
-        temp.a = 1;
-        PlayerHealth.instance.GetComponent<SpriteRenderer>().color = temp;
+        if (PlayerHealth.instance)
+        {
+            PlayerHealth.instance.GetComponent<BoxCollider2D>().isTrigger = false;
+            PlayerHealth.instance.GetComponent<Rigidbody2D>().gravityScale = 8;
+
+            Color temp = PlayerHealth.instance.GetComponent<SpriteRenderer>().color;
+            temp.a = 1;
+            PlayerHealth.instance.GetComponent<SpriteRenderer>().color = temp;
+        }
     }
 
 
