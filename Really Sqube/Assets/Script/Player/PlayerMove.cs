@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip fallClip;
-    [SerializeField] AudioSource soundMove;
+    // [SerializeField] AudioSource soundMove;
 
     private void Update()
     {
@@ -117,10 +117,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        if (!IsGrounded())
-        {
-            soundMove.Stop();
-        }
+        // if (!IsGrounded())
+        // {
+        //     soundMove.Stop();
+        // }
 
         float xVelocity = rigidBody.velocity.x;
         xVelocity += moveInputVal;
@@ -165,16 +165,16 @@ public class PlayerMove : MonoBehaviour
         if (moveInputVal == 0)
         {
             animator.Play("Idel");
-            soundMove.Stop();
+            // soundMove.Stop();
         }
         else
         {
             animator.Play("Move");
             transform.localScale = new Vector2(value, 1);
-            if (!soundMove.isPlaying && IsGrounded())
-            {
-                soundMove.Play();
-            }
+            // if (!soundMove.isPlaying && IsGrounded())
+            // {
+            //     soundMove.Play();
+            // }
         }
     }
 

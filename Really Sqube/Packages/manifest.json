@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "com.unity.2d.animation": "5.0.10",
-    "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.cinemachine": "2.6.11",
     "com.unity.ide.vscode": "1.2.5",
