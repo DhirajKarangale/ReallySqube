@@ -19607,10 +19607,7 @@ GameObject:
   - component: {fileID: 3674347047791570374}
   - component: {fileID: 3674347047791570379}
   - component: {fileID: 2848729150871559218}
-<<<<<<< HEAD
   - component: {fileID: 1112506120223022135}
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -19777,10 +19774,7 @@ MonoBehaviour:
   audioSource: {fileID: 2848729150871559218}
   jumpClip: {fileID: 8300000, guid: 493533e7ad19f134faf84952bbceb3ed, type: 3}
   fallClip: {fileID: 8300000, guid: c1e0ae7b32f61da488f403cfc27c5fbc, type: 3}
-<<<<<<< HEAD
   soundMove: {fileID: 1112506120223022135}
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
 --- !u!114 &3674347047791570379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19895,7 +19889,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< HEAD
 --- !u!82 &1112506120223022135
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19992,8 +19985,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
 --- !u!1 &3674347047996509282
 GameObject:
   m_ObjectHideFlags: 0

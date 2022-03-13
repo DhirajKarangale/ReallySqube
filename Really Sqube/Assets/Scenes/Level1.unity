@@ -3234,19 +3234,11 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-<<<<<<< HEAD
   m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
-=======
-  m_HDR: 1
-  m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &519420032

@@ -29,11 +29,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip fallClip;
-<<<<<<< HEAD
     [SerializeField] AudioSource soundMove;
-=======
-    // [SerializeField] AudioClip soundMove;
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
 
     private void Update()
     {
@@ -49,11 +45,8 @@ public class PlayerMove : MonoBehaviour
         psLand.Play();
     }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
     private void KeyBoardFunction()
     {
         ground -= Time.deltaTime;
@@ -124,14 +117,11 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-<<<<<<< HEAD
         if (!IsGrounded())
         {
             soundMove.Stop();
         }
 
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
         float xVelocity = rigidBody.velocity.x;
         xVelocity += moveInputVal;
 
@@ -175,22 +165,16 @@ public class PlayerMove : MonoBehaviour
         if (moveInputVal == 0)
         {
             animator.Play("Idel");
-<<<<<<< HEAD
             soundMove.Stop();
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
         }
         else
         {
             animator.Play("Move");
             transform.localScale = new Vector2(value, 1);
-<<<<<<< HEAD
             if (!soundMove.isPlaying && IsGrounded())
             {
                 soundMove.Play();
             }
-=======
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
         }
     }
 

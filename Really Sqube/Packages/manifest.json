@@ -1,10 +1,6 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "com.unity.2d.animation": "5.0.10",
-=======
-    "com.unity.2d.animation": "5.1.1",
->>>>>>> 02b77ecaeafdcfccbaed5c8f0ebcab3fe030bcf6
     "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.cinemachine": "2.6.11",
