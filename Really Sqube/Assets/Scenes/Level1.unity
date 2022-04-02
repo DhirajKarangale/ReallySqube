@@ -8792,7 +8792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[2]
-      value: 'Friend : shhh.. Idiot the dum developer is to lazy for it.'
+      value: 'Friend : shhh.. Idiot, the dum developer is to lazy for it.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[6]
@@ -12655,6 +12655,10 @@ PrefabInstance:
       objectReference: {fileID: 1478886518}
     - target: {fileID: 2228535695211245331, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1478886518}
+    - target: {fileID: 2228535695257575437, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
+      propertyPath: player
       value: 
       objectReference: {fileID: 1478886518}
     - target: {fileID: 2228535695335659848, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}

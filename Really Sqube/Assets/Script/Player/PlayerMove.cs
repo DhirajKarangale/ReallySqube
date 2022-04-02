@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Refrence")]
-    [SerializeField] Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
     [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] Animator animator;
 
@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     [Range(0, 1)][SerializeField] float moveDamping = 0.5f;
     [Range(0, 1)][SerializeField] float stopDamping = 0.5f;
     [Range(0, 1)][SerializeField] float turnDamping = 0.5f;
-    private float moveInputVal;
+    [HideInInspector] public float moveInputVal;
 
     [Header("Effect")]
     [SerializeField] ParticleSystem psJump;
@@ -41,8 +41,10 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlaySound(fallClip);
-        psLand.Play();
+        if (!collision.gameObject.CompareTag("Box"))
+        {
+            HitEffect();
+        }
     }
 
 
@@ -141,6 +143,12 @@ public class PlayerMove : MonoBehaviour
         rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
     }
 
+    private void HitEffect()
+    {
+        PlaySound(fallClip);
+        psLand.Play();
+    }
+
     private void PlaySound(AudioClip audioClip)
     {
         if (GameManager.instance.isGameOver) return;
@@ -153,6 +161,9 @@ public class PlayerMove : MonoBehaviour
     {
         return Physics2D.IsTouchingLayers(boxCollider);
     }
+
+
+
 
     public void DownButton()
     {
@@ -170,7 +181,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             animator.Play("Move");
-            transform.localScale = new Vector2(value, 1);
+            transform.localScale = new Vector2(Mathf.Sign(value), 1);
             // if (!soundMove.isPlaying && IsGrounded())
             // {
             //     soundMove.Play();

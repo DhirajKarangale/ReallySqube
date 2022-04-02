@@ -10738,6 +10738,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1563420646}
+    - target: {fileID: 2228535695257575437, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1563420646}
     - target: {fileID: 2228535695335659848, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

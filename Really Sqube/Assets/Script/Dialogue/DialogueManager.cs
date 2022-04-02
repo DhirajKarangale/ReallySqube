@@ -6,9 +6,10 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
 
+    [SerializeField] PlayerMove player;
+    [SerializeField] GameObject controlPanel;
     [SerializeField] Animator animator;
     [SerializeField] UnityEngine.UI.Text dialogueText;
-    [SerializeField] GameObject controlPanel;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip writeSound;
     [SerializeField] AudioClip soundButton;
@@ -26,7 +27,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (isPlayerStop)
         {
-            PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            player.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            player.moveInputVal = 0;
             controlPanel.SetActive(false);
         }
 
