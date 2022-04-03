@@ -6,8 +6,6 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
 
-    [SerializeField] PlayerMove player;
-    [SerializeField] GameObject controlPanel;
     [SerializeField] Animator animator;
     [SerializeField] UnityEngine.UI.Text dialogueText;
     [SerializeField] AudioSource audioSource;
@@ -27,9 +25,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (isPlayerStop)
         {
-            player.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-            player.moveInputVal = 0;
-            controlPanel.SetActive(false);
+            GameManager.instance.StopPlayer();
         }
 
         audioSource.PlayOneShot(soundButton);
@@ -77,8 +73,6 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.Play("DialogueClose");
-        PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        controlPanel.SetActive(true);
+        GameManager.instance.StartPlayer();
     }
 }

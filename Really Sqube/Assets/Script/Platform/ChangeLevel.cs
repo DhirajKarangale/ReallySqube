@@ -3,27 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class ChangeLevel : MonoBehaviour
 {
-    [SerializeField] float dist;
-    [SerializeField] float fadeTime;
     [SerializeField] AudioSource soundChangeLevel;
-    private bool isPlayerClose;
+    private bool isPlayerCollided;
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (PlayerHealth.instance && dist >= Mathf.Abs(Vector2.Distance(transform.position, PlayerHealth.instance.transform.position)))
+        if (!soundChangeLevel.isPlaying) soundChangeLevel.Play();
+        if (!isPlayerCollided)
         {
-            isPlayerClose = true;
+            Invoke("PlayerCollided", 0.5f);
+            isPlayerCollided = true;
         }
+    }
 
-        if (isPlayerClose)
-        {
-            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, -0.1f, 1), fadeTime * Time.deltaTime);
-            if (!soundChangeLevel.isPlaying) soundChangeLevel.Play();
-            if (transform.localScale.y <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                this.enabled = false;
-            }
-        }
+    private void PlayerCollided()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

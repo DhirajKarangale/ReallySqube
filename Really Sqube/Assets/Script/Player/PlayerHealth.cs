@@ -4,11 +4,10 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
-
+    public PlayerMove playerMove;
     [Header("Health")]
-    // [SerializeField] float health;
+    [SerializeField] float health;
     [SerializeField] Slider healthSlider;
-    public GameObject effects;
     private float currHealth;
 
     [Header("Effect")]
@@ -25,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     {
         instance = this;
 
-        currHealth = 100;
+        currHealth = health;
         UpdateHealthBar();
         psMain = psDie.main;
         originalPsColor = psMain.startColor;
@@ -38,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
             this.enabled = false;
             return;
         }
-        currHealth = Mathf.Clamp(currHealth -= damage, -1, 100 + 1);
+        currHealth = Mathf.Clamp(currHealth -= damage, -1, health + 1);
         UpdateHealthBar();
 
         if (currHealth <= 0)
@@ -68,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthSlider.value = currHealth / 100;
+        healthSlider.value = currHealth / health;
         healthSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Color.red, Color.yellow, healthSlider.normalizedValue);
     }
 

@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         isGameOver = false;
 
-        int level = PlayerPrefs.GetInt("Level", 1);
-        if (level <= SceneManager.GetActiveScene().buildIndex)
+        if (PlayerPrefs.GetInt("Level", 1) <= SceneManager.GetActiveScene().buildIndex)
         {
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
         }
@@ -43,26 +42,32 @@ public class GameManager : MonoBehaviour
     {
         gameoverUI.SetActive(true);
         PlaySound(gameoverClip);
-        // Destroy(PlayerHealth.instance.gameObject);
     }
 
 
+    public void StopPlayer()
+    {
+        controlUI.SetActive(false);
+        PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        PlayerHealth.instance.playerMove.moveInputVal = 0;
+    }
+
+    public void StartPlayer()
+    {
+        PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
+        PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        controlUI.SetActive(true);
+    }
 
     public void GameOver()
     {
         isGameOver = true;
 
         Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
-        controlUI.SetActive(false);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
-      
-        // PlayerHealth.instance.effects.SetActive(false);
-        // PlayerHealth.instance.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        // PlayerHealth.instance.gameObject.GetComponent<PlayerMove>().enabled = false;
-        // PlayerHealth.instance.gameObject.GetComponent<PlayerHealth>().enabled = false;
-        // PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-
         Destroy(PlayerHealth.instance.gameObject);
+        controlUI.SetActive(false);
+
         Invoke("ActiveGameOverUI", 2);
     }
 

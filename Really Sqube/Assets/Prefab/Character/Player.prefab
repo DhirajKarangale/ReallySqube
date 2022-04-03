@@ -19768,6 +19768,7 @@ MonoBehaviour:
   moveDamping: 0.02
   stopDamping: 0.025
   turnDamping: 0.025
+  moveInputVal: 0
   psJump: {fileID: 3598457375760683716}
   psLand: {fileID: 3598457375146388420}
   audioSource: {fileID: 2848729150871559218}
@@ -19785,8 +19786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1aac242404af6c46b544ba7c2cfcdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMove: {fileID: 3674347047791570374}
+  health: 100
   healthSlider: {fileID: 0}
-  effects: {fileID: 3598457374934545232}
   psDie: {fileID: 3674347047576030639}
   audioSource: {fileID: 2848729150871559218}
   damageClip: {fileID: 8300000, guid: c8ed64e4fd34fce44aa87bd60faeff9d, type: 3}
