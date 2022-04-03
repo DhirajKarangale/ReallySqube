@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         gameoverUI.SetActive(true);
         PlaySound(gameoverClip);
-        Destroy(PlayerHealth.instance.gameObject);
+        // Destroy(PlayerHealth.instance.gameObject);
     }
 
 
@@ -55,13 +55,15 @@ public class GameManager : MonoBehaviour
         Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
         controlUI.SetActive(false);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
-        Invoke("ActiveGameOverUI", 2);
+      
+        // PlayerHealth.instance.effects.SetActive(false);
+        // PlayerHealth.instance.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        // PlayerHealth.instance.gameObject.GetComponent<PlayerMove>().enabled = false;
+        // PlayerHealth.instance.gameObject.GetComponent<PlayerHealth>().enabled = false;
+        // PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
-        PlayerHealth.instance.effects.SetActive(false);
-        PlayerHealth.instance.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        PlayerHealth.instance.gameObject.GetComponent<PlayerMove>().enabled = false;
-        PlayerHealth.instance.gameObject.GetComponent<PlayerHealth>().enabled = false;
-        PlayerHealth.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        Destroy(PlayerHealth.instance.gameObject);
+        Invoke("ActiveGameOverUI", 2);
     }
 
 
