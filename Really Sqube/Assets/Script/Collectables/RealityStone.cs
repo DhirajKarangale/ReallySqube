@@ -6,20 +6,20 @@ public class RealityStone : MonoBehaviour
 {
     public static RealityStone instance;
 
-    [SerializeField] Text stoneTxt;
-    [SerializeField] Text realityTxt;
+    [SerializeField] Text txtStone;
+    [SerializeField] Text txtReality;
     [SerializeField] SpriteRenderer bg;
     [SerializeField] GameObject downButton;
     [SerializeField] Button checkButton;
     [SerializeField] Button changeButton;
     [SerializeField] AudioSource soundReality;
-    private int stones;
+    [HideInInspector] public int stones;
     private Vector2 originalTxtScale;
 
     private void Awake()
     {
         instance = this;
-        originalTxtScale = stoneTxt.transform.localScale;
+        originalTxtScale = txtStone.transform.localScale;
         StartCoroutine(IEUpdateStoneTxt());
     }
 
@@ -31,29 +31,29 @@ public class RealityStone : MonoBehaviour
 
     IEnumerator IEUpdateStoneTxt()
     {
-        stoneTxt.transform.localScale = originalTxtScale * 0.5f;
+        txtStone.transform.localScale = originalTxtScale * 0.5f;
         yield return new WaitForSeconds(Time.fixedDeltaTime * 5);
-        stoneTxt.transform.localScale = originalTxtScale;
+        txtStone.transform.localScale = originalTxtScale;
 
-        stoneTxt.text = stones.ToString();
+        txtStone.text = stones.ToString();
 
         if (stones >= 2)
         {
             changeButton.gameObject.SetActive(true);
             checkButton.gameObject.SetActive(true);
-            stoneTxt.gameObject.SetActive(true);
+            txtStone.gameObject.SetActive(true);
         }
         else if (stones == 1)
         {
             changeButton.gameObject.SetActive(false);
             checkButton.gameObject.SetActive(true);
-            stoneTxt.gameObject.SetActive(true);
+            txtStone.gameObject.SetActive(true);
         }
         else
         {
             changeButton.gameObject.SetActive(false);
             checkButton.gameObject.SetActive(false);
-            stoneTxt.gameObject.SetActive(false);
+            txtStone.gameObject.SetActive(false);
         }
     }
 
@@ -67,9 +67,9 @@ public class RealityStone : MonoBehaviour
 
         // bg.color = Color.Lerp(Color.white, Color.red, Time.deltaTime * smooth);
         bg.color = Color.red;
-        realityTxt.text = "Reality";
-        realityTxt.color = Color.yellow;
-        realityTxt.gameObject.SetActive(true);
+        txtReality.text = "Reality";
+        txtReality.color = Color.yellow;
+        txtReality.gameObject.SetActive(true);
 
         GameObject[] fakeObjs = GameObject.FindGameObjectsWithTag("Fake");
         foreach (GameObject fakeObj in fakeObjs)
@@ -86,7 +86,7 @@ public class RealityStone : MonoBehaviour
 
         changeButton.interactable = true;
         checkButton.interactable = true;
-        realityTxt.gameObject.SetActive(false);
+        txtReality.gameObject.SetActive(false);
         bg.color = Color.white;
 
         foreach (GameObject fakeObj in fakeObjs)
@@ -106,9 +106,9 @@ public class RealityStone : MonoBehaviour
         if (!soundReality.isPlaying) soundReality.Play();
 
         bg.color = Color.yellow;
-        realityTxt.text = "Reality Changed";
-        realityTxt.color = Color.red;
-        realityTxt.gameObject.SetActive(true);
+        txtReality.text = "Reality Changed";
+        txtReality.color = Color.red;
+        txtReality.gameObject.SetActive(true);
 
         downButton.SetActive(true);
         if (PlayerHealth.instance)
@@ -127,7 +127,7 @@ public class RealityStone : MonoBehaviour
 
         changeButton.interactable = true;
         checkButton.interactable = true;
-        realityTxt.gameObject.SetActive(false);
+        txtReality.gameObject.SetActive(false);
         bg.color = Color.white;
 
         downButton.SetActive(false);

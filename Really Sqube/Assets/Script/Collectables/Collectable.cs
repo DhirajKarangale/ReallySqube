@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    private enum Item { RealityStone, HealthPack };
+    private enum Item { RealityStone, TimeSone, HealthPack };
     [SerializeField] Item itemCollect;
     [SerializeField] GameObject ps;
 
