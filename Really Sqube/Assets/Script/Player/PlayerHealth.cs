@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(float damage)
     {
-        if(GameManager.instance.isGameOver)
+        if (GameManager.instance.isGameOver)
         {
             this.enabled = false;
             return;
@@ -55,6 +55,8 @@ public class PlayerHealth : MonoBehaviour
             psMain.startColor = originalPsColor;
             PlaySound(damageClip);
             PS(5);
+            CamShake.instance.Shake();
+            // Handheld.Vibrate();
         }
     }
 

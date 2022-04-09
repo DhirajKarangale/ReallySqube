@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8319189432148696607}
   - component: {fileID: 8319189432148696604}
   - component: {fileID: 8319189432148696606}
-  - component: {fileID: 8319189432148696601}
   - component: {fileID: 572961803}
+  - component: {fileID: 6213797598391129420}
   m_Layer: 0
   m_Name: Moving Platform
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8319189432148696605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.98, y: -0.25, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,22 +111,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9047084, y: 0.37832806}
   m_EdgeRadius: 0
---- !u!114 &8319189432148696601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8319189432148696605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22bce9a5dd3e8df43af2e7c76a314f9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
-  pos1: {x: 150.31, y: -2}
-  pos2: {x: 209.15, y: -2}
-  soundPlatform: {fileID: 572961803}
 --- !u!82 &572961803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -223,3 +207,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6213797598391129420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319189432148696605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rate: 0.5
+  speed: 5
+  pos1: {x: 159.65, y: -3.165421}
+  pos2: {x: 193.3, y: -3.165421}

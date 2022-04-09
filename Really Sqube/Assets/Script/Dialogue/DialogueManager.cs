@@ -21,11 +21,11 @@ public class DialogueManager : MonoBehaviour
         sentencesQue = new Queue<string>();
     }
 
-    public void StartDialogue(string[] sentences, bool isPlayerStop)
+    public void StartDialogue(string[] sentences, float playerDir)
     {
-        if (isPlayerStop)
+        if (playerDir != 0)
         {
-            GameManager.instance.StopPlayer();
+            GameManager.instance.StopPlayer(playerDir);
         }
 
         audioSource.PlayOneShot(soundButton);

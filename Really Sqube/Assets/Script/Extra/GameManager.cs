@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject controlUI;
     [SerializeField] GameObject gameoverUI;
     public bool isGameOver;
+    private float playerStartDir;
 
     [Header("Sound")]
     [SerializeField] AudioSource audioSource;
@@ -45,23 +46,29 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void StopPlayer()
+    public void StopPlayer(float playerDir)
     {
-        controlUI.SetActive(false);
+        if (!controlUI.activeInHierarchy) return;
         PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         PlayerHealth.instance.playerMove.moveInputVal = 0;
+        playerStartDir = playerDir;
+        controlUI.SetActive(false);
     }
 
     public void StartPlayer()
     {
+        if (controlUI.activeInHierarchy) return;
         PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
         PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        PlayerHealth.instance.playerMove.rigidBody.AddForce(Vector2.right * playerStartDir);
         controlUI.SetActive(true);
     }
 
     public void GameOver()
     {
         isGameOver = true;
+        CamShake.instance.Shake(8f, 0.2f);
+        // Handheld.Vibrate();
 
         Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);

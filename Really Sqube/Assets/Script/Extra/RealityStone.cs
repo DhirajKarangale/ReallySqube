@@ -9,7 +9,6 @@ public class RealityStone : MonoBehaviour
     [SerializeField] Text stoneTxt;
     [SerializeField] Text realityTxt;
     [SerializeField] SpriteRenderer bg;
-    [SerializeField] GameObject playerCap;
     [SerializeField] GameObject downButton;
     [SerializeField] Button checkButton;
     [SerializeField] Button changeButton;
@@ -110,7 +109,6 @@ public class RealityStone : MonoBehaviour
         realityTxt.text = "Reality Changed";
         realityTxt.color = Color.red;
         realityTxt.gameObject.SetActive(true);
-        if (playerCap) playerCap.SetActive(true);
 
         downButton.SetActive(true);
         if (PlayerHealth.instance)
@@ -131,7 +129,6 @@ public class RealityStone : MonoBehaviour
         checkButton.interactable = true;
         realityTxt.gameObject.SetActive(false);
         bg.color = Color.white;
-        if (playerCap) playerCap.SetActive(false);
 
         downButton.SetActive(false);
 

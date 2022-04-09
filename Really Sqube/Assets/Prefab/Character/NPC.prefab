@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c91f8599914d4240a3b6caabefcf5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerStop: 1
+  playerDir: 2000
   dialogues:
   - 'Friend : Hi You are on right way'
   - 'Player : Hey we Both are Same ???'

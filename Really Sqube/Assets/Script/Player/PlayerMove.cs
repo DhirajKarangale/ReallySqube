@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip fallClip;
     // [SerializeField] AudioSource soundMove;
+    
 
     private void Update()
     {

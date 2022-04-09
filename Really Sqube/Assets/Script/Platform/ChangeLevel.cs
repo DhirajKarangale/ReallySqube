@@ -11,7 +11,7 @@ public class ChangeLevel : MonoBehaviour
         if (!soundChangeLevel.isPlaying) soundChangeLevel.Play();
         if (!isPlayerCollided)
         {
-            Invoke("PlayerCollided", 0.5f);
+            Invoke("PlayerCollided", 0.2f);
             isPlayerCollided = true;
         }
     }

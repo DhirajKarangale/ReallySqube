@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveWeapon : MonoBehaviour
+public class MovePlatform : MonoBehaviour
 {
     [SerializeField] float rate;
     [SerializeField] float speed;
