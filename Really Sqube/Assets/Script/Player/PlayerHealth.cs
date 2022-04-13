@@ -5,13 +5,16 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
     public PlayerMove playerMove;
+
     [Header("Health")]
     [SerializeField] float health;
     [SerializeField] Slider healthSlider;
     private float currHealth;
+    [HideInInspector] public bool isStatus;
 
     [Header("Effect")]
     [SerializeField] ParticleSystem psDie;
+    [SerializeField] GameObject gui;
     private ParticleSystem.MainModule psMain;
     private ParticleSystem.MinMaxGradient originalPsColor;
 
@@ -24,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     {
         instance = this;
 
+        isStatus = true;
         currHealth = health;
         UpdateHealthBar();
         psMain = psDie.main;
@@ -65,6 +69,22 @@ public class PlayerHealth : MonoBehaviour
         ParticleSystem.EmissionModule psModule = psDie.emission;
         psModule.SetBurst(0, new ParticleSystem.Burst(0, burstAmount));
         psDie.Play();
+    }
+
+    public void Status(bool status)
+    {
+        gui.SetActive(status);
+        if (!status)
+        {
+            playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
+            playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        playerMove.boxCollider.enabled = status;
+        isStatus = status;
     }
 
     private void UpdateHealthBar()

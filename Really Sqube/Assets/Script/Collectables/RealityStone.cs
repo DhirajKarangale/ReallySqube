@@ -23,7 +23,7 @@ public class RealityStone : MonoBehaviour
         StartCoroutine(IEUpdateStoneTxt());
     }
 
-    public void ChangeStone(int stone)
+    public void UpdateStone(int stone)
     {
         stones += stone;
         StartCoroutine(IEUpdateStoneTxt());
@@ -31,8 +31,8 @@ public class RealityStone : MonoBehaviour
 
     IEnumerator IEUpdateStoneTxt()
     {
-        txtStone.transform.localScale = originalTxtScale * 0.5f;
-        yield return new WaitForSeconds(Time.fixedDeltaTime * 5);
+        txtStone.transform.localScale = originalTxtScale * 0.2f;
+        yield return new WaitForSeconds(Time.fixedDeltaTime * 7);
         txtStone.transform.localScale = originalTxtScale;
 
         txtStone.text = stones.ToString();
@@ -59,7 +59,7 @@ public class RealityStone : MonoBehaviour
 
     private IEnumerator IECheckReality()
     {
-        ChangeStone(-1);
+        UpdateStone(-1);
         changeButton.interactable = false;
         checkButton.interactable = false;
 
@@ -99,7 +99,7 @@ public class RealityStone : MonoBehaviour
 
     private IEnumerator IEChangeReality()
     {
-        ChangeStone(-2);
+        UpdateStone(-2);
         changeButton.interactable = false;
         checkButton.interactable = false;
 

@@ -2,20 +2,32 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    private enum Item { RealityStone, TimeSone, HealthPack };
+    private enum Item { RealityStone, TimeSone, Coin, HealthPack };
     [SerializeField] Item itemCollect;
-    [SerializeField] GameObject ps;
+    [SerializeField] ParticleSystem ps;
+    private ParticleSystem.MainModule psMain;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            psMain = ps.main;
             switch (itemCollect)
             {
                 case Item.RealityStone:
-                    RealityStone.instance.ChangeStone(1);
+                    psMain.startColor = Color.red;
+                    RealityStone.instance.UpdateStone(1);
+                    break;
+                case Item.TimeSone:
+                    psMain.startColor = Color.green;
+                    TimeStone.instance.UpdateStone(1);
+                    break;
+                case Item.Coin:
+                    psMain.startColor = Color.yellow;
+                    Coin.instance.UpdateCoin(1);
                     break;
                 case Item.HealthPack:
+                    psMain.startColor = Color.cyan;
                     PlayerHealth.instance.ChangeHealth(-50);
                     break;
             }

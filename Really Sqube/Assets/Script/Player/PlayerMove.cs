@@ -4,7 +4,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Refrence")]
     public Rigidbody2D rigidBody;
-    [SerializeField] BoxCollider2D boxCollider;
+    public BoxCollider2D boxCollider;
     [SerializeField] Animator animator;
 
     [Header("Jump")]

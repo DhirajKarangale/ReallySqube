@@ -18,7 +18,7 @@ public class TimeStone : MonoBehaviour
         StartCoroutine(IEUpdateStoneTxt());
     }
 
-    public void ChangeStone(int stone)
+    public void UpdateStone(int stone)
     {
         stones += stone;
         StartCoroutine(IEUpdateStoneTxt());
@@ -26,8 +26,8 @@ public class TimeStone : MonoBehaviour
 
     IEnumerator IEUpdateStoneTxt()
     {
-        stoneTxt.transform.localScale = originalTxtScale * 0.5f;
-        yield return new WaitForSeconds(Time.fixedDeltaTime * 5);
+        stoneTxt.transform.localScale = originalTxtScale * 0.2f;
+        yield return new WaitForSeconds(Time.fixedDeltaTime * 7);
         stoneTxt.transform.localScale = originalTxtScale;
 
         stoneTxt.text = stones.ToString();
@@ -38,10 +38,16 @@ public class TimeStone : MonoBehaviour
             slowsTimeButton.gameObject.SetActive(true);
             stoneTxt.gameObject.SetActive(true);
         }
-        else if (stones == 2)
+        else if (stones >= 2)
         {
             reverseTimeButton.gameObject.SetActive(false);
             slowsTimeButton.gameObject.SetActive(true);
+            stoneTxt.gameObject.SetActive(true);
+        }
+        else if (stones > 0)
+        {
+            reverseTimeButton.gameObject.SetActive(false);
+            slowsTimeButton.gameObject.SetActive(false);
             stoneTxt.gameObject.SetActive(true);
         }
         else

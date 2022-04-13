@@ -66,13 +66,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (!PlayerHealth.instance.isStatus) return;
+
         isGameOver = true;
         CamShake.instance.Shake(8f, 0.2f);
         // Handheld.Vibrate();
 
         Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
-        Destroy(PlayerHealth.instance.gameObject);
+        PlayerHealth.instance.Status(false);
         controlUI.SetActive(false);
 
         Invoke("ActiveGameOverUI", 2);
