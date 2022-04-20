@@ -1,61 +1,49 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TimeStone : MonoBehaviour
 {
     public static TimeStone instance;
-    [SerializeField] Text stoneTxt;
-    [SerializeField] Button slowsTimeButton;
-    [SerializeField] Button reverseTimeButton;
-    [HideInInspector] public int stones;
-    private Vector2 originalTxtScale;
+    [HideInInspector] public bool isTimeStoped;
 
     private void Awake()
     {
         instance = this;
-        originalTxtScale = stoneTxt.transform.localScale;
-        StartCoroutine(IEUpdateStoneTxt());
     }
 
-    public void UpdateStone(int stone)
+    private void Update()
     {
-        stones += stone;
-        StartCoroutine(IEUpdateStoneTxt());
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StopTime();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ContinueTime();
+        }
     }
 
-    IEnumerator IEUpdateStoneTxt()
+    public void ContinueTime()
     {
-        stoneTxt.transform.localScale = originalTxtScale * 0.2f;
-        yield return new WaitForSeconds(Time.fixedDeltaTime * 7);
-        stoneTxt.transform.localScale = originalTxtScale;
+        isTimeStoped = false;
 
-        stoneTxt.text = stones.ToString();
-
-        if (stones >= 4)
+        StopTimeObj[] timeObjects = FindObjectsOfType<StopTimeObj>();  //Find Every object with the Timebody Component
+        foreach (StopTimeObj timeObject in timeObjects)
         {
-            reverseTimeButton.gameObject.SetActive(true);
-            slowsTimeButton.gameObject.SetActive(true);
-            stoneTxt.gameObject.SetActive(true);
-        }
-        else if (stones >= 2)
-        {
-            reverseTimeButton.gameObject.SetActive(false);
-            slowsTimeButton.gameObject.SetActive(true);
-            stoneTxt.gameObject.SetActive(true);
-        }
-        else if (stones > 0)
-        {
-            reverseTimeButton.gameObject.SetActive(false);
-            slowsTimeButton.gameObject.SetActive(false);
-            stoneTxt.gameObject.SetActive(true);
-        }
-        else
-        {
-            reverseTimeButton.gameObject.SetActive(false);
-            slowsTimeButton.gameObject.SetActive(false);
-            stoneTxt.gameObject.SetActive(false);
+            timeObject.GetComponent<StopTimeObj>().ContinueTime(); //continue time in each of them
         }
     }
 
+    public void StopTime()
+    {
+        isTimeStoped = true;
+    }
+
+    public void ReverseButton()
+    {
+        if (GameManager.instance.isGameOver) GameManager.instance.RespwanPlayer();
+        PlayerHealth.instance.reverse.StartRewind();
+        UIManager.instance.UpdateTimeStone(-5);
+        PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
+    }
 }

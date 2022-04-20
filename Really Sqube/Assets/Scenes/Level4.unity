@@ -33273,8 +33273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43094219cdbc31a40a0dcb6b9f0b5021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonManager: {fileID: 89934943}
   deathEffect: {fileID: 4394104106249140681, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
-  controlUI: {fileID: 89934943}
   gameoverUI: {fileID: 89934944}
   isGameOver: 0
   audioSource: {fileID: 1202426506}
@@ -43452,6 +43452,10 @@ PrefabInstance:
     - target: {fileID: 3674347047791570378, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674347047791570379, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
+      propertyPath: health
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3674347047791570379, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
       propertyPath: healthSlider
@@ -56125,13 +56129,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3320118eda73a8f45b2a199bc0e2aa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneTxt: {fileID: 89934942}
-  realityTxt: {fileID: 89934938}
+  txtStone: {fileID: 89934942}
+  txtReality: {fileID: 89934938}
   bg: {fileID: 39626790}
   downButton: {fileID: 89934941}
   checkButton: {fileID: 89934940}
   changeButton: {fileID: 89934939}
   soundReality: {fileID: 2117138275}
+  stones: 0
 --- !u!4 &2117138274
 Transform:
   m_ObjectHideFlags: 0

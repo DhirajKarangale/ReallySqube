@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
     public PlayerMove playerMove;
+    public Reverse reverse;
 
     [Header("Health")]
     [SerializeField] float health;
@@ -14,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Effect")]
     [SerializeField] ParticleSystem psDie;
-    [SerializeField] GameObject gui;
+    public SpriteRenderer gui;
     private ParticleSystem.MainModule psMain;
     private ParticleSystem.MinMaxGradient originalPsColor;
 
@@ -41,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
             this.enabled = false;
             return;
         }
-        currHealth = Mathf.Clamp(currHealth -= damage, -1, health + 1);
+        currHealth = Mathf.Clamp(currHealth -= damage, 0, health + 1);
         UpdateHealthBar();
 
         if (currHealth <= 0)
@@ -73,7 +74,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Status(bool status)
     {
-        gui.SetActive(status);
+        gui.gameObject.SetActive(status);
         if (!status)
         {
             playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -82,6 +83,8 @@ public class PlayerHealth : MonoBehaviour
         {
             playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
             playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            transform.position = new Vector3(transform.position.x, -90, 0);
+            ChangeHealth(-health);
         }
         playerMove.boxCollider.enabled = status;
         isStatus = status;

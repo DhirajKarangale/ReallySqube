@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] GameObject deathEffect;
-    [SerializeField] GameObject controlUI;
-    [SerializeField] GameObject gameoverUI;
     public bool isGameOver;
     private float playerStartDir;
 
@@ -27,8 +25,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (controlUI) controlUI.SetActive(true);
-        if (gameoverUI) gameoverUI.SetActive(false);
+        if (UIManager.instance.objButtons) UIManager.instance.objButtons.SetActive(true);
+        if (UIManager.instance.objGameOver) UIManager.instance.objGameOver.SetActive(false);
+        if (UIManager.instance.objUI) UIManager.instance.objUI.SetActive(true);
         if (spwanClip) PlaySound(spwanClip);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
     }
@@ -41,27 +40,27 @@ public class GameManager : MonoBehaviour
 
     private void ActiveGameOverUI()
     {
-        gameoverUI.SetActive(true);
+        UIManager.instance.objGameOver.SetActive(true);
         PlaySound(gameoverClip);
     }
 
 
     public void StopPlayer(float playerDir)
     {
-        if (!controlUI.activeInHierarchy) return;
+        if (!UIManager.instance.objButtons.activeInHierarchy) return;
         PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         PlayerHealth.instance.playerMove.moveInputVal = 0;
         playerStartDir = playerDir;
-        controlUI.SetActive(false);
+        UIManager.instance.objButtons.SetActive(false);
     }
 
     public void StartPlayer()
     {
-        if (controlUI.activeInHierarchy) return;
+        if (UIManager.instance.objButtons.activeInHierarchy) return;
         PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
         PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         PlayerHealth.instance.playerMove.rigidBody.AddForce(Vector2.right * playerStartDir);
-        controlUI.SetActive(true);
+        UIManager.instance.objButtons.SetActive(true);
     }
 
     public void GameOver()
@@ -75,22 +74,19 @@ public class GameManager : MonoBehaviour
         Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
         PlayerHealth.instance.Status(false);
-        controlUI.SetActive(false);
+        UIManager.instance.objButtons.SetActive(false);
+        UIManager.instance.objUI.SetActive(false);
 
         Invoke("ActiveGameOverUI", 2);
     }
 
-
-
-    public void MenuButton()
+    public void RespwanPlayer()
     {
-        PlaySound(buttonClip);
-        SceneManager.LoadScene(0);
-    }
-
-    public void RestartButton()
-    {
-        PlaySound(buttonClip);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        isGameOver = false;
+        if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
+        PlayerHealth.instance.Status(true);
+        UIManager.instance.objButtons.SetActive(true);
+        UIManager.instance.objUI.SetActive(true);
+        UIManager.instance.objGameOver.SetActive(false);
     }
 }

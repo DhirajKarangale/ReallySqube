@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Refrence")]
+    [SerializeField] Reverse reverse;
     public Rigidbody2D rigidBody;
     public BoxCollider2D boxCollider;
     [SerializeField] Animator animator;
@@ -30,10 +31,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip fallClip;
     // [SerializeField] AudioSource soundMove;
-    
+
 
     private void Update()
     {
+        if(reverse.isRewinding) return;
         Move();
         KeyBoardFunction();
 
@@ -86,11 +88,11 @@ public class PlayerMove : MonoBehaviour
 
         if (Mathf.Abs(rigidBody.velocity.x) <= Mathf.Epsilon)
         {
-            animator.Play("Idel");
+            ChangeAnim("Idel");
         }
         else
         {
-            animator.Play("Move");
+            ChangeAnim("Move");
             transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x), 1);
         }
     }
@@ -165,6 +167,10 @@ public class PlayerMove : MonoBehaviour
 
 
 
+    public void ChangeAnim(string anim)
+    {
+        animator.Play(anim);
+    }
 
     public void DownButton()
     {
@@ -176,12 +182,12 @@ public class PlayerMove : MonoBehaviour
         moveInputVal += value;
         if (moveInputVal == 0)
         {
-            animator.Play("Idel");
+            ChangeAnim("Idel");
             // soundMove.Stop();
         }
         else
         {
-            animator.Play("Move");
+            ChangeAnim("Move");
             transform.localScale = new Vector2(Mathf.Sign(value), 1);
             // if (!soundMove.isPlaying && IsGrounded())
             // {

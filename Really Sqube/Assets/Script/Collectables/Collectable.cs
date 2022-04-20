@@ -16,15 +16,15 @@ public class Collectable : MonoBehaviour
             {
                 case Item.RealityStone:
                     psMain.startColor = Color.red;
-                    RealityStone.instance.UpdateStone(1);
+                    UIManager.instance.UpdateRealityStone(1);
                     break;
                 case Item.TimeSone:
                     psMain.startColor = Color.green;
-                    TimeStone.instance.UpdateStone(1);
+                    UIManager.instance.UpdateTimeStone(1);
                     break;
                 case Item.Coin:
                     psMain.startColor = Color.yellow;
-                    Coin.instance.UpdateCoin(1);
+                    UIManager.instance.UpdateCoin(1);
                     break;
                 case Item.HealthPack:
                     psMain.startColor = Color.cyan;

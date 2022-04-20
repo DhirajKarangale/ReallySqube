@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
+    // [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] float rate;
     [SerializeField] float speed;
     [SerializeField] Vector2 pos1, pos2;
@@ -16,6 +17,7 @@ public class MovePlatform : MonoBehaviour
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+        // rigidBody.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
 
     private void Move()

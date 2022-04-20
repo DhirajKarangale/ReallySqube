@@ -18,6 +18,7 @@ public class ChangeLevel : MonoBehaviour
 
     private void PlayerCollided()
     {
+        CollectableData.instance.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
