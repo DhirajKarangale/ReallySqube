@@ -7,6 +7,8 @@ public class EneWeapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(PlayerHealth.instance.reverse.isRewinding) return;
+
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth.instance.ChangeHealth(damage);

@@ -79,8 +79,8 @@ public class UIManager : MonoBehaviour
     public void PauseButton()
     {
         isPause = true;
-        txtRealityStPause.text = CollectableData.instance.realityStone.ToString();
-        txtTimeStPause.text = CollectableData.instance.timeStone.ToString();
+        txtRealityStPause.text = "Reality Stones        " + CollectableData.instance.realityStone.ToString();
+        txtTimeStPause.text =    "Time Stone            " + CollectableData.instance.timeStone.ToString();
         pauseObj.SetActive(true);
         objButtons.SetActive(false);
         objDialogueManager.SetActive(false);

@@ -19845,6 +19845,7 @@ MonoBehaviour:
   player: {fileID: 3674347047791570374}
   bg: {fileID: 0}
   reverseSound: {fileID: 842882711}
+  isRewinding: 0
 --- !u!82 &2848729150871559218
 AudioSource:
   m_ObjectHideFlags: 0
