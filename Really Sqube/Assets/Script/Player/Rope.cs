@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D player;
+    private Rigidbody2D player;
     [SerializeField] LineRenderer line;
     [SerializeField] bool isMobileInput;
 
     private Vector3 velocity;
     private bool isRopeGoing;
     private bool isRopeThrown;
+
+    private void Start()
+    {
+        player = PlayerHealth.instance.playerMove.rigidBody;
+    }
 
     private void Update()
     {
@@ -43,7 +48,7 @@ public class Rope : MonoBehaviour
                 {
                     CancelInvoke("StopRope");
                     Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-                    Vector2 touchDir = touchPos - (Vector2)transform.position;
+                    Vector2 touchDir = touchPos - player.position;
                     touchDir = touchDir.normalized;
                     SetRopeDir(touchDir);
                     Invoke("StopRope", 5);
@@ -55,10 +60,10 @@ public class Rope : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 CancelInvoke("StopRope");
-                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 dir = pos - (Vector2)transform.position;
-                dir = dir.normalized;
-                SetRopeDir(dir);
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 touchDir = touchPos - player.position;
+                touchDir = touchDir.normalized;
+                SetRopeDir(touchDir);
                 Invoke("StopRope", 5);
             }
         }
@@ -74,13 +79,13 @@ public class Rope : MonoBehaviour
     {
         Vector2 pullDirection = (Vector2)transform.position - player.position;
         pullDirection = pullDirection.normalized;
-        player.AddForce(pullDirection * 80); //Pull Force
-        if (Mathf.Abs(transform.position.x - player.position.x) < 2f) StopPlayer();
+        player.AddForce(pullDirection * 40); //Pull Force
+        // if (Vector2.Distance(transform.position, player.position) < 2f) StopPlayer();
     }
 
     private void SetRopeDir(Vector2 dir)
     {
-        velocity = dir * 75; //Rope Velocity
+        velocity = dir * 60; //Rope Velocity
         transform.position = player.position + dir;
         isRopeGoing = true;
         isRopeThrown = true;
