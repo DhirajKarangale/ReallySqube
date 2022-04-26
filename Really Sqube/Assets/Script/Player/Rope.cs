@@ -5,6 +5,7 @@ public class Rope : MonoBehaviour
     private Rigidbody2D player;
     private Rigidbody2D objectToPull;
     private Reverse reverse;
+    private GameManager gameManager;
     [SerializeField] LineRenderer line;
     [SerializeField] bool isMobileInput;
     [SerializeField] AudioSource audioSource;
@@ -19,11 +20,12 @@ public class Rope : MonoBehaviour
     {
         player = PlayerHealth.instance.playerMove.rigidBody;
         reverse = PlayerHealth.instance.reverse;
+        gameManager = GameManager.instance;
     }
 
     private void Update()
     {
-        if (GameManager.instance.isGameOver || reverse.isRewinding)
+        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive)
         {
             DesableLine();
             return;

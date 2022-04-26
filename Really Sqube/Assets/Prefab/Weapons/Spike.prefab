@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 5122169174286427131}
   - component: {fileID: 5122169174286427130}
   - component: {fileID: 5122169174286427129}
+  - component: {fileID: 1054538504}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5122169174286427128
 Transform:
@@ -124,3 +125,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   impactForce: 450
+--- !u!114 &1054538504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122169174286427133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5bfb07fb2bba743ab0c4a64b62185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objDestroy: {fileID: 5122169174286427133}
+  psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
+  effectColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  mxHealth: 90

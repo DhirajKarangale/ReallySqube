@@ -14,10 +14,10 @@ public class PlayerHealth : MonoBehaviour
     [HideInInspector] public bool isStatus;
 
     [Header("Effect")]
-    [SerializeField] ParticleSystem psDie;
+    public ParticleSystem psDie;
     public SpriteRenderer gui;
     private ParticleSystem.MainModule psMain;
-    private ParticleSystem.MinMaxGradient originalPsColor;
+    public ParticleSystem.MinMaxGradient originalPsColor;
 
     [Header("Sound")]
     [SerializeField] AudioSource audioSource;

@@ -5,15 +5,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] GameObject deathEffect;
-    public bool isGameOver;
+    [SerializeField] ParticleSystem psDie;
+    private ParticleSystem.MainModule psMain;
     private float playerStartDir;
+    private UIManager uiManager;
+    private PlayerHealth playerHealth;
 
     [Header("Sound")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip buttonClip;
     [SerializeField] AudioClip spwanClip;
     [SerializeField] AudioClip gameoverClip;
+    public bool isGameOver;
 
     private void Awake()
     {
@@ -25,11 +28,16 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (UIManager.instance.objButtons) UIManager.instance.objButtons.SetActive(true);
-        if (UIManager.instance.objGameOver) UIManager.instance.objGameOver.SetActive(false);
-        if (UIManager.instance.objUI) UIManager.instance.objUI.SetActive(true);
-        if (spwanClip) PlaySound(spwanClip);
+        uiManager = UIManager.instance;
+        playerHealth = PlayerHealth.instance;
+
+        if (uiManager.objButtons) uiManager.objButtons.SetActive(true);
+        if (uiManager.objGameOver) uiManager.objGameOver.SetActive(false);
+        if (uiManager.objUI) uiManager.objUI.SetActive(true);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
+        if (spwanClip) PlaySound(spwanClip);
+
+        psMain = psDie.main;
     }
 
     private void PlaySound(AudioClip audioClip)
@@ -40,42 +48,43 @@ public class GameManager : MonoBehaviour
 
     private void ActiveGameOverUI()
     {
-        UIManager.instance.objGameOver.SetActive(true);
+        uiManager.objGameOver.SetActive(true);
         PlaySound(gameoverClip);
     }
 
 
     public void StopPlayer(float playerDir)
     {
-        if (!UIManager.instance.objButtons.activeInHierarchy) return;
-        PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-        PlayerHealth.instance.playerMove.moveInputVal = 0;
+        if (!uiManager.objButtons.activeInHierarchy) return;
+        playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        playerHealth.playerMove.moveInputVal = 0;
         playerStartDir = playerDir;
-        UIManager.instance.objButtons.SetActive(false);
+        uiManager.objButtons.SetActive(false);
     }
 
     public void StartPlayer()
     {
-        if (UIManager.instance.objButtons.activeInHierarchy) return;
-        PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
-        PlayerHealth.instance.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        PlayerHealth.instance.playerMove.rigidBody.AddForce(Vector2.right * playerStartDir);
-        UIManager.instance.objButtons.SetActive(true);
+        if (uiManager.objButtons.activeInHierarchy) return;
+        playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
+        playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        playerHealth.playerMove.rigidBody.AddForce(Vector2.right * playerStartDir);
+        uiManager.objButtons.SetActive(true);
     }
 
     public void GameOver()
     {
-        if (!PlayerHealth.instance.isStatus) return;
+        if (!playerHealth.isStatus) return;
 
         isGameOver = true;
         CamShake.instance.Shake(8f, 0.2f);
         // Handheld.Vibrate();
 
-        Instantiate(deathEffect, PlayerHealth.instance.transform.position, Quaternion.identity);
+        psMain.startColor = playerHealth.originalPsColor;
+        Instantiate(psDie.gameObject, playerHealth.transform.position, Quaternion.identity);
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
-        PlayerHealth.instance.Status(false);
-        UIManager.instance.objButtons.SetActive(false);
-        UIManager.instance.objUI.SetActive(false);
+        playerHealth.Status(false);
+        uiManager.objButtons.SetActive(false);
+        uiManager.objUI.SetActive(false);
 
         Invoke("ActiveGameOverUI", 2);
     }
@@ -84,9 +93,9 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
-        PlayerHealth.instance.Status(true);
-        UIManager.instance.objButtons.SetActive(true);
-        UIManager.instance.objUI.SetActive(true);
-        UIManager.instance.objGameOver.SetActive(false);
+        playerHealth.Status(true);
+        uiManager.objButtons.SetActive(true);
+        uiManager.objUI.SetActive(true);
+        uiManager.objGameOver.SetActive(false);
     }
 }

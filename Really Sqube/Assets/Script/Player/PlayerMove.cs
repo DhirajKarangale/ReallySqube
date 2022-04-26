@@ -4,9 +4,14 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Refrence")]
     [SerializeField] Reverse reverse;
+    [SerializeField] SpriteRenderer spriteRenderer;
     public Rigidbody2D rigidBody;
     public BoxCollider2D boxCollider;
     [SerializeField] Animator animator;
+
+    [Header("Sprites")]
+    [SerializeField] Sprite normalMode;
+    [SerializeField] Sprite agentMode;
 
     [Header("Jump")]
     [SerializeField] float jumpVel = 5;
@@ -35,9 +40,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if(reverse.isRewinding) return;
+        if (reverse.isRewinding) return;
         Move();
         KeyBoardFunction();
+        UpdateSprite();
 
         if (transform.position.y <= -100) GameManager.instance.GameOver();
     }
@@ -94,6 +100,18 @@ public class PlayerMove : MonoBehaviour
         {
             ChangeAnim("Move");
             transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x), 1);
+        }
+    }
+
+    private void UpdateSprite()
+    {
+        if (Shop.instance.isAgentActive)
+        {
+            spriteRenderer.sprite = agentMode;
+        }
+        else
+        {
+            spriteRenderer.sprite = normalMode;
         }
     }
 

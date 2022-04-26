@@ -51,7 +51,11 @@ public class UIManager : MonoBehaviour
         txtAmount.transform.localScale = Vector3.one * 1.5f;
         yield return new WaitForSeconds(Time.fixedDeltaTime * 5);
         txtAmount.transform.localScale = Vector3.one;
-        txtAmount.text = amount.ToString();
+
+        string amountStr = amount.ToString();
+        if (amountStr.Length > 5) txtAmount.text = amount.ToString("0,,.##M");
+        else if (amountStr.Length > 3) txtAmount.text = amount.ToString("0,.##K");
+        else txtAmount.text = amount.ToString();
 
         objText.SetActive(amount > 0);
         if (btn1) btn1.gameObject.SetActive(amount >= val1);
@@ -80,7 +84,7 @@ public class UIManager : MonoBehaviour
     {
         isPause = true;
         txtRealityStPause.text = "Reality Stones        " + CollectableData.instance.realityStone.ToString();
-        txtTimeStPause.text =    "Time Stone            " + CollectableData.instance.timeStone.ToString();
+        txtTimeStPause.text = "Time Stone            " + CollectableData.instance.timeStone.ToString();
         pauseObj.SetActive(true);
         objButtons.SetActive(false);
         objDialogueManager.SetActive(false);
@@ -139,5 +143,10 @@ public class UIManager : MonoBehaviour
     {
         // PlaySound(buttonClip);
         SceneManager.LoadScene(0);
+    }
+
+    public void ShopButton(bool isActive)
+    {
+        Shop.instance.ShopButton(isActive);
     }
 }

@@ -14,6 +14,14 @@ public class CollectableData : MonoBehaviour
         GetData();
     }
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            Save();
+        }
+    }
+
     public void GetData()
     {
         coin = PlayerPrefs.GetInt("Coin", 0);
