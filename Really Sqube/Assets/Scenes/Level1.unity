@@ -780,7 +780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ed30d832b7f464096094439bd01521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBeforeAffected: 0
 --- !u!1001 &115117211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11640,6 +11639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071387964}
   - component: {fileID: 2071387965}
+  - component: {fileID: 2071387966}
   m_Layer: 0
   m_Name: TimeStone
   m_TagString: Untagged
@@ -11674,6 +11674,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTimeStoped: 0
+--- !u!114 &2071387966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071387963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ed30d832b7f464096094439bd01521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2072282320
 PrefabInstance:
   m_ObjectHideFlags: 0

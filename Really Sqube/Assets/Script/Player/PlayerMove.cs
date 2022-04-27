@@ -105,14 +105,7 @@ public class PlayerMove : MonoBehaviour
 
     private void UpdateSprite()
     {
-        if (Shop.instance.isAgentActive)
-        {
-            spriteRenderer.sprite = agentMode;
-        }
-        else
-        {
-            spriteRenderer.sprite = normalMode;
-        }
+        spriteRenderer.sprite = Shop.instance.isAgentActive ? agentMode : normalMode;
     }
 
     private void Jump(bool isJumpButton)

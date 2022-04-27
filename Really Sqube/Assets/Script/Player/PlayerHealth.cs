@@ -43,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
             this.enabled = false;
             return;
         }
+        if (Shop.instance.isAgentActive) damage = damage / 2;
         currHealth = Mathf.Clamp(currHealth -= damage, 0, health + 1);
         UpdateHealthBar();
 
