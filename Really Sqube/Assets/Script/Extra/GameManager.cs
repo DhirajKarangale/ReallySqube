@@ -75,6 +75,16 @@ public class GameManager : MonoBehaviour
     {
         if (!playerHealth.isStatus) return;
 
+        if (CollectableData.instance.timeStone >= 4)
+        {
+            uiManager.buttonOverReverse.SetActive(true);
+            uiManager.buttonOverReverseAD.SetActive(false);
+        }
+        else
+        {
+            uiManager.buttonOverReverse.SetActive(false);
+            uiManager.buttonOverReverseAD.SetActive(true);
+        }
         isGameOver = true;
         CamShake.instance.Shake(8f, 0.2f);
         // Handheld.Vibrate();

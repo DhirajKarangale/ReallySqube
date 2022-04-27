@@ -31,8 +31,13 @@ public class UIManager : MonoBehaviour
     public GameObject objButtons;
     public GameObject objGameOver;
     public GameObject objUI;
+    public GameObject buttonOverReverse;
+    public GameObject buttonOverReverseAD;
 
     [HideInInspector] public bool isPause;
+
+    [Header("Sound")]
+    [SerializeField] AudioSource soundButton;
 
     private void Awake()
     {
@@ -82,6 +87,7 @@ public class UIManager : MonoBehaviour
 
     public void PauseButton()
     {
+        soundButton.Play();
         isPause = true;
         txtRealityStPause.text = "Reality Stones        " + CollectableData.instance.realityStone.ToString();
         txtTimeStPause.text = "Time Stone            " + CollectableData.instance.timeStone.ToString();
@@ -93,6 +99,7 @@ public class UIManager : MonoBehaviour
 
     public void ResumeButton()
     {
+        soundButton.Play();
         isPause = false;
         Time.timeScale = 1;
         pauseObj.SetActive(false);
@@ -135,13 +142,13 @@ public class UIManager : MonoBehaviour
 
     public void RestartButton()
     {
-        // PlaySound(buttonClip);
+        soundButton.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MenuButton()
     {
-        // PlaySound(buttonClip);
+        soundButton.Play();
         SceneManager.LoadScene(0);
     }
 

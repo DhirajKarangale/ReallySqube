@@ -15,9 +15,10 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Effect")]
     public ParticleSystem psDie;
+    public ParticleSystem psUpgrade;
     public SpriteRenderer gui;
     private ParticleSystem.MainModule psMain;
-    public ParticleSystem.MinMaxGradient originalPsColor;
+    [HideInInspector] public ParticleSystem.MinMaxGradient originalPsColor;
 
     [Header("Sound")]
     [SerializeField] AudioSource audioSource;

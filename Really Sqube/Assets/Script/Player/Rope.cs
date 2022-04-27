@@ -25,7 +25,7 @@ public class Rope : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive)
+        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0))
         {
             DesableLine();
             return;
