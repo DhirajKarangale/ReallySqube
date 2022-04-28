@@ -7,8 +7,15 @@ public class StopTime : MonoBehaviour
     private Dialogue[] dialoguesList;
     private Cannon[] cannonList;
     private DistSound[] distSoundList;
+    private Animator[] animatorList;
 
     private Rigidbody2D rigidBody;
+    private SpriteRenderer bg;
+
+    private void Start()
+    {
+        bg = PlayerHealth.instance.reverse.bg;
+    }
 
     private void Update()
     {
@@ -32,6 +39,9 @@ public class StopTime : MonoBehaviour
         dialoguesList = FindObjectsOfType<Dialogue>();
         cannonList = FindObjectsOfType<Cannon>();
         distSoundList = FindObjectsOfType<DistSound>();
+        animatorList = FindObjectsOfType<Animator>();
+
+        bg.color = Color.gray;
 
         foreach (MoveEnemy moveEnemy in moveEnemyList)
         {
@@ -82,10 +92,23 @@ public class StopTime : MonoBehaviour
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
+
+        foreach (Animator animator in animatorList)
+        {
+            if(animator.gameObject.CompareTag("Player")) continue;
+            animator.enabled = false;
+            rigidBody = animator.GetComponent<Rigidbody2D>();
+            if (rigidBody)
+            {
+                rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+        }
     }
 
     private void Continue()
     {
+        bg.color = Color.white;
+
         foreach (MoveEnemy moveEnemy in moveEnemyList)
         {
             moveEnemy.enabled = true;
@@ -134,6 +157,18 @@ public class StopTime : MonoBehaviour
         {
             distSound.enabled = true;
             rigidBody = distSound.GetComponent<Rigidbody2D>();
+            if (rigidBody)
+            {
+                rigidBody.constraints = RigidbodyConstraints2D.None;
+                rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+        }
+
+        foreach (Animator animator in animatorList)
+        {
+            if(animator.gameObject.CompareTag("Player")) continue;
+            animator.enabled = true;
+            rigidBody = animator.GetComponent<Rigidbody2D>();
             if (rigidBody)
             {
                 rigidBody.constraints = RigidbodyConstraints2D.None;

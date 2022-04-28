@@ -12403,7 +12403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3320118eda73a8f45b2a199bc0e2aa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bg: {fileID: 39626790}
   soundReality: {fileID: 2117138275}
 --- !u!4 &2117138274
 Transform:

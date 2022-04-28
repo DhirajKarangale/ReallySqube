@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Reverse : MonoBehaviour
 {
+    public SpriteRenderer bg;
     [SerializeField] PlayerMove player;
-    [SerializeField] SpriteRenderer bg;
     [SerializeField] AudioSource reverseSound;
     private float recordTime = 5f;
-    [HideInInspector] public bool isRewinding = false;
     private List<Vector2> recordedPos;
+    [HideInInspector] public bool isRewinding = false;
 
     private void Start()
     {
