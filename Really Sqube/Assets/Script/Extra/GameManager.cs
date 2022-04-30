@@ -22,21 +22,19 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         isGameOver = false;
+    }
+
+    private void Start()
+    {
+        uiManager = UIManager.instance;
+        playerHealth = PlayerHealth.instance;
 
         if (PlayerPrefs.GetInt("Level", 1) <= SceneManager.GetActiveScene().buildIndex)
         {
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
         }
 
-        uiManager = UIManager.instance;
-        playerHealth = PlayerHealth.instance;
-
-        if (uiManager.objButtons) uiManager.objButtons.SetActive(true);
-        if (uiManager.objGameOver) uiManager.objGameOver.SetActive(false);
-        if (uiManager.objUI) uiManager.objUI.SetActive(true);
-        if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
         if (spwanClip) PlaySound(spwanClip);
-
         psMain = psDie.main;
     }
 
@@ -75,16 +73,9 @@ public class GameManager : MonoBehaviour
     {
         if (!playerHealth.isStatus) return;
 
-        if (CollectableData.instance.timeStone >= 4)
-        {
-            uiManager.buttonOverReverse.SetActive(true);
-            uiManager.buttonOverReverseAD.SetActive(false);
-        }
-        else
-        {
-            uiManager.buttonOverReverse.SetActive(false);
-            uiManager.buttonOverReverseAD.SetActive(true);
-        }
+        uiManager.buttonOverReverse.SetActive(CollectableData.instance.timeStone >= 4);
+        uiManager.buttonOverReverseAD.SetActive(CollectableData.instance.timeStone < 4);
+
         isGameOver = true;
         CamShake.instance.Shake(8f, 0.2f);
         // Handheld.Vibrate();

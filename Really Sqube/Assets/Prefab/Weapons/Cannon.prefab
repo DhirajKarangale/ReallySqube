@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 1704551166913815948}
   - component: {fileID: 1704551166913815939}
   - component: {fileID: 1704551166913815938}
+  - component: {fileID: 1144732994012137266}
   - component: {fileID: 1704551166913815949}
+  - component: {fileID: 305663612809592202}
+  - component: {fileID: 8485621386461276487}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -103,6 +106,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1144732994012137266
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704551166913815937}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.021170044, y: -0.11644568}
+  m_Size: {x: 0.4737732, y: 0.5971088}
+  m_Direction: 0
 --- !u!114 &1704551166913815949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +138,33 @@ MonoBehaviour:
   bulletForce: 20
   bullet: {fileID: 7514269869555506242, guid: 6090a7d2f549bf1478a54fcd523a7cb6, type: 3}
   animator: {fileID: 1704551166913815938}
+--- !u!114 &305663612809592202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704551166913815937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5bfb07fb2bba743ab0c4a64b62185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objDestroy: {fileID: 1704551166913815937}
+  psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
+  effectColor: {r: 0.854902, g: 0.5058824, b: 0.10196079, a: 1}
+  mxHealth: 90
+--- !u!114 &8485621386461276487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704551166913815937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf229261e06a049aece89ca9aabc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  impactForce: 300

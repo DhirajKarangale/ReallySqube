@@ -6,10 +6,10 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth instance;
     public PlayerMove playerMove;
     public Reverse reverse;
+    private UIManager uiManager;
 
     [Header("Health")]
     [SerializeField] float health;
-    [SerializeField] Slider healthSlider;
     private float currHealth;
     [HideInInspector] public bool isStatus;
 
@@ -28,7 +28,11 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
 
+    private void Start()
+    {
+        uiManager = UIManager.instance;
         isStatus = true;
         currHealth = health;
         UpdateHealthBar();
@@ -94,8 +98,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthSlider.value = currHealth / health;
-        healthSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Color.red, Color.yellow, healthSlider.normalizedValue);
+        uiManager.healthSlider.value = currHealth / health;
+        uiManager.healthSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Color.red, Color.yellow, uiManager.healthSlider.normalizedValue);
     }
 
     private void PlaySound(AudioClip audioClip)

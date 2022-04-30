@@ -15,6 +15,11 @@ public class EnemyHealth : MonoBehaviour
         psMain = psDye.main;
     }
 
+    private void Update()
+    {
+        if (this.transform.position.y <= -100) TakeDamage(mxHealth + 10);
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;

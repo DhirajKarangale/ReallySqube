@@ -16,6 +16,9 @@ public class Rope : MonoBehaviour
     private bool isRopeGoing;
     private bool isRopeThrown;
 
+    private Transform collidedObjPos;
+    private Vector3 collidedObjOldPos;
+
     private void Start()
     {
         player = PlayerHealth.instance.playerMove.rigidBody;
@@ -61,6 +64,8 @@ public class Rope : MonoBehaviour
             return;
         }
         objectToPull = player;
+        collidedObjPos = collision.transform;
+        collidedObjOldPos = collision.transform.position;
         CancelInvoke("StopRope");
         Invoke("StopRope", 5);
         return;
@@ -102,6 +107,22 @@ public class Rope : MonoBehaviour
 
     private void GetRope()
     {
+        if (objectToPull == player)
+        {
+            if (collidedObjPos)
+            {
+                if (collidedObjOldPos != collidedObjPos.position)
+                {
+                    transform.position = collidedObjPos.position;
+                }
+            }
+            else
+            {
+                StopPlayer();
+                return;
+            }
+        }
+
         Vector2 pullDirection = (Vector2)transform.position - player.position;
         pullDirection = pullDirection.normalized;
         float pullForce = 30;

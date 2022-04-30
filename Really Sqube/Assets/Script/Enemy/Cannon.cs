@@ -37,7 +37,7 @@ public class Cannon : MonoBehaviour
     {
         if (GameManager.instance.isGameOver) return;
 
-        attackPoint = (Vector2)transform.position - new Vector2(0, 1.5f);
+        attackPoint = (Vector2)transform.position - new Vector2(0, 2.5f);
         GameObject currBullet = Instantiate(bullet, attackPoint, Quaternion.identity);
         currBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
         Invoke("PlayIdel", 0.5f);

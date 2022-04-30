@@ -4877,6 +4877,7 @@ GameObject:
   - component: {fileID: 1232008597000813215}
   - component: {fileID: 1232008597000813211}
   - component: {fileID: 1232008597000813210}
+  - component: {fileID: -887186153354846676}
   m_Layer: 0
   m_Name: SpikeCube
   m_TagString: Untagged
@@ -5030,6 +5031,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   impactForce: 1500
+--- !u!114 &-887186153354846676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232008597000813212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5bfb07fb2bba743ab0c4a64b62185b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objDestroy: {fileID: 1232008597000813212}
+  psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
+  effectColor: {r: 0.21176472, g: 0.21176472, b: 0.21176472, a: 1}
+  mxHealth: 90
 --- !u!1 &3165134629815018270
 GameObject:
   m_ObjectHideFlags: 0

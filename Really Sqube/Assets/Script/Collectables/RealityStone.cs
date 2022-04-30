@@ -22,9 +22,7 @@ public class RealityStone : MonoBehaviour
     {
         uiManager.UpdateRealityStone(-1);
         PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
-        uiManager.buttonChangeReality.interactable = false;
-        uiManager.buttonCheckReality.interactable = false;
-
+        
         if (!soundReality.isPlaying) soundReality.Play();
 
         // bg.color = Color.Lerp(Color.white, Color.red, Time.deltaTime * smooth);
@@ -44,9 +42,7 @@ public class RealityStone : MonoBehaviour
         yield return new WaitForSeconds(20);
 
         soundReality.Stop();
-
-        uiManager.buttonChangeReality.interactable = true;
-        uiManager.buttonCheckReality.interactable = true;
+        
         uiManager.txtRealityStatus.gameObject.SetActive(false);
         bg.color = Color.white;
 
@@ -62,9 +58,7 @@ public class RealityStone : MonoBehaviour
     {
         uiManager.UpdateRealityStone(-2);
         PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
-        uiManager.buttonChangeReality.interactable = false;
-        uiManager.buttonCheckReality.interactable = false;
-
+       
         if (!soundReality.isPlaying) soundReality.Play();
 
         bg.color = Color.yellow;
@@ -87,8 +81,6 @@ public class RealityStone : MonoBehaviour
 
         soundReality.Stop();
 
-        uiManager.buttonChangeReality.interactable = true;
-        uiManager.buttonCheckReality.interactable = true;
         uiManager.txtRealityStatus.gameObject.SetActive(false);
         bg.color = Color.white;
 

@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
     public static Shop instance;
     private const string ropeTimeSave = "RopeTime";
     private const string agentTimeSave = "AgentTime";
+    private UIManager uiManager;
 
     [SerializeField] GameObject objShop;
     [Header("Text")]
@@ -40,6 +41,11 @@ public class Shop : MonoBehaviour
     {
         instance = this;
         txtMsg.CrossFadeAlpha(0, 0.5f, false); // Text fade (Gone)
+    }
+
+    private void Start()
+    {
+        uiManager = UIManager.instance;
     }
 
     private void Update()
@@ -95,6 +101,7 @@ public class Shop : MonoBehaviour
             buttonRope.interactable = false;
             txtRopeBuy.alignment = TextAnchor.MiddleCenter;
             txtRopeBuy.text = "Active";
+            if (uiManager.imgRopeActive) uiManager.imgRopeActive.SetActive(true);
             imageRopeBuy.SetActive(false);
         }
         else
@@ -103,6 +110,7 @@ public class Shop : MonoBehaviour
             buttonRope.interactable = true;
             txtRopeBuy.alignment = TextAnchor.MiddleRight;
             txtRopeBuy.text = "700";
+            uiManager.imgRopeActive.SetActive(false);
             imageRopeBuy.SetActive(true);
         }
     }
@@ -117,6 +125,7 @@ public class Shop : MonoBehaviour
             buttonAgent.interactable = false;
             txtAgentBuy.alignment = TextAnchor.MiddleCenter;
             txtAgentBuy.text = "Active";
+            if (uiManager.imgAgentActive) uiManager.imgAgentActive.SetActive(true);
             imageAgentBuy.SetActive(false);
         }
         else
@@ -125,6 +134,7 @@ public class Shop : MonoBehaviour
             buttonAgent.interactable = transform;
             txtAgentBuy.alignment = TextAnchor.MiddleRight;
             txtAgentBuy.text = "1000";
+            if (uiManager.imgAgentActive) uiManager.imgAgentActive.SetActive(false);
             imageAgentBuy.SetActive(true);
         }
     }
@@ -211,7 +221,7 @@ public class Shop : MonoBehaviour
         if (CollectableData.instance.coin >= 300)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-100);
+            UIManager.instance.UpdateCoin(-300);
             UIManager.instance.UpdateTimeStone(5);
 
             switch (UnityEngine.Random.Range(1, 4))
@@ -311,5 +321,12 @@ public class Shop : MonoBehaviour
             StartCoroutine(IEVibrateTxt());
             audioSource.PlayOneShot(soundBuyFail);
         }
+    }
+
+    
+    // For Item Decription Button - Use in Shop Dec Script
+    public void PlayButtonSound()
+    {
+        audioSource.PlayOneShot(soundButton);
     }
 }

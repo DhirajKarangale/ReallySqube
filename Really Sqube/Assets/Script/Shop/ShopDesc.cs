@@ -5,6 +5,7 @@ public class ShopDesc : MonoBehaviour
 {
     [SerializeField] Image image;
     [SerializeField] GameObject txtDescription;
+    [SerializeField] Shop shop;
     private Color colorDecription;
     private Color colorImage;
     private bool isDescription;
@@ -25,7 +26,7 @@ public class ShopDesc : MonoBehaviour
     public void DescriptionButton()
     {
         isDescription = !isDescription;
-
+        shop.PlayButtonSound();
         if (isDescription) ShowDescription();
         else HideDescription();
     }

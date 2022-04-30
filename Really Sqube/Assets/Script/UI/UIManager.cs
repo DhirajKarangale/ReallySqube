@@ -16,11 +16,14 @@ public class UIManager : MonoBehaviour
     public Text txtRealityStatus;
 
     [Header("Button")]
-    [SerializeField] Button buttonStopTime;
-    [SerializeField] Button buttonReverseTime;
+    public Button buttonStopTime;
+    public Button buttonReverseTime;
     public Button buttonCheckReality;
     public Button buttonChangeReality;
     public Button buttonDown;
+
+    [Header("Slider")]
+    public Slider healthSlider;
 
     [Header("Objects")]
     [SerializeField] GameObject objCoin;
@@ -33,8 +36,11 @@ public class UIManager : MonoBehaviour
     public GameObject objUI;
     public GameObject buttonOverReverse;
     public GameObject buttonOverReverseAD;
+    public GameObject imgRopeActive;
+    public GameObject imgAgentActive;
 
     [HideInInspector] public bool isPause;
+    [HideInInspector] public bool isButtonDesable;
 
     [Header("Sound")]
     [SerializeField] AudioSource soundButton;
@@ -49,13 +55,15 @@ public class UIManager : MonoBehaviour
         UpdateCoin(0);
         UpdateRealityStone(0);
         UpdateTimeStone(0);
+        ResumeButton();
     }
 
     private IEnumerator IEUpdateTxt(int amount, int val1, int val2, Text txtAmount, GameObject objText, Button btn1, Button btn2)
     {
-        txtAmount.transform.localScale = Vector3.one * 1.5f;
-        yield return new WaitForSeconds(Time.fixedDeltaTime * 5);
-        txtAmount.transform.localScale = Vector3.one;
+        // if (btn1) btn1.gameObject.SetActive(amount >= val1);
+        // if (btn2) btn2.gameObject.SetActive(amount >= val2);
+        if (btn1 && !isButtonDesable) btn1.interactable = amount >= val1;
+        if (btn2 && !isButtonDesable) btn2.interactable = amount >= val2;
 
         string amountStr = amount.ToString();
         if (amountStr.Length > 5) txtAmount.text = amount.ToString("0,,.##M");
@@ -63,8 +71,27 @@ public class UIManager : MonoBehaviour
         else txtAmount.text = amount.ToString();
 
         objText.SetActive(amount > 0);
-        if (btn1) btn1.gameObject.SetActive(amount >= val1);
-        if (btn2) btn2.gameObject.SetActive(amount >= val2);
+
+        txtAmount.transform.localScale = Vector3.one * 1.5f;
+        yield return new WaitForSeconds(Time.fixedDeltaTime * 5);
+        txtAmount.transform.localScale = Vector3.one;
+    }
+
+    private IEnumerator DesableCollectableButtons(float time)
+    {
+        isButtonDesable = true;
+        buttonCheckReality.interactable = false;
+        buttonChangeReality.interactable = false;
+        buttonStopTime.interactable = false;
+        buttonReverseTime.interactable = false;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        isButtonDesable = false;
+        buttonCheckReality.interactable = true;
+        buttonChangeReality.interactable = true;
+        buttonStopTime.interactable = true;
+        buttonReverseTime.interactable = true;
     }
 
     public void UpdateTimeStone(int amount)
@@ -82,11 +109,15 @@ public class UIManager : MonoBehaviour
     public void UpdateCoin(int amount)
     {
         CollectableData.instance.coin += amount;
-        StartCoroutine(IEUpdateTxt(CollectableData.instance.coin, 1, 1, txtCoinCount, objRealityStone, null, null));
+        StartCoroutine(IEUpdateTxt(CollectableData.instance.coin, 1, 1, txtCoinCount, objCoin, null, null));
     }
 
     public void PauseButton()
     {
+        UpdateCoin(0);
+        UpdateRealityStone(0);
+        UpdateTimeStone(0);
+
         soundButton.Play();
         isPause = true;
         txtRealityStPause.text = "Reality Stones        " + CollectableData.instance.realityStone.ToString();
@@ -94,6 +125,7 @@ public class UIManager : MonoBehaviour
         pauseObj.SetActive(true);
         objButtons.SetActive(false);
         objDialogueManager.SetActive(false);
+        objUI.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -105,24 +137,39 @@ public class UIManager : MonoBehaviour
         pauseObj.SetActive(false);
         objButtons.SetActive(true);
         objDialogueManager.SetActive(true);
+        objUI.SetActive(true);
+        objGameOver.SetActive(false);
+        UpdateCoin(0);
+        UpdateRealityStone(0);
+        UpdateTimeStone(0);
     }
 
     public void CheckRealityButton()
     {
         ResumeButton();
+        StartCoroutine(DesableCollectableButtons(20));
         RealityStone.instance.CheckRealityButton();
     }
 
     public void ChangeRealityButton()
     {
         ResumeButton();
+        StartCoroutine(DesableCollectableButtons(26));
         RealityStone.instance.ChangeRealityButton();
     }
 
     public void ReverseTimeButton()
     {
         ResumeButton();
+        StartCoroutine(DesableCollectableButtons(6f));
         TimeStone.instance.ReverseButton();
+    }
+
+    public void StopTimeButton()
+    {
+        ResumeButton();
+        StartCoroutine(DesableCollectableButtons(31f));
+        TimeStone.instance.StopTimeButton();
     }
 
     public void MoveButton(int value)

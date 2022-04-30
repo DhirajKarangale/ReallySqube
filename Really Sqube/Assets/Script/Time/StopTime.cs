@@ -1,47 +1,25 @@
 using UnityEngine;
+using System.Collections;
 
 public class StopTime : MonoBehaviour
 {
     private MoveEnemy[] moveEnemyList;
     private MovePlatform[] movePlatformList;
-    private Dialogue[] dialoguesList;
+    // private Dialogue[] dialoguesList;
     private Cannon[] cannonList;
     private DistSound[] distSoundList;
     private Animator[] animatorList;
 
     private Rigidbody2D rigidBody;
-    private SpriteRenderer bg;
-
-    private void Start()
-    {
-        bg = PlayerHealth.instance.reverse.bg;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.S))
-        {
-            Debug.Log("StopTime");
-            Stop();
-        }
-
-        if (Input.GetKey(KeyCode.C))
-        {
-            Debug.Log("Continue");
-            Continue();
-        }
-    }
 
     private void Stop()
     {
         moveEnemyList = FindObjectsOfType<MoveEnemy>();
         movePlatformList = FindObjectsOfType<MovePlatform>();
-        dialoguesList = FindObjectsOfType<Dialogue>();
+        // dialoguesList = FindObjectsOfType<Dialogue>();
         cannonList = FindObjectsOfType<Cannon>();
         distSoundList = FindObjectsOfType<DistSound>();
         animatorList = FindObjectsOfType<Animator>();
-
-        bg.color = Color.gray;
 
         foreach (MoveEnemy moveEnemy in moveEnemyList)
         {
@@ -63,15 +41,15 @@ public class StopTime : MonoBehaviour
             }
         }
 
-        foreach (Dialogue dialogue in dialoguesList)
-        {
-            dialogue.enabled = false;
-            rigidBody = dialogue.GetComponent<Rigidbody2D>();
-            if (rigidBody)
-            {
-                rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
-            }
-        }
+        // foreach (Dialogue dialogue in dialoguesList)
+        // {
+        //     dialogue.enabled = false;
+        //     rigidBody = dialogue.GetComponent<Rigidbody2D>();
+        //     if (rigidBody)
+        //     {
+        //         rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        //     }
+        // }
 
         foreach (Cannon cannon in cannonList)
         {
@@ -95,7 +73,7 @@ public class StopTime : MonoBehaviour
 
         foreach (Animator animator in animatorList)
         {
-            if(animator.gameObject.CompareTag("Player")) continue;
+            if (animator.gameObject.CompareTag("Player")) continue;
             animator.enabled = false;
             rigidBody = animator.GetComponent<Rigidbody2D>();
             if (rigidBody)
@@ -107,8 +85,6 @@ public class StopTime : MonoBehaviour
 
     private void Continue()
     {
-        bg.color = Color.white;
-
         foreach (MoveEnemy moveEnemy in moveEnemyList)
         {
             moveEnemy.enabled = true;
@@ -131,16 +107,16 @@ public class StopTime : MonoBehaviour
             }
         }
 
-        foreach (Dialogue dialogue in dialoguesList)
-        {
-            dialogue.enabled = true;
-            rigidBody = dialogue.GetComponent<Rigidbody2D>();
-            if (rigidBody)
-            {
-                rigidBody.constraints = RigidbodyConstraints2D.None;
-                rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            }
-        }
+        // foreach (Dialogue dialogue in dialoguesList)
+        // {
+        //     dialogue.enabled = true;
+        //     rigidBody = dialogue.GetComponent<Rigidbody2D>();
+        //     if (rigidBody)
+        //     {
+        //         rigidBody.constraints = RigidbodyConstraints2D.None;
+        //         rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //     }
+        // }
 
         foreach (Cannon cannon in cannonList)
         {
@@ -166,7 +142,7 @@ public class StopTime : MonoBehaviour
 
         foreach (Animator animator in animatorList)
         {
-            if(animator.gameObject.CompareTag("Player")) continue;
+            if (animator.gameObject.CompareTag("Player")) continue;
             animator.enabled = true;
             rigidBody = animator.GetComponent<Rigidbody2D>();
             if (rigidBody)
@@ -175,5 +151,17 @@ public class StopTime : MonoBehaviour
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
+    }
+
+    private IEnumerator IEStopTime()
+    {
+        Stop();
+        yield return new WaitForSeconds(30);
+        Continue();
+    }
+
+    public void StopTimeButton()
+    {
+        StartCoroutine(IEStopTime());
     }
 }

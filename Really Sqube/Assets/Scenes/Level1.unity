@@ -11673,7 +11673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7f952d17f4b6b47b7fa2dfe1f370a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTimeStoped: 0
+  stopTime: {fileID: 2071387966}
 --- !u!114 &2071387966
 MonoBehaviour:
   m_ObjectHideFlags: 0
