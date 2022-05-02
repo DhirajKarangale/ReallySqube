@@ -13,6 +13,7 @@ public class Pop : MonoBehaviour
     {
         // originalScale = transform.localScale;
         originalScale = Vector3.one;
+        StopAllCoroutines();
         StartCoroutine(IEPop());
     }
 
