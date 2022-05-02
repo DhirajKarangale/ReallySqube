@@ -65,11 +65,7 @@ public class UIManager : MonoBehaviour
         if (btn1 && !isButtonDesable) btn1.interactable = amount >= val1;
         if (btn2 && !isButtonDesable) btn2.interactable = amount >= val2;
 
-        string amountStr = amount.ToString();
-        if (amountStr.Length > 5) txtAmount.text = amount.ToString("0,,.##M");
-        else if (amountStr.Length > 3) txtAmount.text = amount.ToString("0,.##K");
-        else txtAmount.text = amount.ToString();
-
+        txtAmount.text = PrintAmount(amount);
         objText.SetActive(amount > 0);
 
         txtAmount.transform.localScale = Vector3.one * 1.5f;
@@ -92,6 +88,14 @@ public class UIManager : MonoBehaviour
         buttonChangeReality.interactable = true;
         buttonStopTime.interactable = true;
         buttonReverseTime.interactable = true;
+    }
+
+    private string PrintAmount(int amount)
+    {
+        string amountStr = amount.ToString();
+        if (amountStr.Length > 5) return amount.ToString("0,,.##M");
+        else if (amountStr.Length > 3) return amount.ToString("0,.##K");
+        else return amount.ToString();
     }
 
     public void UpdateTimeStone(int amount)
@@ -120,8 +124,10 @@ public class UIManager : MonoBehaviour
 
         soundButton.Play();
         isPause = true;
-        txtRealityStPause.text = "Reality Stones        " + CollectableData.instance.realityStone.ToString();
-        txtTimeStPause.text = "Time Stone            " + CollectableData.instance.timeStone.ToString();
+
+        txtRealityStPause.text = "Reality Stones        " + PrintAmount(CollectableData.instance.realityStone);
+        txtTimeStPause.text = "Time Stone            " + PrintAmount(CollectableData.instance.timeStone);
+
         pauseObj.SetActive(true);
         objButtons.SetActive(false);
         objDialogueManager.SetActive(false);

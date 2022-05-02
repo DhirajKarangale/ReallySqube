@@ -2469,17 +2469,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5122169174286427128, guid: 63757093b1fb79e4d8ad523adad2f529, type: 3}
   m_PrefabInstance: {fileID: 373156777}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &401859824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2228535694543555571, guid: 5cfb6e254c5b1fc4fb661ce3806046e4, type: 3}
-  m_PrefabInstance: {fileID: 2228535694861528835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &415061522
 GameObject:
   m_ObjectHideFlags: 0
@@ -12987,10 +12976,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3674347047791570379, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 401859824}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
 --- !u!1001 &5122169173281051862

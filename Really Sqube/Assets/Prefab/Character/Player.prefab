@@ -24688,7 +24688,6 @@ MonoBehaviour:
   playerMove: {fileID: 3674347047791570374}
   reverse: {fileID: 1967220788}
   health: 100
-  healthSlider: {fileID: 0}
   isStatus: 0
   psDie: {fileID: 3674347047576030639}
   psUpgrade: {fileID: 294057712}

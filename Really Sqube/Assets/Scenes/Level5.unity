@@ -442,14 +442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43094219cdbc31a40a0dcb6b9f0b5021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
-  controlUI: {fileID: 0}
-  gameoverUI: {fileID: 0}
-  isGameOver: 0
+  psDie: {fileID: 0}
   audioSource: {fileID: 839262301}
   buttonClip: {fileID: 8300000, guid: 82e9a4f1e1f575746aa699513ffb8c51, type: 3}
   spwanClip: {fileID: 0}
   gameoverClip: {fileID: 8300000, guid: b99ad03960070bb4ba94248c0e3178a3, type: 3}
+  isGameOver: 0
 --- !u!1 &1059625417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1260,6 @@ GameObject:
   - component: {fileID: 2047506149}
   - component: {fileID: 2047506150}
   - component: {fileID: 2047506151}
-  - component: {fileID: 2047506152}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -1317,7 +1314,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a919c00a4b71ee343a6ec871cd9fece7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10d82ae308153d84e9b75d05ce2f9763, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1403,12 +1400,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!170 &2047506152
-AudioDistortionFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047506148}
-  m_Enabled: 1
-  m_DistortionLevel: 0.5

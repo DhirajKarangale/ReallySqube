@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6213797598391129420}
   m_Layer: 0
   m_Name: Moving Platform
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,3 +223,4 @@ MonoBehaviour:
   speed: 5
   pos1: {x: 159.65, y: -3.165421}
   pos2: {x: 193.3, y: -3.165421}
+  isTakePlayer: 1

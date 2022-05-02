@@ -13,7 +13,7 @@ public class CollectableData : MonoBehaviour
         instance = this;
         GetData();
     }
-
+    
     public void GetData()
     {
         coin = PlayerPrefs.GetInt("Coin", 0);

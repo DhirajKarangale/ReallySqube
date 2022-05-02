@@ -6,6 +6,7 @@ public class MovePlatform : MonoBehaviour
     [SerializeField] float rate;
     [SerializeField] float speed;
     [SerializeField] Vector2 pos1, pos2;
+    [SerializeField] bool isTakePlayer;
     private Vector2 nextPos;
 
     private void Start()
@@ -18,6 +19,22 @@ public class MovePlatform : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
         // rigidBody.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isTakePlayer && collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(this.transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (isTakePlayer && collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 
     private void Move()

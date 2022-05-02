@@ -159,10 +159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a14e760ff8f46346ad89b37cc22c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mxAmount: 1.2
-  minAmount: 0.8
-  time: 10
-  isPopAllow: 0
+  mxAmount: 1.03
+  minAmount: 1
+  time: 30
+  isPopAllow: 1
 --- !u!1 &293259650
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,10 +483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a14e760ff8f46346ad89b37cc22c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mxAmount: 1.2
-  minAmount: 0.8
-  time: 10
-  isPopAllow: 0
+  mxAmount: 1.03
+  minAmount: 1
+  time: 30
+  isPopAllow: 1
 --- !u!1 &393463504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,10 +1074,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a14e760ff8f46346ad89b37cc22c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mxAmount: 1.2
-  minAmount: 0.8
-  time: 10
-  isPopAllow: 0
+  mxAmount: 1.03
+  minAmount: 1
+  time: 30
+  isPopAllow: 1
 --- !u!1 &1414700776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,10 +1286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a14e760ff8f46346ad89b37cc22c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mxAmount: 1.2
-  minAmount: 0.8
-  time: 10
-  isPopAllow: 0
+  mxAmount: 1.1
+  minAmount: 0.95
+  time: 45
+  isPopAllow: 1
 --- !u!1 &1559954381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,10 +1698,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a14e760ff8f46346ad89b37cc22c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mxAmount: 1.2
-  minAmount: 0.8
-  time: 10
-  isPopAllow: 0
+  mxAmount: 1.03
+  minAmount: 1
+  time: 30
+  isPopAllow: 1
 --- !u!1 &755679350680382687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,10 +2432,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a14e760ff8f46346ad89b37cc22c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mxAmount: 1.2
-  minAmount: 0.8
-  time: 10
-  isPopAllow: 0
+  mxAmount: 1.02
+  minAmount: 1
+  time: 30
+  isPopAllow: 1
 --- !u!1 &2228535693848314054
 GameObject:
   m_ObjectHideFlags: 0

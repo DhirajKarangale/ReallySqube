@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class ConPopMan : MonoBehaviour
+public class PopManager : MonoBehaviour
 {
-    [SerializeField] ContinuePop popPause;
-    [SerializeField] ContinuePop popShop;
-    [SerializeField] ContinuePop popRealityCheck;
-    [SerializeField] ContinuePop popRealityChange;
-    [SerializeField] ContinuePop popStopTime;
-    [SerializeField] ContinuePop popReverseTime;
+    [SerializeField] Pop popPause;
+    [SerializeField] Pop popShop;
+    [SerializeField] Pop popRealityCheck;
+    [SerializeField] Pop popRealityChange;
+    [SerializeField] Pop popStopTime;
+    [SerializeField] Pop popReverseTime;
     private CollectableData collectableData;
 
     private void Start()
