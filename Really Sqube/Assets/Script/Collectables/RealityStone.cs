@@ -27,9 +27,9 @@ public class RealityStone : MonoBehaviour
 
         // bg.color = Color.Lerp(Color.white, Color.red, Time.deltaTime * smooth);
         bg.color = Color.red;
-        uiManager.txtRealityStatus.text = "Reality";
-        uiManager.txtRealityStatus.color = Color.yellow;
-        uiManager.txtRealityStatus.gameObject.SetActive(true);
+        uiManager.txtStoneUseStatus.text = "Reality";
+        uiManager.txtStoneUseStatus.color = Color.yellow;
+        uiManager.txtStoneUseStatus.gameObject.SetActive(true);
 
         GameObject[] fakeObjs = GameObject.FindGameObjectsWithTag("Fake");
         foreach (GameObject fakeObj in fakeObjs)
@@ -43,7 +43,7 @@ public class RealityStone : MonoBehaviour
 
         soundReality.Stop();
         
-        uiManager.txtRealityStatus.gameObject.SetActive(false);
+        uiManager.txtStoneUseStatus.gameObject.SetActive(false);
         bg.color = Color.white;
 
         foreach (GameObject fakeObj in fakeObjs)
@@ -62,9 +62,9 @@ public class RealityStone : MonoBehaviour
         if (!soundReality.isPlaying) soundReality.Play();
 
         bg.color = Color.yellow;
-        uiManager.txtRealityStatus.text = "Reality Changed";
-        uiManager.txtRealityStatus.color = Color.red;
-        uiManager.txtRealityStatus.gameObject.SetActive(true);
+        uiManager.txtStoneUseStatus.text = "Reality Changed";
+        uiManager.txtStoneUseStatus.color = Color.red;
+        uiManager.txtStoneUseStatus.gameObject.SetActive(true);
 
         uiManager.buttonDown.gameObject.SetActive(true);
         if (playerHealth)
@@ -81,7 +81,7 @@ public class RealityStone : MonoBehaviour
 
         soundReality.Stop();
 
-        uiManager.txtRealityStatus.gameObject.SetActive(false);
+        uiManager.txtStoneUseStatus.gameObject.SetActive(false);
         bg.color = Color.white;
 
         uiManager.buttonDown.gameObject.SetActive(false);

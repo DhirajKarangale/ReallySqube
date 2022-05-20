@@ -6,13 +6,16 @@ public class Reverse : MonoBehaviour
     public SpriteRenderer bg;
     [SerializeField] PlayerMove player;
     [SerializeField] AudioSource reverseSound;
+    [HideInInspector] public bool isRewinding = false;
     private float recordTime = 5f;
     private List<Vector2> recordedPos;
-    [HideInInspector] public bool isRewinding = false;
+
+    private UIManager uiManager;
 
     private void Start()
     {
         recordedPos = new List<Vector2>();
+        uiManager = UIManager.instance;
     }
 
     private void Update()
@@ -23,9 +26,13 @@ public class Reverse : MonoBehaviour
 
     public void StartRewind()
     {
+        uiManager.txtStoneUseStatus.text = "Reverse";
+        uiManager.txtStoneUseStatus.color = Color.black;
+        uiManager.txtStoneUseStatus.gameObject.SetActive(true);
+        bg.color = Color.green;
+
         isRewinding = true;
         player.rigidBody.isKinematic = true;
-        bg.color = Color.green;
         player.ChangeAnim("Move");
         UIManager.instance.objButtons.SetActive(false);
         reverseSound.Play();
@@ -33,6 +40,8 @@ public class Reverse : MonoBehaviour
 
     public void StopRewind()
     {
+        uiManager.txtStoneUseStatus.gameObject.SetActive(false);
+
         isRewinding = false;
         player.rigidBody.isKinematic = false;
         bg.color = Color.white;

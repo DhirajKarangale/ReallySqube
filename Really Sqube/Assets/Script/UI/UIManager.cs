@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text txtCoinCount;
     [SerializeField] Text txtRealityStPause;
     [SerializeField] Text txtTimeStPause;
-    public Text txtRealityStatus;
+    public Text txtStoneUseStatus;
 
     [Header("Button")]
     public Button buttonStopTime;

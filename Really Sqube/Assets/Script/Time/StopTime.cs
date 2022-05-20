@@ -3,10 +3,10 @@ using System.Collections;
 
 public class StopTime : MonoBehaviour
 {
+    private Cannon[] cannonList;
+    private Dialogue[] dialogueList;
     private MoveEnemy[] moveEnemyList;
     private MovePlatform[] movePlatformList;
-    // private Dialogue[] dialoguesList;
-    private Cannon[] cannonList;
     private DistSound[] distSoundList;
     private Animator[] animatorList;
 
@@ -14,9 +14,14 @@ public class StopTime : MonoBehaviour
 
     private void Stop()
     {
+        UIManager.instance.txtStoneUseStatus.text = "Time Pause";
+        UIManager.instance.txtStoneUseStatus.color = Color.white;
+        UIManager.instance.txtStoneUseStatus.gameObject.SetActive(true);
+        PlayerHealth.instance.reverse.bg.color = Color.blue;
+
         moveEnemyList = FindObjectsOfType<MoveEnemy>();
+        dialogueList = FindObjectsOfType<Dialogue>();
         movePlatformList = FindObjectsOfType<MovePlatform>();
-        // dialoguesList = FindObjectsOfType<Dialogue>();
         cannonList = FindObjectsOfType<Cannon>();
         distSoundList = FindObjectsOfType<DistSound>();
         animatorList = FindObjectsOfType<Animator>();
@@ -31,6 +36,12 @@ public class StopTime : MonoBehaviour
             }
         }
 
+        foreach (Dialogue dialogue in dialogueList)
+        {
+            dialogue.enabled = false;
+            dialogue.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
         foreach (MovePlatform movePlatform in movePlatformList)
         {
             movePlatform.enabled = false;
@@ -40,16 +51,6 @@ public class StopTime : MonoBehaviour
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
-
-        // foreach (Dialogue dialogue in dialoguesList)
-        // {
-        //     dialogue.enabled = false;
-        //     rigidBody = dialogue.GetComponent<Rigidbody2D>();
-        //     if (rigidBody)
-        //     {
-        //         rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
-        //     }
-        // }
 
         foreach (Cannon cannon in cannonList)
         {
@@ -85,6 +86,10 @@ public class StopTime : MonoBehaviour
 
     private void Continue()
     {
+        UIManager.instance.txtStoneUseStatus.gameObject.SetActive(false);
+        PlayerHealth.instance.reverse.bg.color = Color.white;
+
+
         foreach (MoveEnemy moveEnemy in moveEnemyList)
         {
             moveEnemy.enabled = true;
@@ -94,6 +99,12 @@ public class StopTime : MonoBehaviour
                 rigidBody.constraints = RigidbodyConstraints2D.None;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
+        }
+
+        foreach (Dialogue dialogue in dialogueList)
+        {
+            dialogue.enabled = true;
+            dialogue.GetComponent<BoxCollider2D>().enabled = true;
         }
 
         foreach (MovePlatform movePlatform in movePlatformList)
@@ -106,17 +117,6 @@ public class StopTime : MonoBehaviour
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
-
-        // foreach (Dialogue dialogue in dialoguesList)
-        // {
-        //     dialogue.enabled = true;
-        //     rigidBody = dialogue.GetComponent<Rigidbody2D>();
-        //     if (rigidBody)
-        //     {
-        //         rigidBody.constraints = RigidbodyConstraints2D.None;
-        //         rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //     }
-        // }
 
         foreach (Cannon cannon in cannonList)
         {
