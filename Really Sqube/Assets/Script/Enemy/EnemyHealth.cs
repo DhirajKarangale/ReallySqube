@@ -29,6 +29,9 @@ public class EnemyHealth : MonoBehaviour
             psMain.startColor = effectColor;
             Instantiate(psDye.gameObject, transform.position, transform.rotation);
             Destroy(objDestroy);
+
+            ItemSpawner itemSpawner = GetComponent<ItemSpawner>();
+            if(itemSpawner) itemSpawner.SpwanItem();
         }
     }
 }

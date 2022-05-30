@@ -24,7 +24,7 @@ public class Collectable : MonoBehaviour
                     break;
                 case Item.Coin:
                     psMain.startColor = Color.yellow;
-                    UIManager.instance.UpdateCoin(1000);
+                    UIManager.instance.UpdateCoin(50);
                     break;
                 case Item.HealthPack:
                     psMain.startColor = Color.cyan;

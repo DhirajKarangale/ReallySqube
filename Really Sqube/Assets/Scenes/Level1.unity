@@ -8717,6 +8717,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[1]
+      value: 'Player : Hey we both looks almost Same ???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[2]
+      value: 'Friend : shhh.. Idiot, don''t speak about that.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[3]
+      value: 'Friend : The dum developer is to lazy for doing all this, levae that.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[4]
+      value: 'Player : Ok, what is this place...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[5]
+      value: 'Friend : You are going to know all this, just go on....'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[6]
+      value: 'Player : Wait who is "He" now....'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.data[7]
+      value: 'Player : Wait who is "He" now....'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
 --- !u!1 &1618681874

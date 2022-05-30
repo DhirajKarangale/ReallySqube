@@ -13,11 +13,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] AudioClip soundButton;
     private Queue<string> sentencesQue;
     private string sentence;
+    public bool isPlayerStop;
 
     private void Awake()
     {
         instance = this;
-
+        isPlayerStop = false;
         sentencesQue = new Queue<string>();
     }
 
@@ -25,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (playerDir != 0)
         {
+            isPlayerStop = true;
             GameManager.instance.StopPlayer(playerDir);
         }
 
@@ -74,5 +76,6 @@ public class DialogueManager : MonoBehaviour
     {
         animator.Play("DialogueClose");
         GameManager.instance.StartPlayer();
+        isPlayerStop = false;
     }
 }

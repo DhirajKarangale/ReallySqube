@@ -28,7 +28,7 @@ public class Rope : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0))
+        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || DialogueManager.instance.isPlayerStop)
         {
             DesableLine();
             return;
@@ -67,7 +67,7 @@ public class Rope : MonoBehaviour
         collidedObjPos = collision.transform;
         collidedObjOldPos = collision.transform.position;
         CancelInvoke("StopRope");
-        Invoke("StopRope", 5);
+        Invoke("StopRope", 10);
         return;
     }
 
