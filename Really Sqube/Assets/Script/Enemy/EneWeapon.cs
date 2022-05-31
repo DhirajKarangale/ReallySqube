@@ -4,6 +4,7 @@ public class EneWeapon : MonoBehaviour
 {
     [SerializeField] float damage;
     [SerializeField] float impactForce;
+    [SerializeField] bool isThrow;
     private PlayerHealth playerHealth;
     private EnemyHealth enemyHealth;
 
@@ -32,6 +33,10 @@ public class EneWeapon : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceDir * impactForce);
             }
+        }
+        if (isThrow)
+        {
+            enemyHealth.TakeDamage(100);
         }
     }
 }

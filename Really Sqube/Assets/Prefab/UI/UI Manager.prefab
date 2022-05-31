@@ -2364,7 +2364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016562501, y: 0.75000006}
   m_AnchorMax: {x: 0.98200005, y: 0.85}
-  m_AnchoredPosition: {x: -0.10003662, y: 0}
+  m_AnchoredPosition: {x: -0.100097656, y: 0}
   m_SizeDelta: {x: 0.19995117, y: -0.6799927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7750079750650371159
@@ -3998,6 +3998,7 @@ MonoBehaviour:
   audioSource: {fileID: 2228535695257575436}
   writeSound: {fileID: 8300000, guid: ed7652ee257215948aead2f762f8367e, type: 3}
   soundButton: {fileID: 8300000, guid: 82e9a4f1e1f575746aa699513ffb8c51, type: 3}
+  isPlayerStop: 0
 --- !u!82 &2228535695257575436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5128,7 +5129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016562501, y: 0.81000006}
   m_AnchorMax: {x: 0.9822916, y: 0.9093704}
-  m_AnchoredPosition: {x: 1.0623779, y: -38.60144}
+  m_AnchoredPosition: {x: 1.0625, y: -38.60144}
   m_SizeDelta: {x: 63.545166, y: 96.65558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2228535695807211044
@@ -5832,8 +5833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011562502, y: 0.883}
   m_AnchorMax: {x: 0.09252084, y: 0.9464074}
-  m_AnchoredPosition: {x: 112.40522, y: -24.882202}
-  m_SizeDelta: {x: 114.1841, y: 64.6757}
+  m_AnchoredPosition: {x: 134.9001, y: -24.882202}
+  m_SizeDelta: {x: 159.1739, y: 64.6757}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8521227690390920843
 CanvasRenderer:
@@ -5865,18 +5866,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 45
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 80
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.2k
+  m_Text: 1k
 --- !u!1 &5622009541800658515
 GameObject:
   m_ObjectHideFlags: 0

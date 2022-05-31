@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(float damage)
     {
+        if (DialogueManager.instance.isPlayerStop) return;
         if (GameManager.instance.isGameOver)
         {
             this.enabled = false;
