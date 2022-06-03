@@ -11,6 +11,7 @@ public class Shop : MonoBehaviour
     private UIManager uiManager;
 
     [SerializeField] GameObject objShop;
+    [SerializeField] GameObject healthPack;
     [Header("Text")]
     [SerializeField] Text txtCoinCnt;
     [SerializeField] Text txtRealityStoneCnt;
@@ -163,7 +164,7 @@ public class Shop : MonoBehaviour
     private IEnumerator IEUpdateTxt(Text txt, int amount)
     {
         txt.transform.localScale = Vector3.one * 1.5f;
-        yield return new WaitForSecondsRealtime(Time.fixedDeltaTime * 5);
+        yield return new WaitForSecondsRealtime(0.02f * 5);
         txt.transform.localScale = Vector3.one;
         txt.text = CntTxtSuffix(amount);
     }
@@ -183,6 +184,49 @@ public class Shop : MonoBehaviour
     }
 
 
+
+
+    public void HealthPackButton()
+    {
+        if (!PlayerHealth.instance)
+        {
+            DisplayMsg("Player is not present");
+            return;
+        }
+
+        if (CollectableData.instance.coin >= 400)
+        {
+            audioSource.PlayOneShot(soundBuy);
+            UIManager.instance.UpdateCoin(-400);
+            UIManager.instance.UpdateRealityStone(5);
+
+            switch (UnityEngine.Random.Range(1, 4))
+            {
+                case 1:
+                    DisplayMsg("You got Health Pack");
+                    break;
+                case 2:
+                    DisplayMsg("Congratulations for Health Pack");
+                    break;
+                case 3:
+                    DisplayMsg("Improve your hygiene now.");
+                    break;
+            }
+
+            StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
+
+            if (PlayerHealth.instance)
+            {
+                Instantiate(healthPack, PlayerHealth.instance.transform.position + new Vector3(3, 5, 0), Quaternion.identity);
+            }
+        }
+        else
+        {
+            NotEnoughCoinMsg();
+            StartCoroutine(IEVibrateTxt());
+            audioSource.PlayOneShot(soundBuyFail);
+        }
+    }
 
     public void RealityStoneButton()
     {
@@ -323,7 +367,7 @@ public class Shop : MonoBehaviour
         }
     }
 
-    
+
     // For Item Decription Button - Use in Shop Dec Script
     public void PlayButtonSound()
     {

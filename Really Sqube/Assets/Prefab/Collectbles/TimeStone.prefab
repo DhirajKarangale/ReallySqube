@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5056493692661805253}
   - component: {fileID: 5056493692661805258}
   - component: {fileID: 5056493692661805257}
+  - component: {fileID: -3520267738461560033}
   m_Layer: 0
   m_Name: TimeStone
   m_TagString: Untagged
@@ -136,3 +137,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCollect: 1
   ps: {fileID: 574609697048295851, guid: 2f7ccb94b5e4ab54e97dfa005379b129, type: 3}
+--- !u!114 &-3520267738461560033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056493692661805254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9cb62a7ae952144bfa36bd6e9b93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

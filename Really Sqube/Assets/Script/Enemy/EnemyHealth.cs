@@ -5,9 +5,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject objDestroy;
     [SerializeField] ParticleSystem psDye;
     [SerializeField] Color effectColor = Color.gray;
-    public bool isDamageAllow;
     public float mxHealth;
     public float health;
+    public bool isDamageAllow;
     private ParticleSystem.MainModule psMain;
 
     private void Start()

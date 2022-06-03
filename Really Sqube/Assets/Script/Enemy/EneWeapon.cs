@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EneWeapon : MonoBehaviour
 {
-    [SerializeField] float damage;
+    public float damage;
     [SerializeField] float impactForce;
     [SerializeField] bool isThrow;
     private PlayerHealth playerHealth;

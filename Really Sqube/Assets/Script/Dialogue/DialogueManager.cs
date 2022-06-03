@@ -43,7 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(GameManager.instance.isGameOver)
+        if(GameManager.instance && GameManager.instance.isGameOver)
         {
             sentencesQue.Clear();
         }
@@ -75,7 +75,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.Play("DialogueClose");
-        GameManager.instance.StartPlayer();
+        if(GameManager.instance) GameManager.instance.StartPlayer();
         isPlayerStop = false;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     [SerializeField] EnemyHealth enemyHealth;
+    [SerializeField] EneWeapon eneWeapon;
     [SerializeField] Rigidbody2D rbNPC;
     [SerializeField] Transform healthBar;
     [SerializeField] GameObject spikes;
@@ -13,6 +14,7 @@ public class NPC : MonoBehaviour
     [SerializeField] float spikeForce;
     private bool isAttackStarted;
     private float spikeDir;
+    private float originalDamage;
     private PlayerHealth playerHealth;
 
     private void Start()
@@ -24,6 +26,7 @@ public class NPC : MonoBehaviour
     {
         LookDir();
         SetHealthBar();
+        SetDamage();
 
         if (!isAttackStarted && playerHealth && startAttackDist >= Vector2.Distance(transform.position, playerHealth.transform.position))
         {
@@ -82,6 +85,11 @@ public class NPC : MonoBehaviour
             currRock.GetComponent<Rigidbody2D>().AddForce(playerDir * spikeForce, ForceMode2D.Impulse);
             Destroy(currRock, 5);
         }
+    }
+
+     private void SetDamage()
+    {
+        eneWeapon.damage = enemyHealth.isDamageAllow ? originalDamage / 2 : originalDamage;
     }
 
     private Vector3 SpikesPos()

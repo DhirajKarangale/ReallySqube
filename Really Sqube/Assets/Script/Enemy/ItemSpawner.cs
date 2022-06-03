@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] float amount;
-    [SerializeField] GameObject item;
+    public float amount;
+    public GameObject item;
 
     public void SpwanItem()
     {

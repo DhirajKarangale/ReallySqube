@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4157421086516719728}
   - component: {fileID: 4157421086516719731}
   - component: {fileID: 4157421086516719692}
+  - component: {fileID: 3369682091890300154}
   m_Layer: 0
   m_Name: RealityStone
   m_TagString: Untagged
@@ -136,3 +137,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCollect: 0
   ps: {fileID: 574609697048295851, guid: 2f7ccb94b5e4ab54e97dfa005379b129, type: 3}
+--- !u!114 &3369682091890300154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4157421086516719735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9cb62a7ae952144bfa36bd6e9b93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

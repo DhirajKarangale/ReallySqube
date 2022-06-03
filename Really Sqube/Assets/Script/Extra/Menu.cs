@@ -5,26 +5,84 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    [Header("Panels")]
+    [SerializeField] GameObject[] panels;
+    
+    [Header("Tips")]
+    [SerializeField] Text tipText;
+    [SerializeField] string[] tips;
+
+    [Header("Level UI")]
+    [SerializeField] Button[] levelButtons;
+    [SerializeField] Scrollbar scrollBar;
+    
+    [Header("Collectables")]
+    [SerializeField] Text txtCoin;
+    [SerializeField] Text txtRealityStone;
+    [SerializeField] Text txtTimeStone;
+
+    [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip playClip;
     [SerializeField] AudioClip buttonClip;
-    [SerializeField] Text tipText;
-    [SerializeField] GameObject[] panels;
-    [SerializeField] string[] tips;
-    [SerializeField] Button[] levelButtons;
+
+    private bool isFocous;
+    private bool isProcessing;
+
+    private void OnApplicationFocus(bool focus)
+    {
+        isFocous = focus;
+    }
 
     private void Start()
     {
+        PlayerPrefs.SetInt("Level", 4);
         LevelsButton();
         StartCoroutine(GenerateTips());
+        UpdateCollectablesTxt();
+    }
+
+    private void UpdateCollectablesTxt()
+    {
+        txtCoin.text = PrintAmount(PlayerPrefs.GetInt("Coin", 0));
+        txtRealityStone.text = PrintAmount(PlayerPrefs.GetInt("RealityStone", 0));
+        txtTimeStone.text = PrintAmount(PlayerPrefs.GetInt("TimeStone", 0));
+    }
+
+    private string PrintAmount(int amount)
+    {
+        string amountStr = amount.ToString();
+        if (amountStr.Length > 5) return amount.ToString("0,,.##M");
+        else if (amountStr.Length > 3) return amount.ToString("0,.##K");
+        else return amount.ToString();
     }
 
     private void LevelsButton()
     {
-        for (int i = PlayerPrefs.GetInt("Level", 1); i < levelButtons.Length; i++)
+        int currLevel = PlayerPrefs.GetInt("Level", 1);
+        currLevel--;
+
+        for (int i = 0; i < levelButtons.Length; i++)
         {
-            levelButtons[i].interactable = false;
+            if (i == currLevel)
+            {
+                levelButtons[i].transform.localScale = (1.1f) * Vector3.one;
+            }
+            else if (i > currLevel)
+            {
+                levelButtons[i].interactable = false;
+                levelButtons[i].transform.localScale = (0.8f) * Vector3.one;
+            }
+            else
+            {
+                levelButtons[i].transform.localScale = (0.8f) * Vector3.one;
+            }
         }
+
+        float scrollPos = (levelButtons.Length - (currLevel + 1));
+        scrollPos = scrollPos / 10;
+        // scrollBar.value = Mathf.Lerp(scrollBar.value, x, 0.1f);
+        scrollBar.value = scrollPos;
     }
 
     IEnumerator GenerateTips()
@@ -55,6 +113,7 @@ public class Menu : MonoBehaviour
             panel.SetActive(false);
         }
         changedPanel.SetActive(true);
+        UpdateCollectablesTxt();
     }
 
     public void LinkButton(string link)
@@ -66,5 +125,42 @@ public class Menu : MonoBehaviour
     {
         audioSource.PlayOneShot(buttonClip);
         Application.Quit();
+    }
+
+
+
+    public void InviteFriends()
+    {
+        if (!isProcessing)
+        {
+            StartCoroutine(IEShareText());
+        }
+    }
+
+    IEnumerator IEShareText()
+    {
+        string shareSubject = "Really Sqube begining of -DK-";
+        string shareMessage = "What's Up Gamerz\nSharing you the link of one of best game I have played Really Sqube hope you also like it\nAll these has been written by me & not by any stupid dum developer trust me \n Game Link Downloading is must or... : " + "https://play.google.com/store/apps/details?id=com.DKSoftware.ReallySqube";
+        isProcessing = true;
+        if (!Application.isEditor)
+        {
+            AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+            AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
+            intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
+
+            //put text and subject extra
+            intentObject.Call<AndroidJavaObject>("setType", "text/plain");
+            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), shareSubject);
+            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareMessage);
+
+            //call createChooser method of activity class
+            AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
+            AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Make your Friend a Crypto Miner");
+            currentActivity.Call("startActivity", chooser);
+        }
+
+        yield return new WaitUntil(() => isFocous);
+        isProcessing = false;
     }
 }
