@@ -128,6 +128,11 @@ public class Rope : MonoBehaviour
         float pullForce = 30;
 
         // Pull Object towards player
+        if(!objectToPull) 
+        {
+            StopRope();
+            return;
+        }
         if (objectToPull != player)
         {
             pullForce = -10;
@@ -135,7 +140,6 @@ public class Rope : MonoBehaviour
         }
 
         objectToPull.AddForce(pullDirection * pullForce);
-        // if (Vector2.Distance(transform.position, player.position) < 2f) StopPlayer();
     }
 
     private void SetRopeDir(Vector2 dir)

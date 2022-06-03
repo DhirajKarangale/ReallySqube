@@ -21,7 +21,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5122169174286427128
 Transform:
@@ -147,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbf229261e06a049aece89ca9aabc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 9
-  impactForce: 700
-  isThrow: 1
+  damage: 15
+  impactForce: 1000
+  isThrow: 0
 --- !u!114 &1054538504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c808908af7e3254ab3dffd05050c596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
 --- !u!114 &-8259458589301002687
 MonoBehaviour:
   m_ObjectHideFlags: 0

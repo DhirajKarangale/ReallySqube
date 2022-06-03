@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5122169174286427128
 Transform:
@@ -163,6 +163,6 @@ MonoBehaviour:
   objDestroy: {fileID: 5122169174286427133}
   psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
   effectColor: {r: 1, g: 0.06289297, b: 1, a: 1}
-  isDamageAllow: 0
   mxHealth: 90
   health: 0
+  isDamageAllow: 0

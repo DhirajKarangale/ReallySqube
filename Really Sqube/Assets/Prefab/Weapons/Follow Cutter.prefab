@@ -17,12 +17,12 @@ GameObject:
   - component: {fileID: 198079177270483894}
   - component: {fileID: -5399078630403990226}
   - component: {fileID: 1621970352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Follow Cutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4753750010072169413
 Transform:
@@ -138,9 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbf229261e06a049aece89ca9aabc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
-  impactForce: 800
-  isThrow: 1
+  damage: 20
+  impactForce: 1200
+  isThrow: 0
 --- !u!114 &6025151593684625722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c808908af7e3254ab3dffd05050c596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
 --- !u!114 &-5399078630403990226
 MonoBehaviour:
   m_ObjectHideFlags: 0

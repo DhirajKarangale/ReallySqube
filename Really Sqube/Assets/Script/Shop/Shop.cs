@@ -219,6 +219,8 @@ public class Shop : MonoBehaviour
             {
                 Instantiate(healthPack, PlayerHealth.instance.transform.position + new Vector3(3, 5, 0), Quaternion.identity);
             }
+
+            CollectableData.instance.Save();
         }
         else
         {
@@ -251,6 +253,8 @@ public class Shop : MonoBehaviour
 
             StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
             StartCoroutine(IEUpdateTxt(txtRealityStoneCnt, CollectableData.instance.realityStone));
+
+            CollectableData.instance.Save();
         }
         else
         {
@@ -283,6 +287,8 @@ public class Shop : MonoBehaviour
 
             StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
             StartCoroutine(IEUpdateTxt(txtTimeStoneCnt, CollectableData.instance.timeStone));
+
+            CollectableData.instance.Save();
         }
         else
         {
@@ -320,6 +326,8 @@ public class Shop : MonoBehaviour
             }
 
             StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
+
+            CollectableData.instance.Save();
         }
         else
         {
@@ -358,6 +366,8 @@ public class Shop : MonoBehaviour
 
             StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
             PlayerHealth.instance.psUpgrade.Play();
+
+            CollectableData.instance.Save();
         }
         else
         {

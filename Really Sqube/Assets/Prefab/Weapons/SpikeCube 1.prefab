@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 346530041601441597}
   - component: {fileID: 346530041601441599}
   - component: {fileID: 346530041601441598}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Trail PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4879,7 @@ GameObject:
   - component: {fileID: 1232008597000813210}
   - component: {fileID: -887186153354846676}
   - component: {fileID: 5068779916912646504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpikeCube 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5030,7 +5030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbf229261e06a049aece89ca9aabc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 22
   impactForce: 1500
   isThrow: 0
 --- !u!114 &-887186153354846676
@@ -5047,8 +5047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objDestroy: {fileID: 1232008597000813212}
   psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
-  effectColor: {r: 0.21176472, g: 0.21176472, b: 0.21176472, a: 1}
-  mxHealth: 90
+  effectColor: {r: 0.45882356, g: 0.45882356, b: 0.45882356, a: 1}
+  mxHealth: 200
   health: 0
   isDamageAllow: 0
 --- !u!114 &5068779916912646504
@@ -5076,7 +5076,7 @@ GameObject:
   - component: {fileID: 3165134629815018265}
   - component: {fileID: 3165134629815018267}
   - component: {fileID: 3165134629815018264}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Glow PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -36,6 +36,7 @@ public class Boss : MonoBehaviour
         playerHealth = PlayerHealth.instance;
         objSpwanAmount = 1;
         originalDamage = eneWeapon.damage;
+        // int x;
     }
 
     private void Update()
@@ -56,7 +57,7 @@ public class Boss : MonoBehaviour
         isAttackStarted = true;
         enemyHealth.isDamageAllow = true;
 
-        if (Random.value > 0.4f) RushAttack();
+        if (Random.Range(1, 3) == 1) RushAttack();
         else SpwanAttack();
 
         yield return new WaitForSeconds(attackTime);
@@ -66,10 +67,10 @@ public class Boss : MonoBehaviour
 
     private void SpwanAttack()
     {
-        float val = Random.value;
+        int val = Random.Range(1, 4);
 
-        if (val < 3.33f) CutterAttack();
-        else if (val < 6.66f) SpikeCubeAttack();
+        if (val == 1) CutterAttack();
+        else if (val == 2) SpikeCubeAttack();
         else SpikeCubeAttack();
     }
 
@@ -94,7 +95,10 @@ public class Boss : MonoBehaviour
 
     private void SpikeCubeAttack()
     {
+        float currSpwanDir = spwanDir;
+        spwanDir = 0;
         SpwanObjects(spikeCube);
+        spwanDir = currSpwanDir;
     }
 
     private void SpwanObjects(GameObject obj)

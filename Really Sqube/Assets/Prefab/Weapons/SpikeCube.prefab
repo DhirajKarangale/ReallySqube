@@ -5046,8 +5046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objDestroy: {fileID: 1232008597000813212}
   psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
-  effectColor: {r: 0.21176472, g: 0.21176472, b: 0.21176472, a: 1}
-  mxHealth: 90
+  effectColor: {r: 0.45882356, g: 0.45882356, b: 0.45882356, a: 1}
+  mxHealth: 200
   health: 0
   isDamageAllow: 0
 --- !u!1 &3165134629815018270
