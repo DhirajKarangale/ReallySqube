@@ -18,8 +18,8 @@ public class DailyRewards : MonoBehaviour
     [SerializeField] Text txtAmount;
     [SerializeField] Text txtMsg;
 
-    private double nextReawrdDelay = 30;
-    // private double nextReawrdDelay = 86400;
+    // private double nextReawrdDelay = 30;
+    private double nextReawrdDelay = 86400;
     private bool isRewardReady = false;
     private int rewardAmount;
     private int strinkeDays;

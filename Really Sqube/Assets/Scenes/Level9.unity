@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &21944711
 Transform:
   m_ObjectHideFlags: 0
@@ -43775,7 +43775,7 @@ MonoBehaviour:
   objDestroy: {fileID: 707152421}
   psDye: {fileID: 4394104106249140683, guid: 4d6a15c416bc00d49aef6695e1cf17a6, type: 3}
   effectColor: {r: 0.8588236, g: 0.80392164, b: 0.74509805, a: 1}
-  mxHealth: 2500
+  mxHealth: 2200
   health: 0
   isDamageAllow: 0
 --- !u!114 &707152429
@@ -57023,7 +57023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116512818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -139.73569, y: -3.9606237, z: 25.125256}
+  m_LocalPosition: {x: -139.73569, y: -3.4606237, z: 25.125256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1331870986}

@@ -16,13 +16,11 @@ public class PlayerMenu : MonoBehaviour
     [SerializeField] float rate;
     [SerializeField] float speed;
     private Vector2 movePos;
-    private bool moveRight;
 
-    private void Start()
+    private void Awake()
     {
-        movePos.y = transform.position.y;
-        movePos.x = leftPos;
-        InvokeRepeating("ChangeDirection", 0, rate);
+        Time.timeScale = 1;
+        StartMove();
     }
 
     private void Update()
@@ -30,12 +28,19 @@ public class PlayerMenu : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, movePos, speed * Time.deltaTime);
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         psFall.Play();
         rigidBody.AddForce(Vector2.up * jumpForce);
         psJump.Play();
+    }
+
+    private void StartMove()
+    {
+        movePos.y = transform.position.y;
+        movePos.x = leftPos;
+        CancelInvoke();
+        InvokeRepeating("ChangeDirection", 0, 1);
     }
 
     private void ChangeDirection()

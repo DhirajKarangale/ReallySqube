@@ -36,7 +36,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Level", 4);
+        // PlayerPrefs.SetInt("Level", 4);
         LevelsButton();
         StartCoroutine(GenerateTips());
         UpdateCollectablesTxt();
@@ -139,8 +139,8 @@ public class Menu : MonoBehaviour
 
     IEnumerator IEShareText()
     {
-        string shareSubject = "Really Sqube begining of -DK-";
-        string shareMessage = "What's Up Gamerz\nSharing you the link of one of best game I have played Really Sqube hope you also like it\nAll these has been written by me & not by any stupid dum developer trust me \n Game Link Downloading is must or... : " + "https://play.google.com/store/apps/details?id=com.DKSoftware.ReallySqube";
+        string shareSubject = "Sharing Really Sqube";
+        string shareMessage = "What's Up Gamerz\nSharing you the link of one of best game I have played Really Sqube hope you also like it.\nAll these has been written by me & not by any stupid dum developer trust me. \n Must Download or pay the price ha ha ha... : \n" + "https://play.google.com/store/apps/details?id=com.DKSoftware.ReallySqube";
         isProcessing = true;
         if (!Application.isEditor)
         {
@@ -156,7 +156,7 @@ public class Menu : MonoBehaviour
             //call createChooser method of activity class
             AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
             AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
-            AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Make your Friend a Crypto Miner");
+            AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Really Sqube begining of -DK-");
             currentActivity.Call("startActivity", chooser);
         }
 
