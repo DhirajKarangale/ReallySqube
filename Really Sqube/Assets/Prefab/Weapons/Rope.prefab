@@ -183,7 +183,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 1287122605898623075}
-  isMobileInput: 0
+  isMobileInput: 1
+  ropeTime: 10
+  ropeDist: 40
+  ropeVelocity: 60
+  playerPullForce: 150
+  objectPullForce: 100
   audioSource: {fileID: 1594140886}
   soundRope: {fileID: 8300000, guid: 3a5f3662298f9ed46ad8591657471d1a, type: 3}
   soundHit: {fileID: 8300000, guid: d929bd636a2e01d4abab87bfebaa0429, type: 3}

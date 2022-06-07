@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    // [SerializeField] Rigidbody2D rigidBody;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] float rate;
     [SerializeField] float speed;
     [SerializeField] Vector2 pos1, pos2;
@@ -25,6 +25,8 @@ public class MovePlatform : MonoBehaviour
     {
         if (isTakePlayer && collision.gameObject.CompareTag("Player"))
         {
+            audioSource.loop = true;
+            audioSource.Play();
             collision.transform.SetParent(this.transform);
         }
     }
@@ -33,6 +35,7 @@ public class MovePlatform : MonoBehaviour
     {
         if (isTakePlayer && collision.gameObject.CompareTag("Player"))
         {
+            audioSource.Stop();
             collision.transform.SetParent(null);
         }
     }

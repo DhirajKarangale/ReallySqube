@@ -164,11 +164,11 @@ public class UIManager : MonoBehaviour
         RealityStone.instance.ChangeRealityButton();
     }
 
-    public void ReverseTimeButton()
+    public void ReverseTimeButton(bool isUseStone)
     {
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(6f));
-        TimeStone.instance.ReverseButton();
+        TimeStone.instance.ReverseButton(isUseStone);
     }
 
     public void StopTimeButton()

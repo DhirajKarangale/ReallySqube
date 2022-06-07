@@ -24660,13 +24660,13 @@ MonoBehaviour:
   animator: {fileID: 3674347047791570377}
   normalMode: {fileID: 21300000, guid: 6c031c7a4e087a14eada276a31d3e47d, type: 3}
   agentMode: {fileID: 21300000, guid: 21a819f80c235014a80f881d4a88d98a, type: 3}
-  jumpVel: 35
+  jumpVel: 40
   jumpPressTime: 0.3
   groundTime: 0.4
   jumpFallVel: 0.5
-  moveDamping: 0.02
-  stopDamping: 0.025
-  turnDamping: 0.025
+  moveDamping: 0
+  stopDamping: 0.023
+  turnDamping: 0.965
   moveInputVal: 0
   psJump: {fileID: 3598457375760683716}
   psLand: {fileID: 3598457375146388420}

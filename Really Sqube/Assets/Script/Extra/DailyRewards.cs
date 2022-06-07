@@ -31,8 +31,7 @@ public class DailyRewards : MonoBehaviour
 
         if (!PlayerPrefs.HasKey(rewardSave))
         {
-            Debug.Log("Not Key");
-            rewardAmount = 10;
+            rewardAmount = 50;
             ActiveCollectRewards();
             PlayerPrefs.SetString(rewardSave, DateTime.Now.ToString());
         }

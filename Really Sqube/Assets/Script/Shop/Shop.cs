@@ -186,6 +186,31 @@ public class Shop : MonoBehaviour
 
 
 
+
+
+    public void CoinButton()
+    {
+        audioSource.PlayOneShot(soundBuy);
+        switch (UnityEngine.Random.Range(1, 4))
+        {
+            case 1:
+                DisplayMsg("Come here any time when you want");
+                break;
+            case 2:
+                DisplayMsg("Congratulations you got coin");
+                break;
+            case 3:
+                DisplayMsg("What you are going to do with this money");
+                break;
+        }
+
+        UIManager.instance.UpdateCoin(200);
+        StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
+        CollectableData.instance.Save();
+    }
+
+
+
     public void HealthPackButton()
     {
         if (!PlayerHealth.instance)
@@ -209,7 +234,7 @@ public class Shop : MonoBehaviour
                     DisplayMsg("Congratulations for Health Pack");
                     break;
                 case 3:
-                    DisplayMsg("Improve your hygiene now.");
+                    DisplayMsg("Improve your hygiene now");
                     break;
             }
 

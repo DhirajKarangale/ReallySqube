@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] GameObject[] panels;
-    
+
     [Header("Tips")]
     [SerializeField] Text tipText;
     [SerializeField] string[] tips;
@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
     [Header("Level UI")]
     [SerializeField] Button[] levelButtons;
     [SerializeField] Scrollbar scrollBar;
-    
+
     [Header("Collectables")]
     [SerializeField] Text txtCoin;
     [SerializeField] Text txtRealityStone;
@@ -36,7 +36,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        // PlayerPrefs.SetInt("Level", 4);
+        // PlayerPrefs.SetInt("Level", 1);
         LevelsButton();
         StartCoroutine(GenerateTips());
         UpdateCollectablesTxt();
@@ -79,10 +79,22 @@ public class Menu : MonoBehaviour
             }
         }
 
-        float scrollPos = (levelButtons.Length - (currLevel + 1));
-        scrollPos = scrollPos / 10;
-        // scrollBar.value = Mathf.Lerp(scrollBar.value, x, 0.1f);
-        scrollBar.value = scrollPos;
+        if ((currLevel + 1) == 1)
+        {
+            scrollBar.value = 1;
+        }
+        else if ((currLevel + 1) == 9)
+        {
+            scrollBar.value = 0;
+        }
+        else
+        {
+            float scrollPos = currLevel + 1;
+            scrollPos = scrollPos / 10;
+            scrollPos = Mathf.Abs(1 - scrollPos);
+            // scrollBar.value = Mathf.Lerp(scrollBar.value, x, 0.1f);
+            scrollBar.value = scrollPos;
+        }
     }
 
     IEnumerator GenerateTips()

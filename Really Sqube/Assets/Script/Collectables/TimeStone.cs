@@ -10,11 +10,11 @@ public class TimeStone : MonoBehaviour
         instance = this;
     }
 
-    public void ReverseButton()
+    public void ReverseButton(bool isUseStone)
     {
         if (GameManager.instance.isGameOver) GameManager.instance.RespwanPlayer();
         PlayerHealth.instance.reverse.StartRewind();
-        UIManager.instance.UpdateTimeStone(-5);
+        if(isUseStone) UIManager.instance.UpdateTimeStone(-5);
         PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
     }
 

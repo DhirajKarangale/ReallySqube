@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Rope : MonoBehaviour
 {
@@ -6,8 +7,18 @@ public class Rope : MonoBehaviour
     private Rigidbody2D objectToPull;
     private Reverse reverse;
     private GameManager gameManager;
+
     [SerializeField] LineRenderer line;
     [SerializeField] bool isMobileInput;
+
+    [Header("Attributes")]
+    [SerializeField] float ropeTime = 10;
+    [SerializeField] float ropeDist = 40;
+    [SerializeField] float ropeVelocity = 60;
+    [SerializeField] float playerPullForce = 30;
+    [SerializeField] float objectPullForce = 20;
+
+    [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip soundRope;
     [SerializeField] AudioClip soundHit;
@@ -15,6 +26,7 @@ public class Rope : MonoBehaviour
     private Vector3 velocity;
     private bool isRopeGoing;
     private bool isRopeThrown;
+    // private bool isButtonPressed;
 
     private Transform collidedObjPos;
     private Vector3 collidedObjOldPos;
@@ -28,11 +40,11 @@ public class Rope : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || DialogueManager.instance.isPlayerStop)
-        {
-            DesableLine();
-            return;
-        }
+        // if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || DialogueManager.instance.isPlayerStop)
+        // {
+        //     DesableLine();
+        //     return;
+        // }
 
         GetInputs();
 
@@ -67,7 +79,7 @@ public class Rope : MonoBehaviour
         collidedObjPos = collision.transform;
         collidedObjOldPos = collision.transform.position;
         CancelInvoke("StopRope");
-        Invoke("StopRope", 10);
+        Invoke("StopRope", ropeTime);
         return;
     }
 
@@ -75,15 +87,45 @@ public class Rope : MonoBehaviour
     {
         if (isMobileInput)
         {
+            // if (Input.touchCount > 0)
+            // {
+            //     if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            //     {
+            //         Debug.Log("Clicked on the UI");
+            //     }
+            //     else
+            //     {
+            //         Touch touch = Input.GetTouch(0);
+            //         if (touch.phase == TouchPhase.Began)
+            //         {
+            //             Debug.Log("UI Not Touch");
+            //             if (touch.tapCount > 1)
+            //             {
+            //                 Debug.Log("Double ");
+            //                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+            //                 Vector2 touchDir = touchPos - player.position;
+            //                 touchDir = touchDir.normalized;
+            //                 SetRopeDir(touchDir);
+            //             }
+            //         }
+            //     }
+            // }
+
             if (Input.touchCount > 0)
             {
-                Touch touch = Input.GetTouch(0);
-                if (touch.tapCount > 1)
+                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 {
-                    Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-                    Vector2 touchDir = touchPos - player.position;
-                    touchDir = touchDir.normalized;
-                    SetRopeDir(touchDir);
+                    Touch touch = Input.GetTouch(0);
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        if (touch.tapCount > 1)
+                        {
+                            Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                            Vector2 touchDir = touchPos - player.position;
+                            touchDir = touchDir.normalized;
+                            SetRopeDir(touchDir);
+                        }
+                    }
                 }
             }
         }
@@ -102,7 +144,7 @@ public class Rope : MonoBehaviour
     private void ThrowRope()
     {
         transform.position += velocity * Time.deltaTime;
-        if (Vector2.Distance(transform.position, player.position) > 40) StopRope();
+        if (Vector2.Distance(transform.position, player.position) > ropeDist) StopRope();
     }
 
     private void GetRope()
@@ -125,28 +167,28 @@ public class Rope : MonoBehaviour
 
         Vector2 pullDirection = (Vector2)transform.position - player.position;
         pullDirection = pullDirection.normalized;
-        float pullForce = 30;
+        float pullForceTemp = playerPullForce;
 
         // Pull Object towards player
-        if(!objectToPull) 
+        if (!objectToPull)
         {
             StopRope();
             return;
         }
         if (objectToPull != player)
         {
-            pullForce = -10;
+            pullForceTemp = -objectPullForce;
             transform.position = objectToPull.position;
         }
 
-        objectToPull.AddForce(pullDirection * pullForce);
+        objectToPull.AddForce(pullDirection * pullForceTemp);
     }
 
     private void SetRopeDir(Vector2 dir)
     {
         audioSource.clip = soundRope;
         if (!audioSource.isPlaying) audioSource.Play();
-        velocity = dir * 60; //Rope Velocity
+        velocity = dir * ropeVelocity;
         transform.position = player.position + dir;
         isRopeGoing = true;
         isRopeThrown = true;
