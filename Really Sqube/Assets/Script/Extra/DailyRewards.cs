@@ -33,7 +33,7 @@ public class DailyRewards : MonoBehaviour
         {
             rewardAmount = 50;
             ActiveCollectRewards();
-            PlayerPrefs.SetString(rewardSave, DateTime.Now.ToString());
+            // PlayerPrefs.SetString(rewardSave, DateTime.Now.ToString());
         }
 
         StopAllCoroutines();

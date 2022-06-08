@@ -25,18 +25,21 @@ public class Boss : MonoBehaviour
     [SerializeField] float rushForce;
     [SerializeField] float throwForce;
 
+    public bool isTimeStopped;
     private bool isAttackStarted;
     private float spwanDir;
     private float originalDamage;
     private int objSpwanAmount;
     private PlayerHealth playerHealth;
+    private GameManager gameManager;
 
     private void Start()
     {
+        isTimeStopped = false;
         playerHealth = PlayerHealth.instance;
-        objSpwanAmount = 1;
+        gameManager = GameManager.instance;
         originalDamage = eneWeapon.damage;
-        // int x;
+        objSpwanAmount = 1;
     }
 
     private void Update()
@@ -67,6 +70,8 @@ public class Boss : MonoBehaviour
 
     private void SpwanAttack()
     {
+        if (gameManager.isGameOver || isTimeStopped) return;
+
         int val = Random.Range(1, 4);
 
         if (val == 1) CutterAttack();
@@ -76,6 +81,8 @@ public class Boss : MonoBehaviour
 
     private void RushAttack()
     {
+        if (gameManager.isGameOver || isTimeStopped) return;
+
         enemyHealth.isDamageAllow = false;
         Vector2 playerDir = playerHealth.transform.position - transform.position;
         playerDir = playerDir.normalized;
@@ -121,26 +128,28 @@ public class Boss : MonoBehaviour
 
     private void SetSpwanItem(GameObject currObj)
     {
-        if (Random.value > 0.45f)
-        {
-            ItemSpawner itemSpawner = currObj.GetComponent<ItemSpawner>();
+        ItemSpawner itemSpawner = currObj.GetComponent<ItemSpawner>();
 
-            float val = Random.value;
-            if (val <= 0.5f)
-            {
-                itemSpawner.amount = 1;
-                itemSpawner.item = healthPack;
-            }
-            else if (val < 0.75f)
-            {
-                itemSpawner.amount = 1;
-                itemSpawner.item = timeStone;
-            }
-            else
-            {
-                itemSpawner.amount = 5;
-                itemSpawner.item = coin;
-            }
+        float val = Random.value;
+        if (val < 0.1f)
+        {
+            itemSpawner.amount = 1;
+            itemSpawner.item = timeStone;
+        }
+        else if (val < 0.23f)
+        {
+            itemSpawner.amount = 5;
+            itemSpawner.item = coin;
+        }
+        else if (val < 0.5f)
+        {
+            itemSpawner.amount = 1;
+            itemSpawner.item = healthPack;
+        }
+        else
+        {
+            itemSpawner.amount = 0;
+            itemSpawner.item = null;
         }
     }
 
@@ -159,6 +168,8 @@ public class Boss : MonoBehaviour
 
     private void LookDir()
     {
+        if (gameManager.isGameOver || isTimeStopped) return;
+
         if (playerHealth.transform.position.x - transform.position.x > 0)
         {
             transform.localScale = new Vector3(-4f, 4f, 4f);

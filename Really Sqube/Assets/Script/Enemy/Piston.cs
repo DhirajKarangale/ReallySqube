@@ -15,11 +15,16 @@ public class Piston : MonoBehaviour
     [SerializeField] float downStopTime = 1.5f;
     [SerializeField] float upGoingTime = 1.5f;
     [SerializeField] float playerDist = 25f;
+    public bool isStopPiston;
 
     private void Start()
     {
         playerHealth = PlayerHealth.instance;
         rbPlayer = playerHealth.playerMove.rigidBody;
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(StartPiston());
     }
 
@@ -42,6 +47,7 @@ public class Piston : MonoBehaviour
 
     private IEnumerator StartPiston()
     {
+        if (isStopPiston) yield break;
         // Down
         rbPiston.isKinematic = false;
         rbPiston.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
@@ -49,14 +55,23 @@ public class Piston : MonoBehaviour
 
         yield return new WaitForSeconds(downStopTime);
 
-        // Up
-        rbPiston.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
-        rbPiston.isKinematic = true;
-        yield return new WaitForSeconds(upGoingTime);
-        rbPiston.constraints = RigidbodyConstraints2D.FreezeAll;
+        Up();
 
         yield return new WaitForSeconds(upStopTime);
 
         StartCoroutine(StartPiston());
+    }
+
+    public void Up()
+    {
+        StartCoroutine(IEUp());
+    }
+
+    private IEnumerator IEUp()
+    {
+        rbPiston.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+        rbPiston.isKinematic = true;
+        yield return new WaitForSeconds(upGoingTime);
+        rbPiston.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 }

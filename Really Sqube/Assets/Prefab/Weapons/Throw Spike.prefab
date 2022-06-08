@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5484292942018632843}
   - component: {fileID: 5122169174286427129}
   - component: {fileID: 1054538504}
+  - component: {fileID: -3676267514230302788}
   m_Layer: 6
   m_Name: Throw Spike
   m_TagString: Untagged
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9
   impactForce: 700
-  isThrow: 1
+  isThrow: 0
 --- !u!114 &1054538504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +167,17 @@ MonoBehaviour:
   mxHealth: 90
   health: 0
   isDamageAllow: 0
+--- !u!114 &-3676267514230302788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122169174286427133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b13f7b322df4f409ebff83d68df507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0
+  item: {fileID: 0}

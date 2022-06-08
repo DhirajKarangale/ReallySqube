@@ -3675,6 +3675,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5122169174286427128, guid: 63757093b1fb79e4d8ad523adad2f529, type: 3}
   m_PrefabInstance: {fileID: 422361876}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &430247908 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 572961803, guid: 86c611a294fb6164e8a8cb22eafe3ad2, type: 3}
+  m_PrefabInstance: {fileID: 510785119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &431790799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4592,6 +4597,10 @@ PrefabInstance:
       propertyPath: pos2.y
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 6213797598391129420, guid: 86c611a294fb6164e8a8cb22eafe3ad2, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 430247908}
     - target: {fileID: 8319189432148696601, guid: 86c611a294fb6164e8a8cb22eafe3ad2, type: 3}
       propertyPath: pos1.x
       value: 243.1364
@@ -6181,6 +6190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 2
   pos1: {x: 213.93, y: 75.43}
@@ -6645,6 +6655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 407.17, y: 75}
@@ -6923,6 +6934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 2
   pos1: {x: 389.7, y: 80.62}
@@ -7311,6 +7323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ed30d832b7f464096094439bd01521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTimeStopped: 0
 --- !u!1001 &927004570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10419,6 +10432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 488.9, y: 98.2}
@@ -10993,6 +11007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 2
   pos1: {x: 449.39, y: 80.62}
@@ -11088,6 +11103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 2
   pos1: {x: 427.63, y: 80.62}
@@ -12265,6 +12281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 2
   pos1: {x: 301.6, y: 75.43}
@@ -15759,6 +15776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 290.23, y: 76}
@@ -16162,6 +16180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 2
   pos1: {x: 523.8, y: 93.6}
@@ -16972,6 +16991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 437.8, y: 75}
@@ -19006,28 +19026,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
+      propertyPath: dialogues.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[0]
-      value: 'Friend : Hey are you fine...'
+      value: 'Player : Hey buddy, I hear some one''s voice.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[1]
-      value: 'Player : I hear some one''s voice'
+      value: 'Friend : I think it''s just your imagination'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[2]
-      value: 'Friend : Wow I think they are...'
+      value: 'Friend : Don''t take stress about it just enjoy'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[3]
-      value: 'Player : Fast tell me who are the before villan come like movies.'
+      value: 'Player : Alright....'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[4]
-      value: 'Friend : You are right Boss is coming.....'
+      value: 'Player : Wait Boss...'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[5]
-      value: 'Friend : Let''s go...'
+      value: 'Player : Wait Boss...'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[6]

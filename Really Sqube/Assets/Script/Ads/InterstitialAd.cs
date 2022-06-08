@@ -8,7 +8,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     private void Awake()
     {
         LoadAd();
-        int value = Random.Range(1, 5);
+        int value = Random.Range(1, 4);
         if (value == 1) ShowAd();
     }
 

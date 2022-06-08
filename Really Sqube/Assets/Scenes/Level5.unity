@@ -2713,7 +2713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.9, y: 5.16, z: -10}
+  m_LocalPosition: {x: -16.9, y: 27.56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 39626789}
@@ -4134,6 +4134,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5056493692661805259, guid: c4ffbb6bffeb0dd4ca22823e0e468fbc, type: 3}
   m_PrefabInstance: {fileID: 953634319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &962801504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 962801505}
+  - component: {fileID: 962801506}
+  m_Layer: 0
+  m_Name: BossIntro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &962801505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962801504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2879355560437735029}
+  - {fileID: 1434097225}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &962801506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962801504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a922fb57b38d44f914dd32e0de71c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeAnim: {fileID: 2879355560437734985}
+  bossDialogue: {fileID: 1434097222}
 --- !u!1 &964313386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4785,7 +4832,7 @@ Transform:
   - {fileID: 1918833442}
   - {fileID: 1703944836}
   m_Father: {fileID: 1267657586}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1103967918
 PrefabInstance:
@@ -4870,7 +4917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116512818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -139.73569, y: -3.4606237, z: 25.125256}
+  m_LocalPosition: {x: -139.73569, y: 18.939377, z: 25.125256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1331870986}
@@ -6064,7 +6111,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1434097225}
   - {fileID: 1799554866}
   - {fileID: 1103267027}
   - {fileID: 1451272432}
@@ -6647,6 +6693,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 233.9956
       objectReference: {fileID: 0}
+    - target: {fileID: 693819900, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.45150757
+      objectReference: {fileID: 0}
     - target: {fileID: 6210656292191979428, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -7166,7 +7216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1434097223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7181,19 +7231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDir: 1
   dialogues:
-  - 'Player : Wow'
   - 'Player : What is this, where am I'
-  - 'Boss : Ha ha ha Idiot......'
-  - 'Player : Are you "HE" the Boss ???'
-  - 'Boss : Wait what... No No '
-  - 'Player : But my friend told me I will find "HE" here'
-  - 'Boss : Do you really think that is your friend.'
-  - 'Boss : and all these is real.'
-  - 'Player : It ''s not, then what is it.'
-  - 'Boss : Hey did you like spiders.'
-  - 'Player : Wait, what, why ???'
-  - 'Boss : Nothing, just asked.'
-  - 'Boss : Idiot, come on and find me if you can.'
+  - 'Another Random guy : Ha ha ha Idiot......'
+  - 'Player : Who are you now & can you hear me.'
+  - 'Another Random guy : I am the Boss of these place.'
+  - 'Boss : And of course I can hear you.'
+  - 'Player : My friend told me I got my answers here.'
+  - 'Boss : Do you think it''s your friend, & everything here is real.'
+  - 'Player : Wow now I understand, It''s all dream right.'
+  - 'Boss : Not that simple Idiot...'
 --- !u!61 &1434097224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7207,7 +7253,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.7821026, y: 6.270313}
+  m_Offset: {x: 0.120731354, y: 1.985177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7218,7 +7264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 36.598614, y: 15.52814}
+  m_Size: {x: 42.40428, y: 6.9578686}
   m_EdgeRadius: 0
 --- !u!4 &1434097225
 Transform:
@@ -7231,8 +7277,8 @@ Transform:
   m_LocalPosition: {x: -8.47998, y: 2.460022, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1267657586}
-  m_RootOrder: 0
+  m_Father: {fileID: 962801505}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1451210067
 PrefabInstance:
@@ -7327,7 +7373,7 @@ Transform:
   - {fileID: 418618871}
   - {fileID: 994311540}
   m_Father: {fileID: 1267657586}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459853335
 GameObject:
@@ -7827,27 +7873,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[0]
-      value: 'Player : Hey, who are you??'
+      value: 'Player : Hey, who are you, you are not my friend.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[1]
-      value: 'Random Guy : Every thing here has no meaning.'
+      value: 'Random Guy : We are all the creation of "HE"'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[2]
-      value: 'Player : But who are you.'
+      value: 'Player : "HE" means that Boss right.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[3]
-      value: 'Random Guy : Nothing.'
+      value: 'Random Guy : no.....'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[4]
-      value: 'Random Guy : Be a Agent to win.'
+      value: 'Player : What....'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[5]
@@ -8544,7 +8590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756773414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -139.73569, y: -4.100623, z: 25.125256}
+  m_LocalPosition: {x: -139.73569, y: 18.299377, z: 25.125256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 193048816}
@@ -8709,7 +8755,7 @@ Transform:
   - {fileID: 1215198900}
   - {fileID: 454209070}
   m_Father: {fileID: 1267657586}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1831758701
 PrefabInstance:
@@ -8814,7 +8860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674347047791570378, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 24.9
       objectReference: {fileID: 0}
     - target: {fileID: 3674347047791570378, guid: a6b31548df859f24682a493a7bca5e75, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10905,7 +10951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2879355560437734986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10994,8 +11040,8 @@ RectTransform:
   m_Children:
   - {fileID: 2879355560207677523}
   - {fileID: 2879355559854979417}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 962801505}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

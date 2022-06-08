@@ -51,8 +51,8 @@ public class Shop : MonoBehaviour
 
     private void Update()
     {
-        CheckRopeTime();
         CheckAgentTime();
+        CheckRopeTime();
     }
 
     private string CntTxtSuffix(int amount)
@@ -94,49 +94,57 @@ public class Shop : MonoBehaviour
 
     private void CheckRopeTime()
     {
-        DateTime ropeTime = DateTime.Parse(PlayerPrefs.GetString(ropeTimeSave, "24-04-2002 11:11:11"));
-        double timeDiffernce = (DateTime.Now - ropeTime).TotalSeconds;
-        if (timeDiffernce > 0 && timeDiffernce <= 600)
+        string ropeTimeStr = PlayerPrefs.GetString(ropeTimeSave, string.Empty);
+        if (!string.IsNullOrEmpty(ropeTimeStr))
         {
-            isRopeActive = true;
-            buttonRope.interactable = false;
-            txtRopeBuy.alignment = TextAnchor.MiddleCenter;
-            txtRopeBuy.text = "Active";
-            if (uiManager.imgRopeActive) uiManager.imgRopeActive.SetActive(true);
-            imageRopeBuy.SetActive(false);
-        }
-        else
-        {
-            isRopeActive = false;
-            buttonRope.interactable = true;
-            txtRopeBuy.alignment = TextAnchor.MiddleRight;
-            txtRopeBuy.text = "700";
-            uiManager.imgRopeActive.SetActive(false);
-            imageRopeBuy.SetActive(true);
+            DateTime ropeTime = DateTime.Parse(ropeTimeStr);
+            double timeDiffernce = (DateTime.Now - ropeTime).TotalSeconds;
+            if (timeDiffernce > 0 && timeDiffernce <= 600)
+            {
+                isRopeActive = true;
+                buttonRope.interactable = false;
+                txtRopeBuy.alignment = TextAnchor.MiddleCenter;
+                txtRopeBuy.text = "Active";
+                if (uiManager.imgRopeActive) uiManager.imgRopeActive.SetActive(true);
+                imageRopeBuy.SetActive(false);
+            }
+            else
+            {
+                isRopeActive = false;
+                buttonRope.interactable = true;
+                txtRopeBuy.alignment = TextAnchor.MiddleRight;
+                txtRopeBuy.text = "700";
+                uiManager.imgRopeActive.SetActive(false);
+                imageRopeBuy.SetActive(true);
+            }
         }
     }
 
     private void CheckAgentTime()
     {
-        DateTime agentTime = DateTime.Parse(PlayerPrefs.GetString(agentTimeSave, "24-04-2002 11:11:11"));
-        double timeDiffernce = (DateTime.Now - agentTime).TotalSeconds;
-        if (timeDiffernce > 0 && timeDiffernce <= 900)
+        string agentTimeStr = PlayerPrefs.GetString(agentTimeSave, string.Empty);
+        if (!string.IsNullOrEmpty(agentTimeStr))
         {
-            isAgentActive = true;
-            buttonAgent.interactable = false;
-            txtAgentBuy.alignment = TextAnchor.MiddleCenter;
-            txtAgentBuy.text = "Active";
-            if (uiManager.imgAgentActive) uiManager.imgAgentActive.SetActive(true);
-            imageAgentBuy.SetActive(false);
-        }
-        else
-        {
-            isAgentActive = false;
-            buttonAgent.interactable = transform;
-            txtAgentBuy.alignment = TextAnchor.MiddleRight;
-            txtAgentBuy.text = "1000";
-            if (uiManager.imgAgentActive) uiManager.imgAgentActive.SetActive(false);
-            imageAgentBuy.SetActive(true);
+            DateTime agentTime = DateTime.Parse(agentTimeStr);
+            double timeDiffernce = (DateTime.Now - agentTime).TotalSeconds;
+            if (timeDiffernce > 0 && timeDiffernce <= 900)
+            {
+                isAgentActive = true;
+                buttonAgent.interactable = false;
+                txtAgentBuy.alignment = TextAnchor.MiddleCenter;
+                txtAgentBuy.text = "Active";
+                if (uiManager.imgAgentActive) uiManager.imgAgentActive.SetActive(true);
+                imageAgentBuy.SetActive(false);
+            }
+            else
+            {
+                isAgentActive = false;
+                buttonAgent.interactable = transform;
+                txtAgentBuy.alignment = TextAnchor.MiddleRight;
+                txtAgentBuy.text = "1000";
+                if (uiManager.imgAgentActive) uiManager.imgAgentActive.SetActive(false);
+                imageAgentBuy.SetActive(true);
+            }
         }
     }
 
@@ -208,8 +216,6 @@ public class Shop : MonoBehaviour
         StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
         CollectableData.instance.Save();
     }
-
-
 
     public void HealthPackButton()
     {
@@ -291,10 +297,10 @@ public class Shop : MonoBehaviour
 
     public void TimeStoneButton()
     {
-        if (CollectableData.instance.coin >= 300)
+        if (CollectableData.instance.coin >= 500)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-300);
+            UIManager.instance.UpdateCoin(-500);
             UIManager.instance.UpdateTimeStone(5);
 
             switch (UnityEngine.Random.Range(1, 4))

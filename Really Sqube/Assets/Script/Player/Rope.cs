@@ -40,11 +40,11 @@ public class Rope : MonoBehaviour
 
     private void Update()
     {
-        // if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || DialogueManager.instance.isPlayerStop)
-        // {
-        //     DesableLine();
-        //     return;
-        // }
+        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || DialogueManager.instance.isPlayerStop)
+        {
+            DesableLine();
+            return;
+        }
 
         GetInputs();
 
@@ -87,30 +87,6 @@ public class Rope : MonoBehaviour
     {
         if (isMobileInput)
         {
-            // if (Input.touchCount > 0)
-            // {
-            //     if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            //     {
-            //         Debug.Log("Clicked on the UI");
-            //     }
-            //     else
-            //     {
-            //         Touch touch = Input.GetTouch(0);
-            //         if (touch.phase == TouchPhase.Began)
-            //         {
-            //             Debug.Log("UI Not Touch");
-            //             if (touch.tapCount > 1)
-            //             {
-            //                 Debug.Log("Double ");
-            //                 Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-            //                 Vector2 touchDir = touchPos - player.position;
-            //                 touchDir = touchDir.normalized;
-            //                 SetRopeDir(touchDir);
-            //             }
-            //         }
-            //     }
-            // }
-
             if (Input.touchCount > 0)
             {
                 if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))

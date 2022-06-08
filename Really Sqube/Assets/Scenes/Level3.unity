@@ -4226,6 +4226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 5
   pos1: {x: 159.78, y: -3.59}
@@ -4711,6 +4712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 2
   pos1: {x: 128.87, y: 1.3}
@@ -5543,9 +5545,9 @@ MonoBehaviour:
   playerDir: 0
   dialogues:
   - 'hellow '
-  - can you here us...
+  - can you hear us...
   - hey veer
-  - 'Player : OO man where am I, hey can you here me.'
+  - 'Player : OO man not again.'
   - you are our only ho....
 --- !u!61 &900353436
 BoxCollider2D:
@@ -6146,6 +6148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 5
   speed: 10
   pos1: {x: 563.41, y: 26.5}
@@ -6774,6 +6777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 2
   pos1: {x: 371.99, y: 1.49}
@@ -8651,6 +8655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 41.3, y: 1.83}
@@ -9850,23 +9855,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[0]
-      value: 'Friend : Hi nice to meet you again..'
+      value: 'Player : Hey, what is this place.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[1]
-      value: 'Player : Why all the levels are so small'
+      value: 'Friend : Why are you asking this.'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[2]
-      value: 'Friend : The reason is same buddy, Lazyness of Developer.'
+      value: 'Friend : It''s definitely a "Reality"'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[3]
-      value: 'Friend : Now forget it and just focous on game.'
+      value: 'Player : Wow Really...'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[4]
@@ -10293,6 +10298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 5
   speed: 10
   pos1: {x: 505.2, y: 26.5}
@@ -10842,6 +10848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 6.71, y: 1.83}
@@ -11457,6 +11464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 5
   pos1: {x: 140.7, y: -3.59}
@@ -12703,6 +12711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 5
   pos1: {x: 181.3, y: -3.59}

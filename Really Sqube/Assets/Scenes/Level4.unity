@@ -6689,6 +6689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 140.1, y: -35.9}
@@ -24500,6 +24501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 7
   pos1: {x: 153.9, y: 2.05}
@@ -25176,6 +25178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 7
   pos1: {x: 142.1, y: 29}
@@ -25432,6 +25435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 7
   pos1: {x: 148.3, y: 29}
@@ -25928,6 +25932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 2
   pos1: {x: 66.4, y: -30.9}
@@ -27787,6 +27792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 7
   pos1: {x: 153.9, y: 2.05}
@@ -28078,9 +28084,9 @@ MonoBehaviour:
   playerDir: 0
   dialogues:
   - hey veer, come on man, come out of it
-  - 'Player : Why they cant listen to me.'
   - finish it man wake up now....
   - you are the only hope.......
+  - 'Player : Wow Hope, where am I...'
 --- !u!4 &1072620765
 Transform:
   m_ObjectHideFlags: 0
@@ -36385,6 +36391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 7
   pos1: {x: 172.06, y: -1}
@@ -36991,6 +36998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 5
   speed: 7
   pos1: {x: 262.16, y: -1.9}
@@ -37359,23 +37367,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[0]
-      value: 'Player : Can you tell me what''s this place now'
+      value: 'Player : Can you tell me what is this place & is it "Real"'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[1]
-      value: 'Friend : This is beautiful place created by "HE"'
+      value: 'Friend : You got all your answer after this..'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[2]
-      value: 'Player : Wait who is "HE"'
+      value: 'Player : Ok, then'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[3]
-      value: 'Friend : You got your answer after this..'
+      value: 'Friend : So get set go....'
       objectReference: {fileID: 0}
     - target: {fileID: 6498915064832692870, guid: 9eeae290ca51e234b99eac30bb51fbb1, type: 3}
       propertyPath: dialogues.Array.data[4]
@@ -42820,6 +42828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 5
   speed: 7
   pos1: {x: 274.2, y: -2.51}
@@ -43703,6 +43712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 189.7, y: -35.9}
@@ -44030,6 +44040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 4
   speed: 5
   pos1: {x: 100, y: -35.9}
@@ -44956,6 +44967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 6
   speed: 8
   pos1: {x: 365.6, y: 29.04}
@@ -45278,6 +45290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 6
   speed: 7
   pos1: {x: 299.9, y: 29.04}

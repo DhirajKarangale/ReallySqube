@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void StopPlayer(float playerDir)
     {
         if (!uiManager.objButtons.activeInHierarchy) return;
-        playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         playerHealth.playerMove.moveInputVal = 0;
         playerStartDir = playerDir;
         uiManager.objButtons.SetActive(false);
@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour
 
     public void StartPlayer()
     {
+        if(isGameOver) return;
         if (uiManager.objButtons.activeInHierarchy) return;
-        playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
         playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerHealth.playerMove.rigidBody.AddForce(Vector2.right * playerStartDir);
         uiManager.objButtons.SetActive(true);
@@ -73,16 +73,16 @@ public class GameManager : MonoBehaviour
     {
         if (!playerHealth.isStatus) return;
 
-        uiManager.buttonOverReverse.SetActive(CollectableData.instance.timeStone >= 4);
-        uiManager.buttonOverReverseAD.SetActive(CollectableData.instance.timeStone < 4);
-
         isGameOver = true;
+        uiManager.buttonOverReverse.SetActive(CollectableData.instance.timeStone >= 6);
+        uiManager.buttonOverReverseAD.SetActive(CollectableData.instance.timeStone < 6);
+
         CamShake.instance.Shake(8f, 0.2f);
         // Handheld.Vibrate();
 
         psMain.startColor = playerHealth.originalPsColor;
         Instantiate(psDie.gameObject, playerHealth.transform.position, Quaternion.identity);
-        if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(false);
+        // if (DialogueManager.instance) DialogueManager.instance.CloseDialogue();
         playerHealth.Status(false);
         uiManager.objButtons.SetActive(false);
         uiManager.objUI.SetActive(false);
@@ -92,11 +92,10 @@ public class GameManager : MonoBehaviour
 
     public void RespwanPlayer()
     {
-        isGameOver = false;
-        if (DialogueManager.instance) DialogueManager.instance.gameObject.SetActive(true);
         playerHealth.Status(true);
         uiManager.objButtons.SetActive(true);
         uiManager.objUI.SetActive(true);
         uiManager.objGameOver.SetActive(false);
+        isGameOver = false;
     }
 }

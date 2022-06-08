@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
     public void UpdateTimeStone(int amount)
     {
         CollectableData.instance.timeStone += amount;
-        StartCoroutine(IEUpdateTxt(CollectableData.instance.timeStone, 3, 5, txtTimeStoneCount, objTimeStone, buttonStopTime, buttonReverseTime));
+        StartCoroutine(IEUpdateTxt(CollectableData.instance.timeStone, 4, 6, txtTimeStoneCount, objTimeStone, buttonStopTime, buttonReverseTime));
     }
 
     public void UpdateRealityStone(int amount)
@@ -152,16 +152,16 @@ public class UIManager : MonoBehaviour
 
     public void CheckRealityButton()
     {
+        RealityStone.instance.CheckRealityButton();
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(20));
-        RealityStone.instance.CheckRealityButton();
     }
 
     public void ChangeRealityButton()
     {
+        RealityStone.instance.ChangeRealityButton();
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(26));
-        RealityStone.instance.ChangeRealityButton();
     }
 
     public void ReverseTimeButton(bool isUseStone)

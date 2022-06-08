@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(float damage)
     {
-        if (DialogueManager.instance.isPlayerStop) return;
+        if (DialogueManager.instance.isPlayerStop || reverse.isRewinding) return;
         if (GameManager.instance.isGameOver)
         {
             this.enabled = false;
@@ -91,7 +91,8 @@ public class PlayerHealth : MonoBehaviour
             playerMove.rigidBody.constraints = RigidbodyConstraints2D.None;
             playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             transform.position = new Vector3(transform.position.x, -90, 0);
-            ChangeHealth(-health);
+            currHealth = health;
+            UpdateHealthBar();
         }
         playerMove.boxCollider.enabled = status;
         isStatus = status;

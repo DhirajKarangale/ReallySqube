@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour
     [SerializeField] Rigidbody2D rbNPC;
     [SerializeField] Transform healthBar;
     [SerializeField] GameObject spikes;
+    [SerializeField] GameObject healthPack;
     [SerializeField] float startAttackDist;
     [SerializeField] float attackTime;
     [SerializeField] float rushForce;
@@ -16,10 +17,14 @@ public class NPC : MonoBehaviour
     private float spikeDir;
     private float originalDamage;
     private PlayerHealth playerHealth;
+    private GameManager gameManager;
+    public bool isTimeStopped;
 
     private void Start()
     {
+        originalDamage = eneWeapon.damage;
         playerHealth = PlayerHealth.instance;
+        gameManager = GameManager.instance;
     }
 
     private void Update()
@@ -39,8 +44,9 @@ public class NPC : MonoBehaviour
         isAttackStarted = true;
         enemyHealth.isDamageAllow = true;
 
-        if (Random.value > 0.4f) RushAttack();
-        else SpikesAttack();
+        // if (Random.value > 0.4f) RushAttack();
+        // else SpikesAttack();
+        SpikesAttack();
 
         yield return new WaitForSeconds(attackTime);
 
@@ -54,6 +60,8 @@ public class NPC : MonoBehaviour
 
     private void LookDir()
     {
+        if (gameManager.isGameOver || isTimeStopped) return;
+
         if (playerHealth.transform.position.x - transform.position.x > 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -68,6 +76,8 @@ public class NPC : MonoBehaviour
 
     private void RushAttack()
     {
+        if (gameManager.isGameOver || isTimeStopped) return;
+
         enemyHealth.isDamageAllow = false;
         Vector2 playerDir = playerHealth.transform.position - transform.position;
         playerDir = playerDir.normalized;
@@ -77,17 +87,37 @@ public class NPC : MonoBehaviour
 
     private void SpikesAttack()
     {
+        if (gameManager.isGameOver || isTimeStopped) return;
+
         for (int i = 0; i < 5; i++)
         {
             GameObject currRock = Instantiate(spikes, SpikesPos(), Quaternion.Euler(0, 0, spikeDir));
+            currRock.name = "Rock " + i;
             Vector2 playerDir = playerHealth.transform.position - transform.position;
             playerDir = playerDir.normalized;
             currRock.GetComponent<Rigidbody2D>().AddForce(playerDir * spikeForce, ForceMode2D.Impulse);
-            Destroy(currRock, 5);
+            SetSpwanItem(currRock);
+            Destroy(currRock, 3);
         }
     }
 
-     private void SetDamage()
+    private void SetSpwanItem(GameObject currObj)
+    {
+        ItemSpawner itemSpawner = currObj.GetComponent<ItemSpawner>();
+
+        if (Random.value < 0.1f)
+        {
+            itemSpawner.amount = 1;
+            itemSpawner.item = healthPack;
+        }
+        else
+        {
+            itemSpawner.amount = 0;
+            itemSpawner.item = null;
+        }
+    }
+
+    private void SetDamage()
     {
         eneWeapon.damage = enemyHealth.isDamageAllow ? originalDamage / 2 : originalDamage;
     }
@@ -95,7 +125,7 @@ public class NPC : MonoBehaviour
     private Vector3 SpikesPos()
     {
         return new Vector3(transform.position.x - Mathf.Sign(spikeDir) * 5,
-        Random.Range(transform.position.y, transform.position.y + 7), 0);
+        Random.Range(transform.position.y, transform.position.y + 5), 0);
     }
 
     private void AllowDamage()

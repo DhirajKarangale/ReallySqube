@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 572961803}
   rate: 0.5
   speed: 5
   pos1: {x: 159.65, y: -3.165421}

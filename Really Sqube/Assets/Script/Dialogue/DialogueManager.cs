@@ -20,6 +20,16 @@ public class DialogueManager : MonoBehaviour
         instance = this;
         isPlayerStop = false;
         sentencesQue = new Queue<string>();
+        sentencesQue.Clear();
+    }
+
+    private void OnEnable()
+    {
+        if (sentencesQue.Count != 0)
+        {
+            animator.Play("IdelOpen");
+            DisplayNextSentence();
+        }
     }
 
     public void StartDialogue(string[] sentences, float playerDir)
@@ -43,7 +53,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if(GameManager.instance && GameManager.instance.isGameOver)
+        if (GameManager.instance && GameManager.instance.isGameOver)
         {
             sentencesQue.Clear();
         }
@@ -68,14 +78,14 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(0.8f);
         DisplayNextSentence();
     }
 
     public void EndDialogue()
     {
         animator.Play("DialogueClose");
-        if(GameManager.instance) GameManager.instance.StartPlayer();
+        if (GameManager.instance) GameManager.instance.StartPlayer();
         isPlayerStop = false;
     }
 }

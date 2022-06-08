@@ -258,37 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 1
   item: {fileID: 9144542203304370797, guid: e2104a0f65a36ad49b2af075bdcca2c4, type: 3}
---- !u!1 &21944710
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 21944711}
-  m_Layer: 0
-  m_Name: Dialogues
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &21944711
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21944710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 103693347137044163}
-  m_Father: {fileID: 1267657586}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &39626788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 1
   speed: 10
   pos1: {x: 99.8, y: -1}
@@ -1651,6 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ed30d832b7f464096094439bd01521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTimeStopped: 0
 --- !u!114 &245591705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,6 +2887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 1
   speed: 10
   pos1: {x: 68, y: -1}
@@ -3373,6 +3345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 1
   speed: 10
   pos1: {x: 172.06, y: -1}
@@ -4403,6 +4376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 1
   speed: 10
   pos1: {x: 172.06, y: -1}
@@ -10388,6 +10362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 7
   pos1: {x: 19.16, y: -30.99999}
@@ -12636,7 +12611,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 21944711}
+  - {fileID: 103693347137044163}
   - {fileID: 1799554866}
   - {fileID: 1103267027}
   - {fileID: 1451272432}
@@ -13090,6 +13065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b652441bbf5c904180217d21147ff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   rate: 3
   speed: 7
   pos1: {x: 230.4, y: 2}
@@ -13562,6 +13538,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 233.9956
       objectReference: {fileID: 0}
+    - target: {fileID: 693819900, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.45150757
+      objectReference: {fileID: 0}
     - target: {fileID: 6210656292191979428, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
       propertyPath: m_SizeDelta.x
       value: 374.63977
@@ -13749,6 +13729,10 @@ PrefabInstance:
     - target: {fileID: 6210656292924308682, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210656293457212894, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.23925781
       objectReference: {fileID: 0}
     - target: {fileID: 6210656294151514172, guid: 1e999dd42f608364da314a79197c03a3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -21969,7 +21953,7 @@ Transform:
   m_LocalPosition: {x: 423.3, y: -45.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 21944711}
+  m_Father: {fileID: 1267657586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416512778605948692
@@ -22003,7 +21987,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.6026459, y: 15.102806}
+  m_Offset: {x: 2.6026459, y: 9.376547}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -22014,7 +21998,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 46.77597, y: 46.866547}
+  m_Size: {x: 46.77597, y: 35.414032}
   m_EdgeRadius: 0
 --- !u!4 &4177108363228429788
 Transform:
@@ -22219,10 +22203,12 @@ MonoBehaviour:
   rbNPC: {fileID: 4177108363228429791}
   healthBar: {fileID: 1087097014}
   spikes: {fileID: 5122169174286427133, guid: d91a387fa059359459bf26e6a2fe7d3f, type: 3}
+  healthPack: {fileID: 8988911420179172776, guid: 3267fe95eaab40c4abf830d006e9181c, type: 3}
   startAttackDist: 20
-  attackTime: 5
+  attackTime: 3
   rushForce: 60
   spikeForce: 40
+  isTimeStopped: 0
 --- !u!212 &4177108363729824812
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22380,10 +22366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDir: 7000
   dialogues:
-  - 'Random Guy : You came up to here hmm'
-  - 'Player : You have to defeat me to go further'
-  - 'Random Guy : If you or any other agent can'
-  - 'Player : So let''s finish it.'
+  - 'Random Guy : Hey. just go back & enjoy this place.'
+  - 'Random Guy : Otherwise I have to fight with you'
+  - 'Player : So let''s do that.'
 --- !u!1001 &7443102614429283598
 PrefabInstance:
   m_ObjectHideFlags: 0

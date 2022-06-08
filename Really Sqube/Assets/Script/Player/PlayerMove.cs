@@ -185,7 +185,7 @@ public class PlayerMove : MonoBehaviour
 
     public void DownButton()
     {
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, -2);
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, -5);
     }
 
     public void MoveButton(int value)
@@ -211,7 +211,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (boxCollider.isTrigger)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 2);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 4);
         }
         else
         {
