@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,15 +12,20 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] AudioClip writeSound;
     [SerializeField] AudioClip soundButton;
     private Queue<string> sentencesQue;
-    private string sentence;
+    private GameManager gameManager;
     public bool isPlayerStop;
 
     private void Awake()
     {
         instance = this;
-        isPlayerStop = false;
         sentencesQue = new Queue<string>();
         sentencesQue.Clear();
+    }
+
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+        isPlayerStop = false;
     }
 
     private void OnEnable()
@@ -37,7 +42,7 @@ public class DialogueManager : MonoBehaviour
         if (playerDir != 0)
         {
             isPlayerStop = true;
-            GameManager.instance.StopPlayer(playerDir);
+            gameManager.StopPlayer(playerDir);
         }
 
         audioSource.PlayOneShot(soundButton);
@@ -53,17 +58,18 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (GameManager.instance && GameManager.instance.isGameOver)
+        if (gameManager && gameManager.isGameOver)
         {
             sentencesQue.Clear();
         }
+
         if (sentencesQue.Count == 0)
         {
             EndDialogue();
             return;
         }
 
-        sentence = sentencesQue.Dequeue();
+        string sentence = sentencesQue.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -85,7 +91,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.Play("DialogueClose");
-        if (GameManager.instance) GameManager.instance.StartPlayer();
+        if (gameManager) gameManager.StartPlayer();
         isPlayerStop = false;
     }
 }

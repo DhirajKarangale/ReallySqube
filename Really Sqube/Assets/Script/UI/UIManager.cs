@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -21,6 +22,9 @@ public class UIManager : MonoBehaviour
     public Button buttonCheckReality;
     public Button buttonChangeReality;
     public Button buttonDown;
+    [SerializeField] EventTrigger buttonLeftMove;
+    [SerializeField] EventTrigger buttonRightMove;
+    [SerializeField] EventTrigger buttonJump;
 
     [Header("Slider")]
     public Slider healthSlider;
@@ -45,6 +49,11 @@ public class UIManager : MonoBehaviour
     [Header("Sound")]
     [SerializeField] AudioSource soundButton;
 
+    private CollectableData collectableData;
+    private PlayerMove playerMove;
+    private TimeStone timeStone;
+    private RealityStone realityStone;
+
     private void Awake()
     {
         instance = this;
@@ -52,6 +61,11 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        collectableData = CollectableData.instance;
+        playerMove = PlayerHealth.instance.playerMove;
+        timeStone = TimeStone.instance;
+        realityStone = RealityStone.instance;
+
         UpdateCoin(0);
         UpdateRealityStone(0);
         UpdateTimeStone(0);
@@ -90,6 +104,19 @@ public class UIManager : MonoBehaviour
         buttonReverseTime.interactable = true;
     }
 
+    private IEnumerator IEResetButton()
+    {
+        buttonLeftMove.enabled = false;
+        buttonRightMove.enabled = false;
+        buttonJump.enabled = false;
+
+        yield return new WaitForSecondsRealtime(0.16f);
+
+        buttonLeftMove.enabled = true;
+        buttonRightMove.enabled = true;
+        buttonJump.enabled = true;
+    }
+
     private string PrintAmount(int amount)
     {
         string amountStr = amount.ToString();
@@ -100,20 +127,20 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimeStone(int amount)
     {
-        CollectableData.instance.timeStone += amount;
-        StartCoroutine(IEUpdateTxt(CollectableData.instance.timeStone, 4, 6, txtTimeStoneCount, objTimeStone, buttonStopTime, buttonReverseTime));
+        collectableData.timeStone += amount;
+        StartCoroutine(IEUpdateTxt(collectableData.timeStone, 4, 6, txtTimeStoneCount, objTimeStone, buttonStopTime, buttonReverseTime));
     }
 
     public void UpdateRealityStone(int amount)
     {
-        CollectableData.instance.realityStone += amount;
-        StartCoroutine(IEUpdateTxt(CollectableData.instance.realityStone, 1, 2, txtRealityStoneCount, objRealityStone, buttonCheckReality, buttonChangeReality));
+        collectableData.realityStone += amount;
+        StartCoroutine(IEUpdateTxt(collectableData.realityStone, 1, 2, txtRealityStoneCount, objRealityStone, buttonCheckReality, buttonChangeReality));
     }
 
     public void UpdateCoin(int amount)
     {
-        CollectableData.instance.coin += amount;
-        StartCoroutine(IEUpdateTxt(CollectableData.instance.coin, 1, 1, txtCoinCount, objCoin, null, null));
+        collectableData.coin += amount;
+        StartCoroutine(IEUpdateTxt(collectableData.coin, 1, 1, txtCoinCount, objCoin, null, null));
     }
 
     public void PauseButton()
@@ -125,8 +152,8 @@ public class UIManager : MonoBehaviour
         soundButton.Play();
         isPause = true;
 
-        txtRealityStPause.text = "Reality Stones        " + PrintAmount(CollectableData.instance.realityStone);
-        txtTimeStPause.text = "Time Stone            " + PrintAmount(CollectableData.instance.timeStone);
+        txtRealityStPause.text = "Reality Stones        " + PrintAmount(collectableData.realityStone);
+        txtTimeStPause.text = "Time Stone            " + PrintAmount(collectableData.timeStone);
 
         pauseObj.SetActive(true);
         objButtons.SetActive(false);
@@ -152,14 +179,14 @@ public class UIManager : MonoBehaviour
 
     public void CheckRealityButton()
     {
-        RealityStone.instance.CheckRealityButton();
+        realityStone.CheckRealityButton();
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(20));
     }
 
     public void ChangeRealityButton()
     {
-        RealityStone.instance.ChangeRealityButton();
+        realityStone.ChangeRealityButton();
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(26));
     }
@@ -168,29 +195,29 @@ public class UIManager : MonoBehaviour
     {
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(6f));
-        TimeStone.instance.ReverseButton(isUseStone);
+        timeStone.ReverseButton(isUseStone);
     }
 
     public void StopTimeButton()
     {
         ResumeButton();
         StartCoroutine(DesableCollectableButtons(31f));
-        TimeStone.instance.StopTimeButton();
+        timeStone.StopTimeButton();
     }
 
     public void MoveButton(int value)
     {
-        PlayerHealth.instance.playerMove.MoveButton(value);
+        playerMove.MoveButton(value);
     }
 
     public void JumpButton(bool isJump)
     {
-        PlayerHealth.instance.playerMove.JumpButton(isJump);
+        playerMove.JumpButton(isJump);
     }
 
     public void DownButton()
     {
-        PlayerHealth.instance.playerMove.DownButton();
+        playerMove.DownButton();
     }
 
     public void RestartButton()
@@ -208,5 +235,10 @@ public class UIManager : MonoBehaviour
     public void ShopButton(bool isActive)
     {
         Shop.instance.ShopButton(isActive);
+    }
+
+    public void ResetButton()
+    {
+        StartCoroutine(IEResetButton());
     }
 }

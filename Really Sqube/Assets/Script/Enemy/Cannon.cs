@@ -8,10 +8,18 @@ public class Cannon : MonoBehaviour
     [SerializeField] Animator animator;
     private Vector2 attackPoint;
     private bool isShootingAllow;
+    private Transform player;
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        player = PlayerHealth.instance.transform;
+        gameManager = GameManager.instance;
+    }
 
     private void Update()
     {
-        if (PlayerHealth.instance && Mathf.Abs(transform.position.x - PlayerHealth.instance.transform.position.x) < 30)
+        if (player && Mathf.Abs(transform.position.x - player.position.x) < 30)
         {
             if (!isShootingAllow)
             {
@@ -28,14 +36,14 @@ public class Cannon : MonoBehaviour
 
     private void Shoot()
     {
-        if (GameManager.instance.isGameOver) return;
+        if (gameManager.isGameOver) return;
         
         animator.Play("Shoot");
     }
 
     public void ThroughBullet()
     {
-        if (GameManager.instance.isGameOver) return;
+        if (gameManager.isGameOver) return;
 
         attackPoint = (Vector2)transform.position - new Vector2(0, 2.5f);
         GameObject currBullet = Instantiate(bullet, attackPoint, Quaternion.identity);

@@ -7,6 +7,7 @@ public class Rope : MonoBehaviour
     private Rigidbody2D objectToPull;
     private Reverse reverse;
     private GameManager gameManager;
+    private DialogueManager dialogueManager;
 
     [SerializeField] LineRenderer line;
     [SerializeField] bool isMobileInput;
@@ -36,11 +37,12 @@ public class Rope : MonoBehaviour
         player = PlayerHealth.instance.playerMove.rigidBody;
         reverse = PlayerHealth.instance.reverse;
         gameManager = GameManager.instance;
+        dialogueManager = DialogueManager.instance;
     }
 
     private void Update()
     {
-        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || DialogueManager.instance.isPlayerStop)
+        if (gameManager.isGameOver || reverse.isRewinding || !Shop.instance.isRopeActive || (Time.timeScale == 0) || dialogueManager.isPlayerStop)
         {
             DesableLine();
             return;

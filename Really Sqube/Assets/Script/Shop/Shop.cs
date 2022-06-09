@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour
     private const string ropeTimeSave = "RopeTime";
     private const string agentTimeSave = "AgentTime";
     private UIManager uiManager;
+    private CollectableData collectableData;
 
     [SerializeField] GameObject objShop;
     [SerializeField] GameObject healthPack;
@@ -46,6 +47,7 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        collectableData = CollectableData.instance;
         uiManager = UIManager.instance;
     }
 
@@ -184,11 +186,11 @@ public class Shop : MonoBehaviour
         audioSource.PlayOneShot(soundButton);
         objShop.SetActive(isActive);
 
-        if (UIManager.instance) UIManager.instance.ResumeButton();
+        if (uiManager) uiManager.ResumeButton();
         if (isActive) Time.timeScale = 0;
-        StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
-        StartCoroutine(IEUpdateTxt(txtRealityStoneCnt, CollectableData.instance.realityStone));
-        StartCoroutine(IEUpdateTxt(txtTimeStoneCnt, CollectableData.instance.timeStone));
+        StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
+        StartCoroutine(IEUpdateTxt(txtRealityStoneCnt, collectableData.realityStone));
+        StartCoroutine(IEUpdateTxt(txtTimeStoneCnt, collectableData.timeStone));
     }
 
 
@@ -212,9 +214,9 @@ public class Shop : MonoBehaviour
                 break;
         }
 
-        UIManager.instance.UpdateCoin(200);
-        StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
-        CollectableData.instance.Save();
+        uiManager.UpdateCoin(200);
+        StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
+        collectableData.Save();
     }
 
     public void HealthPackButton()
@@ -225,11 +227,11 @@ public class Shop : MonoBehaviour
             return;
         }
 
-        if (CollectableData.instance.coin >= 400)
+        if (collectableData.coin >= 400)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-400);
-            UIManager.instance.UpdateRealityStone(5);
+            uiManager.UpdateCoin(-400);
+            uiManager.UpdateRealityStone(5);
 
             switch (UnityEngine.Random.Range(1, 4))
             {
@@ -244,14 +246,14 @@ public class Shop : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
+            StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
 
             if (PlayerHealth.instance)
             {
                 Instantiate(healthPack, PlayerHealth.instance.transform.position + new Vector3(3, 5, 0), Quaternion.identity);
             }
 
-            CollectableData.instance.Save();
+            collectableData.Save();
         }
         else
         {
@@ -263,11 +265,11 @@ public class Shop : MonoBehaviour
 
     public void RealityStoneButton()
     {
-        if (CollectableData.instance.coin >= 100)
+        if (collectableData.coin >= 100)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-100);
-            UIManager.instance.UpdateRealityStone(5);
+            uiManager.UpdateCoin(-100);
+            uiManager.UpdateRealityStone(5);
 
             switch (UnityEngine.Random.Range(1, 4))
             {
@@ -282,10 +284,10 @@ public class Shop : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
-            StartCoroutine(IEUpdateTxt(txtRealityStoneCnt, CollectableData.instance.realityStone));
+            StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
+            StartCoroutine(IEUpdateTxt(txtRealityStoneCnt, collectableData.realityStone));
 
-            CollectableData.instance.Save();
+            collectableData.Save();
         }
         else
         {
@@ -297,11 +299,11 @@ public class Shop : MonoBehaviour
 
     public void TimeStoneButton()
     {
-        if (CollectableData.instance.coin >= 500)
+        if (collectableData.coin >= 500)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-500);
-            UIManager.instance.UpdateTimeStone(5);
+            uiManager.UpdateCoin(-500);
+            uiManager.UpdateTimeStone(5);
 
             switch (UnityEngine.Random.Range(1, 4))
             {
@@ -316,10 +318,10 @@ public class Shop : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
-            StartCoroutine(IEUpdateTxt(txtTimeStoneCnt, CollectableData.instance.timeStone));
+            StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
+            StartCoroutine(IEUpdateTxt(txtTimeStoneCnt, collectableData.timeStone));
 
-            CollectableData.instance.Save();
+            collectableData.Save();
         }
         else
         {
@@ -331,10 +333,10 @@ public class Shop : MonoBehaviour
 
     public void RopeButton()
     {
-        if (CollectableData.instance.coin >= 700)
+        if (collectableData.coin >= 700)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-700);
+            uiManager.UpdateCoin(-700);
             PlayerPrefs.SetString(ropeTimeSave, DateTime.Now.ToString());
 
             isRopeActive = true;
@@ -356,9 +358,9 @@ public class Shop : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
+            StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
 
-            CollectableData.instance.Save();
+            collectableData.Save();
         }
         else
         {
@@ -370,10 +372,10 @@ public class Shop : MonoBehaviour
 
     public void AgentButton()
     {
-        if (CollectableData.instance.coin >= 1000)
+        if (collectableData.coin >= 1000)
         {
             audioSource.PlayOneShot(soundBuy);
-            UIManager.instance.UpdateCoin(-1000);
+            uiManager.UpdateCoin(-1000);
             PlayerPrefs.SetString(agentTimeSave, DateTime.Now.ToString());
 
             isAgentActive = true;
@@ -395,10 +397,10 @@ public class Shop : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(IEUpdateTxt(txtCoinCnt, CollectableData.instance.coin));
+            StartCoroutine(IEUpdateTxt(txtCoinCnt, collectableData.coin));
             PlayerHealth.instance.psUpgrade.Play();
 
-            CollectableData.instance.Save();
+            collectableData.Save();
         }
         else
         {

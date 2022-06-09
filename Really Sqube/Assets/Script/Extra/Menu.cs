@@ -36,10 +36,11 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Coin", 5000);
-        PlayerPrefs.SetInt("RealityStone", 5000);
-        PlayerPrefs.SetInt("TimeStone", 5000);
-        PlayerPrefs.SetInt("Level", 9);
+        // PlayerPrefs.SetInt("Coin", 5000);
+        // PlayerPrefs.SetInt("RealityStone", 5000);
+        // PlayerPrefs.SetInt("TimeStone", 5000);
+        // PlayerPrefs.SetInt("Level", 9);
+        
         LevelsButton();
         StartCoroutine(GenerateTips());
         UpdateCollectablesTxt();

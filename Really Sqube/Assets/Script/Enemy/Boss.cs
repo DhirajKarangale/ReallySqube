@@ -60,7 +60,7 @@ public class Boss : MonoBehaviour
         isAttackStarted = true;
         enemyHealth.isDamageAllow = true;
 
-        if (Random.Range(1, 3) == 1) RushAttack();
+        if (Random.Range(1, 3) == 2) RushAttack();
         else SpwanAttack();
 
         yield return new WaitForSeconds(attackTime);

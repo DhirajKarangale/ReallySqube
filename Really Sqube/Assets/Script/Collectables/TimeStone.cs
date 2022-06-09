@@ -16,13 +16,13 @@ public class TimeStone : MonoBehaviour
         if (GameManager.instance.isGameOver) GameManager.instance.RespwanPlayer();
         PlayerHealth.instance.reverse.StartRewind();
         if (isUseStone) UIManager.instance.UpdateTimeStone(-6);
-        PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
+        CollectableData.instance.Save();
     }
 
     public void StopTimeButton()
     {
         stopTime.StopTimeButton();
         UIManager.instance.UpdateTimeStone(-4);
-        PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
+        CollectableData.instance.Save();
     }
 }

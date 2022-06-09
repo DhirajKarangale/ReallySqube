@@ -44,9 +44,8 @@ public class NPC : MonoBehaviour
         isAttackStarted = true;
         enemyHealth.isDamageAllow = true;
 
-        // if (Random.value > 0.4f) RushAttack();
-        // else SpikesAttack();
-        SpikesAttack();
+        if (Random.value > 0.4f) RushAttack();
+        else SpikesAttack();
 
         yield return new WaitForSeconds(attackTime);
 

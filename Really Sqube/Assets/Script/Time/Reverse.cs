@@ -11,16 +11,20 @@ public class Reverse : MonoBehaviour
     private List<Vector2> recordedPos;
 
     private UIManager uiManager;
+    private GameManager gameManager;
 
     private void Start()
     {
         isRewinding = false;
         recordedPos = new List<Vector2>();
         uiManager = UIManager.instance;
+        gameManager = GameManager.instance;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R)) uiManager.ResetButton();
+
         if (isRewinding) Rewind();
         else Record();
     }
@@ -36,7 +40,7 @@ public class Reverse : MonoBehaviour
         player.moveInputVal = 0;
         player.rigidBody.isKinematic = true;
         player.ChangeAnim("Move");
-        UIManager.instance.objButtons.SetActive(false);
+        uiManager.objButtons.SetActive(false);
         reverseSound.Play();
     }
 
@@ -45,10 +49,11 @@ public class Reverse : MonoBehaviour
         uiManager.txtStoneUseStatus.gameObject.SetActive(false);
 
         player.moveInputVal = 0;
+        uiManager.ResetButton();
         isRewinding = false;
         player.rigidBody.isKinematic = false;
         bg.color = Color.white;
-        UIManager.instance.objButtons.SetActive(true);
+        uiManager.objButtons.SetActive(true);
         reverseSound.Stop();
     }
 
@@ -67,7 +72,7 @@ public class Reverse : MonoBehaviour
 
     private void Record()
     {
-        if (!GameManager.instance.isGameOver && !UIManager.instance.isPause && (player.rigidBody.velocity.magnitude > 0))
+        if (!gameManager.isGameOver && !uiManager.isPause && (player.rigidBody.velocity.magnitude > 0))
         {
             // if (recordedPos.Count > Mathf.Round(recordTime / Time.fixedDeltaTime)) if FixedUpdate
             if (recordedPos.Count > Mathf.Round(recordTime / Time.deltaTime))

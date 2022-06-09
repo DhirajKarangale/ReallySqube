@@ -7,6 +7,9 @@ public class PlayerHealth : MonoBehaviour
     public PlayerMove playerMove;
     public Reverse reverse;
     private UIManager uiManager;
+    private DialogueManager dialogueManager;
+    private GameManager gameManager;
+    private Shop shop;
 
     [Header("Health")]
     [SerializeField] float health;
@@ -32,7 +35,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        shop = Shop.instance;
         uiManager = UIManager.instance;
+        gameManager = GameManager.instance;
+        dialogueManager = DialogueManager.instance;
         isStatus = true;
         currHealth = health;
         UpdateHealthBar();
@@ -42,19 +48,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(float damage)
     {
-        if (DialogueManager.instance.isPlayerStop || reverse.isRewinding) return;
-        if (GameManager.instance.isGameOver)
+        if (dialogueManager.isPlayerStop || reverse.isRewinding) return;
+        if (gameManager.isGameOver)
         {
             this.enabled = false;
             return;
         }
-        if (Shop.instance.isAgentActive) damage = damage / 2;
+        if (shop.isAgentActive) damage = damage / 2;
         currHealth = Mathf.Clamp(currHealth -= damage, 0, health + 1);
         UpdateHealthBar();
 
         if (currHealth <= 0)
         {
-            GameManager.instance.GameOver();
+            gameManager.GameOver();
         }
         else if (damage < 0)
         {

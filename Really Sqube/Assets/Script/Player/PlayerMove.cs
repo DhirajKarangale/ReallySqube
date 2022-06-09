@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rigidBody;
     public BoxCollider2D boxCollider;
     [SerializeField] Animator animator;
+    private GameManager gameManager;
 
     [Header("Sprites")]
     [SerializeField] Sprite normalMode;
@@ -37,6 +38,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioClip fallClip;
     // [SerializeField] AudioSource soundMove;
 
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+    }
+
 
     private void Update()
     {
@@ -45,7 +51,7 @@ public class PlayerMove : MonoBehaviour
         KeyBoardFunction();
         UpdateSprite();
 
-        if (transform.position.y <= -100) GameManager.instance.GameOver();
+        if (transform.position.y <= -100) gameManager.GameOver();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -165,7 +171,7 @@ public class PlayerMove : MonoBehaviour
 
     private void PlaySound(AudioClip audioClip)
     {
-        if (GameManager.instance.isGameOver) return;
+        if (gameManager.isGameOver) return;
 
         if (audioSource.isPlaying) audioSource.Stop();
         audioSource.PlayOneShot(audioClip);

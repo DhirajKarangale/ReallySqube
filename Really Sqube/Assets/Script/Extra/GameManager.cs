@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void StopPlayer(float playerDir)
     {
         if (!uiManager.objButtons.activeInHierarchy) return;
+        RealityStone.instance.OriginalReality();
         playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         playerHealth.playerMove.moveInputVal = 0;
         playerStartDir = playerDir;
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void StartPlayer()
     {
-        if(isGameOver) return;
+        if (isGameOver) return;
         if (uiManager.objButtons.activeInHierarchy) return;
         playerHealth.playerMove.rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerHealth.playerMove.rigidBody.AddForce(Vector2.right * playerStartDir);

@@ -15,14 +15,22 @@ public class StopTime : MonoBehaviour
 
     public bool isTimeStopped;
     private Rigidbody2D rigidBody;
+    private UIManager uiManager;
+    private PlayerHealth playerHealth;
+
+    private void Start()
+    {
+        uiManager = UIManager.instance;
+        playerHealth = PlayerHealth.instance;
+    }
 
     private void Stop()
     {
         isTimeStopped = true;
-        UIManager.instance.txtStoneUseStatus.text = "Time Pause";
-        UIManager.instance.txtStoneUseStatus.color = Color.white;
-        UIManager.instance.txtStoneUseStatus.gameObject.SetActive(true);
-        PlayerHealth.instance.reverse.bg.color = Color.blue;
+        uiManager.txtStoneUseStatus.text = "Time Pause";
+        uiManager.txtStoneUseStatus.color = Color.white;
+        uiManager.txtStoneUseStatus.gameObject.SetActive(true);
+        playerHealth.reverse.bg.color = Color.blue;
 
         moveEnemyList = FindObjectsOfType<MoveEnemy>();
         movePlatformList = FindObjectsOfType<MovePlatform>();
@@ -115,8 +123,8 @@ public class StopTime : MonoBehaviour
     {
         StopAllCoroutines();
         isTimeStopped = false;
-        UIManager.instance.txtStoneUseStatus.gameObject.SetActive(false);
-        PlayerHealth.instance.reverse.bg.color = Color.white;
+        uiManager.txtStoneUseStatus.gameObject.SetActive(false);
+        playerHealth.reverse.bg.color = Color.white;
 
         if (boss) boss.isTimeStopped = false;
         if (npc) npc.isTimeStopped = false;
@@ -128,7 +136,6 @@ public class StopTime : MonoBehaviour
             rigidBody = moveEnemy.GetComponent<Rigidbody2D>();
             if (rigidBody)
             {
-                rigidBody.constraints = RigidbodyConstraints2D.None;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
@@ -140,7 +147,6 @@ public class StopTime : MonoBehaviour
             rigidBody = movePlatform.GetComponent<Rigidbody2D>();
             if (rigidBody)
             {
-                rigidBody.constraints = RigidbodyConstraints2D.None;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
@@ -152,7 +158,6 @@ public class StopTime : MonoBehaviour
             rigidBody = cannon.GetComponent<Rigidbody2D>();
             if (rigidBody)
             {
-                rigidBody.constraints = RigidbodyConstraints2D.None;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
@@ -164,7 +169,6 @@ public class StopTime : MonoBehaviour
             rigidBody = distSound.GetComponent<Rigidbody2D>();
             if (rigidBody)
             {
-                rigidBody.constraints = RigidbodyConstraints2D.None;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
@@ -183,7 +187,6 @@ public class StopTime : MonoBehaviour
             rigidBody = animator.GetComponent<Rigidbody2D>();
             if (rigidBody)
             {
-                rigidBody.constraints = RigidbodyConstraints2D.None;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
@@ -195,6 +198,8 @@ public class StopTime : MonoBehaviour
             BoxCollider2D boxCollider = dialogue.GetComponent<BoxCollider2D>();
             if (boxCollider) boxCollider.enabled = true;
         }
+
+        uiManager.ResetButton();
     }
 
     private IEnumerator IEStopTime()

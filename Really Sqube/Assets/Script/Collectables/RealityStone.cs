@@ -13,6 +13,10 @@ public class RealityStone : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         uiManager = UIManager.instance;
         playerHealth = PlayerHealth.instance;
         bg = playerHealth.reverse.bg;
@@ -21,16 +25,13 @@ public class RealityStone : MonoBehaviour
     private IEnumerator IECheckReality()
     {
         uiManager.UpdateRealityStone(-1);
-        PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
-        
+        CollectableData.instance.Save();
         if (!soundReality.isPlaying) soundReality.Play();
-
         // bg.color = Color.Lerp(Color.white, Color.red, Time.deltaTime * smooth);
         bg.color = Color.red;
         uiManager.txtStoneUseStatus.text = "Reality";
         uiManager.txtStoneUseStatus.color = Color.yellow;
         uiManager.txtStoneUseStatus.gameObject.SetActive(true);
-
         GameObject[] fakeObjs = GameObject.FindGameObjectsWithTag("Fake");
         foreach (GameObject fakeObj in fakeObjs)
         {
@@ -42,10 +43,8 @@ public class RealityStone : MonoBehaviour
         yield return new WaitForSeconds(20);
 
         soundReality.Stop();
-        
         uiManager.txtStoneUseStatus.gameObject.SetActive(false);
         bg.color = Color.white;
-
         foreach (GameObject fakeObj in fakeObjs)
         {
             Color temp = fakeObj.GetComponent<SpriteRenderer>().color;
@@ -56,41 +55,41 @@ public class RealityStone : MonoBehaviour
 
     private IEnumerator IEChangeReality()
     {
-        uiManager.UpdateRealityStone(-2);
-        PlayerPrefs.SetInt("TimeStone", CollectableData.instance.timeStone);
-       
-        if (!soundReality.isPlaying) soundReality.Play();
+        ChangeReality();
+        yield return new WaitForSeconds(15);
+        OriginalReality();
+    }
 
+    private void ChangeReality()
+    {
+        uiManager.UpdateRealityStone(-2);
+        CollectableData.instance.Save();
+        if (!soundReality.isPlaying) soundReality.Play();
         bg.color = Color.yellow;
         uiManager.txtStoneUseStatus.text = "Reality Changed";
         uiManager.txtStoneUseStatus.color = Color.red;
         uiManager.txtStoneUseStatus.gameObject.SetActive(true);
-
         uiManager.buttonDown.gameObject.SetActive(true);
         if (playerHealth)
         {
             playerHealth.GetComponent<BoxCollider2D>().isTrigger = true;
             playerHealth.GetComponent<Rigidbody2D>().gravityScale = 0;
-
             Color temp = playerHealth.gui.color;
             temp.a = 0.2f;
             playerHealth.gui.color = temp;
         }
+    }
 
-        yield return new WaitForSeconds(25);
-
+    public void OriginalReality()
+    {
         soundReality.Stop();
-
         uiManager.txtStoneUseStatus.gameObject.SetActive(false);
         bg.color = Color.white;
-
         uiManager.buttonDown.gameObject.SetActive(false);
-
         if (playerHealth)
         {
             playerHealth.GetComponent<BoxCollider2D>().isTrigger = false;
             playerHealth.GetComponent<Rigidbody2D>().gravityScale = 8;
-
             Color temp = playerHealth.gui.color;
             temp.a = 1;
             playerHealth.gui.color = temp;
