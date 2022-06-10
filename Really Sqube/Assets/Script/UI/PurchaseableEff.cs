@@ -48,7 +48,7 @@ public class PurchaseableEff : MonoBehaviour
             shopKnob.gameObject.SetActive(true);
             pauseKnob.gameObject.SetActive(true);
         }
-        else if(collectableData.coin >= 300)
+        else if(collectableData.coin >= 500)
         {
             shopKnob.color = colorTimeStone;
             pauseKnob.color = colorTimeStone;
